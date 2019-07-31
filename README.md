@@ -11,3 +11,4 @@ mediatR
 redis
 dapper
 
+This repository is ***under development***. It is **not finished yet**.
