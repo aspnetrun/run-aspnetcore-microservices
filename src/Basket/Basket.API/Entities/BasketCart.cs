@@ -3,10 +3,13 @@
 namespace Basket.API.Entities
 {
     public class BasketCart
-    {
-        public int Id { get; set; }
+    {        
         public string UserName { get; set; }
         public List<BasketCartItem> Items { get; set; } = new List<BasketCartItem>();
+
+        public BasketCart()
+        {
+        }
 
         public BasketCart(string userName)
         {
