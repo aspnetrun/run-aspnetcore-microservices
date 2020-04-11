@@ -83,7 +83,6 @@ namespace Catalog.API
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog API V1");
             });
-
         }
     }
 }
