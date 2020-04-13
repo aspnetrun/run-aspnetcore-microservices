@@ -59,14 +59,19 @@ namespace Basket.API.Controllers
         {
             // get total price of the basket
             // remove the basket 
-            // send checkout event to rabbitMq            
+            // send checkout event to rabbitMq 
 
             var basket = await _repository.GetBasket(basketCheckout.UserName);
-            var totalPrice = basket.TotalPrice;
+            if (basket == null)
+            {
+                _logger.LogError("Basket not exist with this user : {EventId}", basketCheckout.UserName);
+                return BadRequest();
+            }
 
             var basketRemoved = await _repository.DeleteBasket(basketCheckout.UserName);
             if (!basketRemoved)
             {
+                _logger.LogError("Basket can not deleted");
                 return BadRequest();
             }
 
@@ -76,7 +81,7 @@ namespace Basket.API.Controllers
 
             var eventMessage = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
             eventMessage.RequestId = Guid.NewGuid();
-            eventMessage.TotalPrice = totalPrice;
+            eventMessage.TotalPrice = basket.TotalPrice;
            
             try
             {
