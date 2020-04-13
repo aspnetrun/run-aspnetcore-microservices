@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EventBusRabbitMQ;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Ordering.API.Extentions;
+using Ordering.API.RabbitMQ;
+using RabbitMQ.Client;
 
 namespace Ordering.API
 {
@@ -25,6 +23,32 @@ namespace Ordering.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            #region RabbitMQ Dependencies
+
+            services.AddSingleton<IRabbitMQConnection>(sp =>
+            {
+                var factory = new ConnectionFactory()
+                {
+                    HostName = Configuration["EventBus:HostName"]
+                };
+
+                if (!string.IsNullOrEmpty(Configuration["EventBus:UserName"]))
+                {
+                    factory.UserName = Configuration["EventBus:UserName"];
+                }
+
+                if (!string.IsNullOrEmpty(Configuration["EventBus:Password"]))
+                {
+                    factory.Password = Configuration["EventBus:Password"];
+                }
+
+                return new RabbitMQConnection(factory);
+            });
+
+            services.AddSingleton<EventBusRabbitMQConsumer>();
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +67,9 @@ namespace Ordering.API
             {
                 endpoints.MapControllers();
             });
+
+            //Initilize Rabbit Listener in ApplicationBuilderExtentions
+            app.UseRabbitListener();
         }
     }
 }

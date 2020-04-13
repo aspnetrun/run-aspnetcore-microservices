@@ -1,4 +1,5 @@
-﻿using EventBusRabbitMQ.Common;
+﻿using EventBusRabbitMQ;
+using EventBusRabbitMQ.Common;
 using EventBusRabbitMQ.Events;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
@@ -6,7 +7,7 @@ using RabbitMQ.Client.Events;
 using System;
 using System.Text;
 
-namespace EventBusRabbitMQ.Consumer
+namespace Ordering.API.RabbitMQ
 {
     public class EventBusRabbitMQConsumer
     {
