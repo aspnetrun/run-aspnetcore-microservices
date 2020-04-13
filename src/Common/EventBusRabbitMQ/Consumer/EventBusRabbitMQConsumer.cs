@@ -1,4 +1,5 @@
 ﻿using EventBusRabbitMQ.Common;
+using EventBusRabbitMQ.Events;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -34,7 +35,7 @@ namespace EventBusRabbitMQ.Consumer
             if (e.RoutingKey == EventBusConstants.BasketCheckoutQueue)
             {
                 var message = Encoding.UTF8.GetString(e.Body);
-                BasketCheckout basketCheckout = JsonConvert.DeserializeObject<BasketCheckout>(message);
+                var basketCheckoutEvent = JsonConvert.DeserializeObject<BasketCheckoutEvent>(message);
 
                 // TODO : stuff
             }

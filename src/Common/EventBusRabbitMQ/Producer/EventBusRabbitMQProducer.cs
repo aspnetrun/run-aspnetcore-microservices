@@ -1,4 +1,4 @@
-﻿using EventBusRabbitMQ.Common;
+﻿using EventBusRabbitMQ.Events;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System;
@@ -15,7 +15,7 @@ namespace EventBusRabbitMQ.Producer
             _connection = connection ?? throw new ArgumentNullException(nameof(connection));
         }
 
-        public void PublishBasketCheckout(string queueName, BasketCheckout publishModel)
+        public void PublishBasketCheckout(string queueName, BasketCheckoutEvent publishModel)
         {
             using (var channel = _connection.CreateModel())
             {
@@ -38,6 +38,6 @@ namespace EventBusRabbitMQ.Producer
                 };
                 channel.ConfirmSelect();
             }
-        }
+        }        
     }
 }

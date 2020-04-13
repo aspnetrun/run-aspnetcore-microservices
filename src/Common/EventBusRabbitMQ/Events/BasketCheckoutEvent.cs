@@ -1,7 +1,10 @@
-﻿namespace Basket.API.Entities
+﻿using System;
+
+namespace EventBusRabbitMQ.Events
 {
-    public class BasketCheckout
-    {        
+    public class BasketCheckoutEvent
+    {
+        public Guid RequestId { get; set; }
         public string UserName { get; set; }
         public decimal TotalPrice { get; set; }
 
