@@ -8,14 +8,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Ordering.API.Extentions;
 using Ordering.API.RabbitMQ;
+using Ordering.Application.Handlers;
 using Ordering.Core.Repositories;
 using Ordering.Core.Repositories.Base;
 using Ordering.Infrastructure.Data;
 using Ordering.Infrastructure.Repository;
 using Ordering.Infrastructure.Repository.Base;
 using RabbitMQ.Client;
+using System.Reflection;
 
 namespace Ordering.API
 {
@@ -35,15 +36,13 @@ namespace Ordering.API
 
             #region SqlServer Dependencies
 
-            // use in-memory database
+            //// use in-memory database
+            //services.AddDbContext<OrderContext>(c =>
+            //    c.UseInMemoryDatabase("OrderConnection"));
+
+            // use real database
             services.AddDbContext<OrderContext>(c =>
-                c.UseInMemoryDatabase("OrderConnection"));
-
-            //// use real database
-            //services.AddDbContext<AspnetRunContext>(c =>
-            //    c.UseSqlServer(Configuration.GetConnectionString("OrderConnection")));
-
-            //TODO : burdasin -- connection string ekle
+                c.UseSqlServer(Configuration.GetConnectionString("OrderConnection")));            
 
             #endregion
 
@@ -51,13 +50,14 @@ namespace Ordering.API
 
             // Add Infrastructure Layer
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));
             services.AddScoped<IOrderRepository, OrderRepository>();
-
-            // Add MediatR
-            services.AddMediatR(this.GetType().Assembly);
 
             // Add AutoMapper
             services.AddAutoMapper(typeof(Startup));
+
+            // Add MediatR
+            services.AddMediatR(typeof(CheckoutOrderHandler).GetTypeInfo().Assembly);
 
             #endregion
 
@@ -114,8 +114,8 @@ namespace Ordering.API
                 endpoints.MapControllers();
             });
 
-            //Initilize Rabbit Listener in ApplicationBuilderExtentions
-            app.UseRabbitListener();
+            ////Initilize Rabbit Listener in ApplicationBuilderExtentions
+            //app.UseRabbitListener();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

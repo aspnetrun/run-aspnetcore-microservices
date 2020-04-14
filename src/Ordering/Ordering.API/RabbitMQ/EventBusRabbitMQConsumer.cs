@@ -45,9 +45,9 @@ namespace Ordering.API.RabbitMQ
                 var message = Encoding.UTF8.GetString(e.Body);
                 var basketCheckoutEvent = JsonConvert.DeserializeObject<BasketCheckoutEvent>(message);
 
-                // TODO : stuff
-                var command = _mapper.Map<CheckoutOrderCommand>(basketCheckoutEvent);                
-                var result = _mediator.Send(command);                
+                // Internal Checkout Operation Call
+                var command = _mapper.Map<CheckoutOrderCommand>(basketCheckoutEvent);
+                var result = _mediator.Send(command);
             }
         }
 
