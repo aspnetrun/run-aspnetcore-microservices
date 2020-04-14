@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Ordering.Application.Interfaces
 {
-    interface IOrderService
-    {
-        Task<OrderModel> CheckOut(OrderModel order);
-        Task<IEnumerable<OrderModel>> GetOrdersByUserName(string userName);
-    }
+    //public interface IOrderService
+    //{
+    //    Task<OrderModel> CheckOut(OrderModel order);
+    //    Task<IEnumerable<OrderModel>> GetOrdersByUserName(string userName);
+    //}
 }
