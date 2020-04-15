@@ -44,7 +44,7 @@ namespace Ordering.API
 
             // use real database
             services.AddDbContext<OrderContext>(c =>
-                c.UseSqlServer(Configuration.GetConnectionString("OrderConnection")));            
+                c.UseSqlServer(Configuration.GetConnectionString("OrderConnection")), ServiceLifetime.Singleton);
 
             #endregion
 
@@ -52,8 +52,8 @@ namespace Ordering.API
 
             // Add Infrastructure Layer
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));            
-            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             // Add AutoMapper
             services.AddAutoMapper(typeof(Startup));

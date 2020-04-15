@@ -5,6 +5,7 @@ using EventBusRabbitMQ.Events;
 using MediatR;
 using Newtonsoft.Json;
 using Ordering.Application.Commands;
+using Ordering.Core.Repositories;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -17,12 +18,14 @@ namespace Ordering.API.RabbitMQ
         private readonly IRabbitMQConnection _connection;
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly IOrderRepository _repository;
 
-        public EventBusRabbitMQConsumer(IRabbitMQConnection connection, IMediator mediator, IMapper mapper)
+        public EventBusRabbitMQConsumer(IRabbitMQConnection connection, IMediator mediator, IMapper mapper, IOrderRepository repository)
         {
             _connection = connection ?? throw new ArgumentNullException(nameof(connection));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
         public void Consume()
@@ -45,11 +48,9 @@ namespace Ordering.API.RabbitMQ
                 var message = Encoding.UTF8.GetString(e.Body);
                 var basketCheckoutEvent = JsonConvert.DeserializeObject<BasketCheckoutEvent>(message);
 
-
-                // Internal Checkout Operation Call
+                // NOTE : This is Internal Checkout Operation Call
                 var command = _mapper.Map<CheckoutOrderCommand>(basketCheckoutEvent);
-                var result = await _mediator.Send(command); // ERROR : CANT RESOLVE SUB OBJECTS FROM THIS CALL
-
+                var result = await _mediator.Send(command);
             }
         }
 
