@@ -18,7 +18,7 @@ namespace Ordering.API.RabbitMQ
         private readonly IRabbitMQConnection _connection;
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
-        private readonly IOrderRepository _repository;
+        private readonly IOrderRepository _repository; // we added this in order to resolve in mediatR
 
         public EventBusRabbitMQConsumer(IRabbitMQConnection connection, IMediator mediator, IMapper mapper, IOrderRepository repository)
         {
