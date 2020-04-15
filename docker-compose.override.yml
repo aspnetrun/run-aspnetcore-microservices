@@ -63,7 +63,8 @@ services:
         container_name: orderingapi
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
-            - "ConnectionStrings:OrderConnection=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678"            
+            - "ConnectionStrings:OrderConnection=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678"
+            - "EventBus:HostName=rabbitmq"
         depends_on:
             - orderdb
             - rabbitmq
