@@ -44,7 +44,7 @@ namespace Ordering.API
 
             // use real database
             services.AddDbContext<OrderContext>(c =>
-                c.UseSqlServer(Configuration.GetConnectionString("OrderConnection")), ServiceLifetime.Singleton);
+                c.UseSqlServer(Configuration.GetConnectionString("OrderConnection")), ServiceLifetime.Singleton); // we made singleton this in order to resolve in mediatR when consuming Rabbit
 
             #endregion
 
