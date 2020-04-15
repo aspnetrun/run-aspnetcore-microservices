@@ -8,8 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Ordering.API.Extentions;
 using Ordering.API.RabbitMQ;
 using Ordering.Application.Handlers;
+using Ordering.Application.PipelineBehaviours;
 using Ordering.Core.Repositories;
 using Ordering.Core.Repositories.Base;
 using Ordering.Infrastructure.Data;
@@ -50,7 +52,7 @@ namespace Ordering.API
 
             // Add Infrastructure Layer
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));
+            services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));            
             services.AddScoped<IOrderRepository, OrderRepository>();
 
             // Add AutoMapper
@@ -58,6 +60,9 @@ namespace Ordering.API
 
             // Add MediatR
             services.AddMediatR(typeof(CheckoutOrderHandler).GetTypeInfo().Assembly);
+
+            //Domain Level Validation
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
             #endregion
 
@@ -114,8 +119,8 @@ namespace Ordering.API
                 endpoints.MapControllers();
             });
 
-            ////Initilize Rabbit Listener in ApplicationBuilderExtentions
-            //app.UseRabbitListener();
+            //Initilize Rabbit Listener in ApplicationBuilderExtentions
+            app.UseRabbitListener();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

@@ -38,16 +38,18 @@ namespace Ordering.API.RabbitMQ
             channel.BasicConsume(queue: EventBusConstants.BasketCheckoutQueue, autoAck: true, consumer: consumer);
         }
 
-        private void ReceivedEvent(object sender, BasicDeliverEventArgs e)
+        private async void ReceivedEvent(object sender, BasicDeliverEventArgs e)
         {
             if (e.RoutingKey == EventBusConstants.BasketCheckoutQueue)
             {
                 var message = Encoding.UTF8.GetString(e.Body);
                 var basketCheckoutEvent = JsonConvert.DeserializeObject<BasketCheckoutEvent>(message);
 
+
                 // Internal Checkout Operation Call
                 var command = _mapper.Map<CheckoutOrderCommand>(basketCheckoutEvent);
-                var result = _mediator.Send(command);
+                var result = await _mediator.Send(command); // ERROR : CANT RESOLVE SUB OBJECTS FROM THIS CALL
+
             }
         }
 

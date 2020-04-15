@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Ordering.Application.Commands;
 using Ordering.Application.Queries;
 using Ordering.Application.Responses;
 using System;
@@ -30,6 +31,15 @@ namespace Ordering.API.Controllers
             var query = new GetOrderByUserNameQuery(userName);
             var orders = await _mediator.Send(query);
             return Ok(orders);
+        }
+
+        //Added for testing purpose
+        [HttpPost]
+        [ProducesResponseType(typeof(OrderResponse), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> CheckoutOrder([FromBody] CheckoutOrderCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
     }
 }
