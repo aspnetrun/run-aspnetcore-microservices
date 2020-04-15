@@ -53,7 +53,7 @@ namespace Ordering.API
             // Add Infrastructure Layer
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));
-            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>(); // we made singleton this in order to resolve in mediatR when consuming Rabbit
 
             // Add AutoMapper
             services.AddAutoMapper(typeof(Startup));
