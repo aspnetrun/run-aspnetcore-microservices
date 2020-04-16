@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{F703CBBB-1C02-46A3-A84F-5D27604F2F61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.ApiGateway", "src\ApiGateway\Shopping.ApiGateway\Shopping.ApiGateway.csproj", "{CAC61153-D31C-42E6-8C80-8B28D3BED783}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.ApiGateway", "src\ApiGateway\Shopping.ApiGateway\Shopping.ApiGateway.csproj", "{CAC61153-D31C-42E6-8C80-8B28D3BED783}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
