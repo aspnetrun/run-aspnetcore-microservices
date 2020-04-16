@@ -6,8 +6,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "catalogapi",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "8000"
         }
       ],
       "UpstreamPathTemplate": "/Catalog",
@@ -18,8 +18,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "catalogapi",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "8000"
         }
       ],
       "UpstreamPathTemplate": "/Catalog/{id}",
@@ -30,8 +30,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "catalogapi",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "8000"
         }
       ],
       "UpstreamPathTemplate": "/Catalog/GetProductByCategory/{category}",
@@ -43,8 +43,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "basketapi",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "8001"
         }
       ],
       "UpstreamPathTemplate": "/Basket",
@@ -55,8 +55,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "basketapi",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "8001"
         }
       ],
       "UpstreamPathTemplate": "/Basket/{userName}",
@@ -67,8 +67,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "basketapi",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "8001"
         }
       ],
       "UpstreamPathTemplate": "/Basket/Checkout",
@@ -80,8 +80,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "orderingapi",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "8002"
         }
       ],
       "UpstreamPathTemplate": "/Order",
