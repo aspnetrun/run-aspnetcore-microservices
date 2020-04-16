@@ -61,13 +61,14 @@ services:
 
     ordering.api:
         container_name: orderingapi
+        restart: on-failure
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - "ConnectionStrings:OrderConnection=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678"
             - "EventBus:HostName=rabbitmq"
         depends_on:
             - orderdb
-            - rabbitmq
+            - rabbitmq        
         volumes:
             - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
             - ${HOME}/.aspnet/https:/root/.aspnet/https/
