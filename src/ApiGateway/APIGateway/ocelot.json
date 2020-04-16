@@ -86,6 +86,6 @@
       ],
       "UpstreamPathTemplate": "/Order",
       "UpstreamHttpMethod": [ "GET" ]
-    }
+    }    
   ]
 }

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
-namespace Shopping.ApiGateway
+namespace APIGateway
 {
     public class Startup
     {
