@@ -1,0 +1,21 @@
+﻿@model Product
+
+<div class="col-12 col-md-3">
+    <div class="card">
+        <div class="card-header bg-success text-white text-uppercase">
+            <i class="fa fa-heart"></i> Top product
+        </div>
+        <a asp-page="ProductDetail" asp-route-productId="@Model.Id"><img asp-append-version="true" class="img-fluid border-0" src="~/images/product/@Model.ImageFile" alt="Card image cap"></a>
+            <div class="card-body">
+                <h4 class="card-title text-center"><a asp-page="ProductDetail" asp-route-productId="@Model.Id" title="View Product">@Model.Name</a></h4>
+                <div class="row">
+                    <div class="col">
+                        <p class="btn btn-danger btn-block">@Model.Price $</p>
+                    </div>
+                    <div class="col">
+                        <a asp-page="ProductDetail" asp-route-productId="@Model.Id" class="btn btn-success btn-block">View</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

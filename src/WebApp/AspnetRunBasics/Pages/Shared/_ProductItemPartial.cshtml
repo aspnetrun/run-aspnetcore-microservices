@@ -1,0 +1,24 @@
+﻿@model Product
+
+<div class="card">
+    <a asp-page="ProductDetail" asp-route-productId="@Model.Id"><img asp-append-version="true" class="card-img-top" src="~/images/product/@Model.ImageFile" alt=""></a>
+    <div class="card-body">
+        <h4 class="card-title"><a asp-page="ProductDetail" asp-route-productId="@Model.Id" class="color-main">@Model.Name</a></h4>
+        <p class="card-text">@Model.Summary</p>
+        <div class="row">
+            <div class="col">
+                <p class="btn btn-danger btn-block">@Model.Price $</p>
+            </div>
+            <div class="col">
+
+                @*<a asp-page="Cart" asp-route-productId="@Model.Id" class="btn btn-success btn-block">Add to Cart</a>*@
+
+                <form asp-page-handler="AddToCart" method="post" name="addToCartForm" id="add_cart_form">
+                    <a href="javascript:;" onclick="parentNode.submit();" class="btn btn-success btn-block">Add to Cart</a>
+                    <input type="hidden" asp-for="@Model.Id" name="productId" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@page
+@model AspnetRunBasics.OrderModel
+@{
+    ViewData["Title"] = "Order";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Order</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                            <th scope="col" class="text-right">TotalPrice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var order in Model.Orders)
+                        {
+                            <tr>
+                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /></td>
+                                <td>@order.FirstName</td>
+                                <td>@order.LastName</td>
+                                <td>@order.EmailAddress</td>
+                                <td>@order.AddressLine</td>
+                                <td class="text-right">@order.TotalPrice $</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <a asp-page="Product" class="btn btn-lg btn-block btn-success">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

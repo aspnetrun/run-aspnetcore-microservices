@@ -1,0 +1,83 @@
+﻿@page
+@model AspnetRunBasics.CartModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Available</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var cartItem in Model.Cart.Items)
+                        {
+                            <tr>
+                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /></td>
+                                <td>@cartItem.Product.Name</td>
+                                <td>In stock</td>
+                                <td><input class="form-control" type="text" value="@cartItem.Quantity" /></td>
+                                <td class="text-right">@(cartItem.Price * cartItem.Quantity) $</td>
+                                <td class="text-right">
+
+                                    <form asp-page-handler="removetocart" method="post">
+                                        <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        <input type="hidden" asp-for="@Model.Cart.Id" name="cartId" />
+                                        <input type="hidden" asp-for="@cartItem.Id" name="cartItemId" />
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total</strong></td>
+                            <td class="text-right"><strong>@Model.Cart.TotalPrice $</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    @*<button class="btn btn-lg btn-block btn-danger">Continue Shopping</button>*@
+                    <a asp-page="Product" class="btn btn-lg btn-block btn-success">Continue Shopping</a>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    @*<button class="btn btn-lg btn-block btn-danger text-uppercase">CheckOut</button>*@
+                    <a asp-page="CheckOut" class="btn btn-lg btn-block btn-danger text-uppercase">CheckOut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
