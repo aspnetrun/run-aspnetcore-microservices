@@ -35,8 +35,7 @@ namespace Catalog.API
 
             #region Configuration Dependencies
 
-            services.Configure<CatalogDatabaseSettings>(
-                Configuration.GetSection(nameof(CatalogDatabaseSettings)));
+            services.Configure<CatalogDatabaseSettings>(Configuration.GetSection(nameof(CatalogDatabaseSettings)));
 
             services.AddSingleton<ICatalogDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<CatalogDatabaseSettings>>().Value);
