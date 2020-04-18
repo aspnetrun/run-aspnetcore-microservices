@@ -1,40 +1,24 @@
 ﻿using Catalog.API.Entities;
-using Catalog.API.Repositories.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
+using MongoDB.Driver;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
-namespace Catalog.API.Controllers
+namespace Catalog.API.Data
 {
-    [Route("api/v1/[controller]")]
-    [ApiController]
-    public class SystemController : ControllerBase
+    public class CatalogContextSeed
     {
-        private readonly IProductRepository _repository;
-        private readonly ILogger<CatalogController> _logger;
-
-        public SystemController(IProductRepository repository, ILogger<CatalogController> logger)
+        public static void SeedData(IMongoCollection<Product> productCollection)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            bool existProduct = productCollection.Find(p => true).Any();
+            if (!existProduct)
+            {
+                productCollection.InsertManyAsync(GetPreconfiguredProducts());
+            }
         }
 
-        // api/v1/system/init
-        [HttpGet("{setting}")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> Init(string setting)
+        private static IEnumerable<Product> GetPreconfiguredProducts()
         {
-            if (setting != "init")
-            {
-                return NotFound();
-            }
-
-            var products = new List<Product>()
+            return new List<Product>()
             {
                 new Product()
                 {
@@ -91,13 +75,6 @@ namespace Catalog.API.Controllers
                     Category = "Home Kitchen"
                 }
             };
-
-            foreach (var product in products)
-            {
-                await _repository.Create(product);
-            }
-                       
-            return Ok(products);
         }
     }
 }
