@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Ordering.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,20 +10,20 @@ namespace Ordering.Infrastructure.Data
 {
     public class OrderContextSeed
     {
-        public static async Task SeedAsync(OrderContext aspnetrunContext, ILoggerFactory loggerFactory, int? retry = 0)
+        public static async Task SeedAsync(OrderContext orderContext, ILoggerFactory loggerFactory, int? retry = 0)
         {
             int retryForAvailability = retry.Value;
 
             try
             {
                 // TODO: Only run this if using a real database
-                // aspnetrunContext.Database.Migrate();
-                // aspnetrunContext.Database.EnsureCreated();
+                orderContext.Database.Migrate();
+                //orderContext.Database.EnsureCreated();
 
-                if (!aspnetrunContext.Orders.Any())
+                if (!orderContext.Orders.Any())
                 {
-                    aspnetrunContext.Orders.AddRange(GetPreconfiguredOrders());
-                    await aspnetrunContext.SaveChangesAsync();
+                    orderContext.Orders.AddRange(GetPreconfiguredOrders());
+                    await orderContext.SaveChangesAsync();
                 }
             }
             catch (Exception exception)
@@ -32,7 +33,7 @@ namespace Ordering.Infrastructure.Data
                     retryForAvailability++;
                     var log = loggerFactory.CreateLogger<OrderContextSeed>();
                     log.LogError(exception.Message);
-                    await SeedAsync(aspnetrunContext, loggerFactory, retryForAvailability);
+                    await SeedAsync(orderContext, loggerFactory, retryForAvailability);
                 }
                 throw;
             }
@@ -42,8 +43,8 @@ namespace Ordering.Infrastructure.Data
         {
             return new List<Order>()
             {
-                new Order() { FirstName = "swn", LastName = "swn" },
-                new Order() { FirstName = "swn2", LastName = "swn2" }                
+                new Order() { UserName = "swn", FirstName = "Mehmet", LastName = "Ozkaya", EmailAddress = "meh@ozk.com", AddressLine = "Bahcelievler", TotalPrice = 5239 },
+                new Order() { UserName = "swn", FirstName = "Selim", LastName = "Arslan", EmailAddress ="sel@ars.com", AddressLine = "Ferah", TotalPrice = 3486 }
             };
         }
     }
