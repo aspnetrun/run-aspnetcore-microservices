@@ -33,7 +33,8 @@ namespace AspnetRunBasics.ApiCollection
         public async Task<CatalogModel> GetCatalog(string id)
         {
             var message = new HttpRequestBuilder(_settings.BaseAddress)
-                               .SetPath(_settings.CatalogPath + "//" + id)
+                               .SetPath(_settings.CatalogPath)
+                               .AddToPath(id)
                                .HttpMethod(HttpMethod.Get)
                                .GetHttpMessage();
 
@@ -42,10 +43,10 @@ namespace AspnetRunBasics.ApiCollection
 
         public async Task<IEnumerable<CatalogModel>> GetCatalogByCategory(string category)
         {
-            var queryPath = _settings.CatalogPath + "/GetProductByCategory/" + category;
-
             var message = new HttpRequestBuilder(_settings.BaseAddress)
-                               .SetPath(queryPath)
+                               .SetPath(_settings.CatalogPath)
+                               .AddToPath("GetProductByCategory")
+                               .AddToPath(category)
                                .HttpMethod(HttpMethod.Get)
                                .GetHttpMessage();
 

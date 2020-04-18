@@ -1,6 +1,8 @@
 ﻿using AspnetRunBasics.ApiCollection.Infrastructure;
 using AspnetRunBasics.ApiCollection.Interfaces;
+using AspnetRunBasics.Models;
 using AspnetRunBasics.Settings;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -16,14 +18,15 @@ namespace AspnetRunBasics.ApiCollection
             _settings = settings;
         }
 
-        public async Task<OrderModel> GetOrder(string userName)
+        public async Task<IEnumerable<OrderResponseModel>> GetOrdersByUserName(string userName)
         {
             var message = new HttpRequestBuilder(_settings.BaseAddress)
-                               .SetPath(_settings.OrderPath + "//" + userName)
-                               .HttpMethod(HttpMethod.Get)
-                               .GetHttpMessage();
+                           .SetPath(_settings.OrderPath)
+                           .AddQueryString("username", userName)
+                           .HttpMethod(HttpMethod.Get)
+                           .GetHttpMessage();
 
-            return await SendRequest<OrderModel>(message);
+            return await SendRequest<IEnumerable<OrderResponseModel>>(message);
         }
     }
 }

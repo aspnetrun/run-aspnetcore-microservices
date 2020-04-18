@@ -37,12 +37,13 @@ namespace AspnetRunBasics.Pages
             basket.Items.Add(new BasketItemModel
             {
                 ProductId = productId,
+                ProductName = product.Name,
                 Price = product.Price,
                 Quantity = 1,
                 Color = "Black"
             });
 
-            var basketUpdated = await _basketApi.AddBasket(basket);
+            var basketUpdated = await _basketApi.UpdateBasket(basket);
             
             return RedirectToPage("Cart");
         }

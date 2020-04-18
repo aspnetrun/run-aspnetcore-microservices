@@ -28,7 +28,7 @@ namespace AspnetRunBasics
 
             services.AddSingleton<IApiSettings>(sp => sp.GetRequiredService<IOptions<ApiSettings>>().Value);
 
-            #endregion        
+            #endregion
 
             #region Project Dependencies
 

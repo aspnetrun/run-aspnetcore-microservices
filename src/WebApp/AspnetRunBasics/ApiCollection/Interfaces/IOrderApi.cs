@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using AspnetRunBasics.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AspnetRunBasics.ApiCollection.Interfaces
 {
     public interface IOrderApi
     {
-        Task<OrderModel> GetOrder(string userName);
+        Task<IEnumerable<OrderResponseModel>> GetOrdersByUserName(string userName);
     }
 }

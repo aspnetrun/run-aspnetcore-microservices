@@ -9,7 +9,7 @@ namespace AspnetRunBasics.ApiCollection.Interfaces
     public interface IBasketApi
     {
         Task<BasketModel> GetBasket(string userName);
-        Task<BasketModel> AddBasket(BasketModel model);
+        Task<BasketModel> UpdateBasket(BasketModel model);
         Task CheckoutBasket(BasketCheckoutModel model);
     }
 }

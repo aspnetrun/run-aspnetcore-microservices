@@ -23,14 +23,15 @@ namespace AspnetRunBasics.ApiCollection
         public async Task<BasketModel> GetBasket(string userName)
         {
             var message = new HttpRequestBuilder(_settings.BaseAddress)
-                               .SetPath(_settings.BasketPath + "//" + userName)
+                               .SetPath(_settings.BasketPath)
+                               .AddQueryString("username", userName)
                                .HttpMethod(HttpMethod.Get)
                                .GetHttpMessage();
 
             return await SendRequest<BasketModel>(message);
         }
 
-        public async Task<BasketModel> AddBasket(BasketModel model)
+        public async Task<BasketModel> UpdateBasket(BasketModel model)
         {
             var message = new HttpRequestBuilder(_settings.BaseAddress)
                                 .SetPath(_settings.BasketPath)
@@ -45,10 +46,9 @@ namespace AspnetRunBasics.ApiCollection
 
         public async Task CheckoutBasket(BasketCheckoutModel model)
         {
-            var postPath = _settings.BasketPath + "/Checkout";
-
             var message = new HttpRequestBuilder(_settings.BaseAddress)
-                                .SetPath(postPath)
+                                .SetPath(_settings.BasketPath)
+                                .AddToPath("Checkout")
                                 .HttpMethod(HttpMethod.Post)
                                 .GetHttpMessage();
 

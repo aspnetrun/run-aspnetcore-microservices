@@ -27,7 +27,7 @@
 
                     @foreach (var category in Model.CategoryList)
                     {
-                        <li class="list-group-item"><a asp-page="Product" asp-route-categoryId="@category.Id">@category.Name</a></li>
+                        <li class="list-group-item"><a asp-page="Product" asp-route-categoryName="@category">@category</a></li>
                     }
 
                 </ul>
