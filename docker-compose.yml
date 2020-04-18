@@ -37,3 +37,8 @@ services:
             context: .
             dockerfile: src/ApiGateway/APIGateway/Dockerfile
 
+    aspnetrunbasics:
+        image: ${DOCKER_REGISTRY-}aspnetrunbasics
+        build:
+            context: .
+            dockerfile: src/WebApp/AspnetRunBasics/Dockerfile
