@@ -1,38 +1,10 @@
 # run-aspnetcore-microservices
 
-aspnet core
-docker
-microservices
-mongodb
-redis
-sqlserver
-ocelot
-rabbitMQ
-autofac
-mediatR
-CQRS
-
 Here is **implementation of microservices with .net tools** on real-world **e-commerce microservices** project;
 
 ![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
 
-
-
 **AspnetRunCore Microservices** is an implementation of base aspnetrun project which written with **clean architecture** and best practices. The idea is that **how to implement real life projects** over the base repository i.e. **e-commerce domain** implemented with full **E&E e-commerce web template**. AspnetRunRealWorld is an implementation of **e-commerce domain** with **Northwind database**.This managed with **layered architecture** for building modern web applications with latest ASP.NET Core & Web API & EF Core technologies. 
-
-# What is AspnetRun ? 
-The best path to **leverage your ASP.NET Core** skills. Onboarding to **Full Stack .Net Core Developer** jobs. Boilerplate for **ASP.NET Core reference application** with **Entity Framework Core**, demonstrating a layered application architecture with DDD best practices. Implements NLayer **Hexagonal architecture** (Core, Application, Infrastructure and Presentation Layers) and **Domain Driven Design** (Entities, Repositories, Domain/Application Services, DTO's...) 
-and aimed to be a **Clean Architecture**, with applying **SOLID principles** in order to use for a project template. 
-Also implements **best practices** like **loosely-coupled, dependency-inverted** architecture and using **design patterns** such as **Dependency Injection**, logging, validation, exception handling, localization and so on.
-
-You can check full repository documentations and step by step development of **[100+ page e-book PDF](https://aspnetrun.azurewebsites.net)** from here - **https://aspnetrun.azurewebsites.net**. Also detail introduction of book and project structure exists on **[medium aspnetrun page](https://medium.com/aspnetrun)**. You can follow **aspnetrun repositories** for building **step by step** asp.net core **web development skills**.
-
-# AspnetRun Repositories
-Here you can find all of the **aspnetrun repositories from easy to difficult**, Also this list can be track a **learning path** of asp.net core respectively;
-* **[run-aspnetcore-basics](https://github.com/aspnetrun/run-aspnetcore-basics)** - Building fastest ASP.NET Core Default Web Application template. This solution **only one solution one project** for **idea generation** with Asp.Net Core. 
-* **[run-aspnetcore](https://github.com/aspnetrun/run-aspnetcore)** - Building ASP.NET Core Web Application with Entity Framework.Core and apply **Clean Architecture** with DDD best practices.
-* **[run-aspnetcore-cqrs](https://github.com/aspnetrun/run-aspnetcore-cqrs)** - Building Single-Page Web Applications(SPA) using ASP.NET Core & EF.Core, Web API Project and implement **CQRS Design Pattern**.
-* **[run-aspnetcore-microservices](https://github.com/aspnetrun/run-aspnetcore-microservices)** - Building **Microservices** on .Net platforms which used **Asp.Net Web API, Docker, RabbitMQ, Ocelot API Gateway, MongoDB, Redis, SqlServer, Entity Framework Core, CQRS and Clean Architecture** implementation.
 
 ## Whats Including In This Repository
 We have implemented below **features over the run-aspnetcore boilerplate template**. You can change **real-world features** as your business requirements;
