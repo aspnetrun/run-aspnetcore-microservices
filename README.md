@@ -86,46 +86,17 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up –build
 
 ![mainscreen2](https://user-images.githubusercontent.com/1147445/81381837-08226000-9116-11ea-9489-82645b8dbfc4.png)
 
-## The Book
-After cloning or downloading the sample you should be able to run it using an In Memory database immediately. The default configuration of Entity Framework Database is **"InMemoryDatabase"**.
-If you wish to use the project with a persistent database, you will need to run its Entity Framework Core **migrations** before you will be able to run the app, and update the ConfigureDatabases method in **Startup.cs** (see below).
+## The Book - Microservices Architecture and Step by Step Implementation on .NET
 
-```csharp
-public void ConfigureDatabases(IServiceCollection services)
-{
-    // use in-memory database
-    services.AddDbContext<AspnetRunContext>(c =>
-        c.UseInMemoryDatabase("AspnetRunConnection")
-        .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+You can find **Microservices Architecture and Step by Step Implementation on .NET book** which **step by step developing** this repository with extensive explanations and details. This book is the **best path to leverage your .NET skills** in every aspect from begginer to senior level you can benefit to ramp-up faster on **Enterprice Application Development practices** and easy to **Onboarding to Full Stack .Net Core Developer jobs**. 
+[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)
 
-    //// use real database
-    //services.AddDbContext<AspnetRunContext>(c =>
-    //    c.UseSqlServer(Configuration.GetConnectionString("AspnetRunConnection"))
-    //    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
-}
-```
+![aspnetrun_microservices3](https://user-images.githubusercontent.com/1147445/81383140-31dc8680-9118-11ea-992a-3ad8abc62314.png)
 
-1. Ensure your connection strings in ```appsettings.json``` point to a local SQL Server instance.
+[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)
 
-2. Open a command prompt in the Web folder and execute the following commands:
 
-```csharp
-dotnet restore
-dotnet ef database update -c AspnetRunContext -p ../AspnetRun.Infrastructure/AspnetRun.Infrastructure.csproj -s AspnetRun.Web.csproj
-```
-Or you can direct call ef commands from Visual Studio **Package Manager Console**. Open Package Manager Console, set default project to AspnetRun.Infrastructure and run below command;
-```csharp
-update-database
-```
-These commands will create aspnetrun database which include Product and Category table. You can see from **AspnetRunContext.cs**.
-1. Run the application.
-The first time you run the application, it will seed aspnetrun sql server database with a few data such that you should see products and categories.
 
-If you modify-change or add new some of entities to Core project, you should run ef migrate commands in order to update your database as the same way but below commands;
-```csharp
-add migration YourCustomEntityChanges
-update-database
-```
 
 ## Layered Architecture
 AspnetRun implements NLayer **Hexagonal architecture** (Core, Application, Infrastructure and Presentation Layers) and **Domain Driven Design** (Entities, Repositories, Domain/Application Services, DTO's...). Also implements and provides a good infrastructure to implement **best practices** such as Dependency Injection, logging, validation, exception handling, localization and so on.
