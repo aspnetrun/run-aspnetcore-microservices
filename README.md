@@ -2,12 +2,12 @@ See the big picture of **implementations on microservices with .net tools** on r
 
 ![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
 
-There is a couple of microservices which implemented **e-commerce** modules over **Product, Basket** and **Order** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
+There is a couple of microservices which implemented **e-commerce** modules over **Product, Basket** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
 ## Whats Including In This Repository
 We have implemented below **features over the run-aspnetcore-microservices repository**.
 
-#### Create Catalog microservice which includes; 
+#### Catalog microservice which includes; 
 * ASP.NET Core Web API application 
 * REST API principles, CRUD operations 
 * Mongo DB NoSQL database connection on docker
@@ -15,7 +15,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * Swagger Open API implementation
 * Dockerfile implementation
 
-#### Create Basket microservice which includes;
+#### Basket microservice which includes;
 * ASP.NET Core Web API application 
 * REST API principles, CRUD operations 
 * Redis database connection on docker
@@ -24,10 +24,10 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * Swagger Open API implementation
 * Dockerfile implementation
 
-#### Create RabbitMQ messaging library which includes;
+#### RabbitMQ messaging library which includes;
 * Base EventBus implementation and add references Microservices
 
-#### Create Ordering microservice which includes; (over the catalog specs)
+#### Ordering microservice which includes; (over the catalog specs)
 * ASP.NET Core Web API application 
 * Entity Framework Core on SQL Server docker
 * REST API principles, CRUD operations 
@@ -38,11 +38,11 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * Swagger Open API implementation
 * Dockerfile implementation
 
-#### Create API Gateway Ocelot microservice which includes;
+#### API Gateway Ocelot microservice which includes;
 * Routing to inside microservices
 * Dockerization api-gateway
 
-#### Create WebUI ShoppingApp microservice which includes;
+#### WebUI ShoppingApp microservice which includes;
 * Asp.net Core Web Application with Razor template
 * Call Ocelot APIs with HttpClientFactory
 * Aspnet core razor tools - View Components, partial Views, Tag Helpers, Model Bindings and Validations, Razor Sections etc.. 
