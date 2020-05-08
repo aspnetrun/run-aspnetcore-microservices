@@ -64,27 +64,28 @@ Use these instructions to get the project up and running.
 You will need the following tools:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* [.Net Core 2.2 or later](https://dotnet.microsoft.com/download/dotnet-core/2.2)
-* EF Core 2.2 or later
+* [.Net Core 3.1 or later](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+* Docker Desktop
 
 ### Installing
 Follow these steps to get your development environment set up:
 1. Clone the repository
-2. At the root directory, restore required packages by running:
+2. At the root directory which include docker-compose.yml files, run below command:
 ```csharp
-dotnet restore
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up –build
 ```
-3. Next, build the solution by running:
-```csharp
-dotnet build
-```
-4. Next, within the AspnetRun.Web directory, launch the back end by running:
-```csharp
-dotnet run
-```
-5. Launch http://localhost:5400/ in your browser to view the Web UI.
+3. Wait for docker compose all microservices. That’s it!
 
-If you have **Visual Studio** after cloning Open solution with your IDE, AspnetRun.Web should be the start-up project. Directly run this project on Visual Studio with **F5 or Ctrl+F5**. You will see index page of project, you can navigate product and category pages and you can perform crud operations on your browser.
+4. You can launch microservices as below urls:
+* RabbitMQ -> http://localhost:15672/
+* Catalog API -> http://localhost:8000/swagger/index.html
+* Basket API -> http://localhost:8001/swagger/index.html
+* Order API -> http://localhost:8002/swagger/index.html
+* API Gateway -> http://localhost:7000/Order?username=swn
+* Web UI -> http://localhost:8003/
+
+5. Launch http://localhost:8003/ in your browser to view the Web UI.
+You can use Web project in order to call microservices over API Gateway. When you checkout the basket you can follow queue record on RabbitMQ dashboard.
 
 ### Usage
 After cloning or downloading the sample you should be able to run it using an In Memory database immediately. The default configuration of Entity Framework Database is **"InMemoryDatabase"**.
