@@ -55,11 +55,12 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 ## The Book - Microservices Architecture and Step by Step Implementation on .NET
 
 You can find **Microservices Architecture and Step by Step Implementation on .NET book** which **step by step developing** this repository with extensive explanations and details. This book is the **best path to leverage your .NET skills** in every aspect from begginer to senior level you can benefit to ramp-up faster on **Enterprice Application Development practices** and easy to **Onboarding to Full Stack .Net Core Developer jobs**. 
-[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)
+
+**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
 
 ![aspnetrun_microservices3](https://user-images.githubusercontent.com/1147445/81383140-31dc8680-9118-11ea-992a-3ad8abc62314.png)
 
-[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)
+**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
 
 ## Run The Project
 You will need the following tools:
