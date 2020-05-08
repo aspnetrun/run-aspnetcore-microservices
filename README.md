@@ -4,27 +4,55 @@ Here is **implementation of microservices with .net tools** on real-world **e-co
 
 ![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
 
-**AspnetRunCore Microservices** is an implementation of base aspnetrun project which written with **clean architecture** and best practices. The idea is that **how to implement real life projects** over the base repository i.e. **e-commerce domain** implemented with full **E&E e-commerce web template**. AspnetRunRealWorld is an implementation of **e-commerce domain** with **Northwind database**.This managed with **layered architecture** for building modern web applications with latest ASP.NET Core & Web API & EF Core technologies. 
+There is a couple of microservices which implemented **e-commerce** modules over **Product, Basket** and **Order** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
 ## Whats Including In This Repository
-We have implemented below **features over the run-aspnetcore boilerplate template**. You can change **real-world features** as your business requirements;
+We have implemented below **features over the run-aspnetcore-microservices repository**.
 
-* CQRS pattern
+#### Create Catalog microservice which includes; 
+* ASP.NET Core Web API application 
+* REST API principles, CRUD operations 
+* Mongo DB NoSQL database connection on docker
+* N-Layer implementation with repository pattern
+* Swagger Open API implementation
+* Dockerfile implementation
+
+#### Create Basket microservice which includes;
+* ASP.NET Core Web API application 
+* REST API principles, CRUD operations 
+* Redis database connection on docker
+* Redis connection implementation
+* RabbitMQ trigger event queue when checkout cart
+* Swagger Open API implementation
+* Dockerfile implementation
+
+#### Create RabbitMQ messaging library which includes;
+* Base EventBus implementation and add references Microservices
+
+#### Create Ordering microservice which includes; (over the catalog specs)
+* ASP.NET Core Web API application 
+* Entity Framework Core on SQL Server docker
+* REST API principles, CRUD operations 
+* Consuming RabbitMQ messages
+* Clean Architecture implementation with CQRS Pattern
 * Event Sourcing
 * Implementation of MediatR, Autofac, FluentValidator, AutoMapper
-* Identity Implementation
-* Swagger Implementation
-* Dashboard theme implementation
-* Full development of e-commerce use cases of northwind database
-* Business rule check, domain policy apply and validations
-* Authentication, identity module and identity configuration
-* Authorization for Products Page
-* Asp.net core built-in dependency injection
-* Aspnet core razor tools - View Components, partial Views, Tag Helpers, Model Bindings and Validations, Razor Sections etc.. 
-* Configuration management
-* Custom paging implementation
+* Swagger Open API implementation
+* Dockerfile implementation
 
-> Also we have a lot of **missing features** you can check [here from our project page](https://github.com/aspnetrun/run-aspnetcore-realworld/projects/1) and you can develop them. We are waiting for your pull requests.
+#### Create API Gateway Ocelot microservice which includes;
+* Routing to inside microservices
+* Dockerization api-gateway
+
+#### Create WebUI ShoppingApp microservice which includes;
+* Asp.net Core Web Application with Razor template
+* Call Ocelot APIs with HttpClientFactory
+* Aspnet core razor tools - View Components, partial Views, Tag Helpers, Model Bindings and Validations, Razor Sections etc.. 
+
+#### Docker Compose establishment with all microservices on docker;
+* Dockerization of microservices
+* Dockerization of database
+* Override Environment variables
 
 ## Give a Star! :star:
 If you liked the project or if AspnetRun helped you, please **give a star**. And also please **fork** this repository and send us **pull-requests**. If you find any problem please open **issue**.
