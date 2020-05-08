@@ -1,6 +1,4 @@
-# run-aspnetcore-microservices
-
-Here is **implementation of microservices with .net tools** on real-world **e-commerce microservices** project;
+See the big picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
 ![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
 
