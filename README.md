@@ -2,7 +2,7 @@
 
 **Check Explanation of this Microservices Repository on Medium -> https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f**
 
-See the big picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
+See the overall picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
 ![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
 
