@@ -140,7 +140,7 @@ For information on upcoming features and fixes, take a look at the [product road
 
 ## Deployment - AspnetRun Online
 
-This project is deployed on Azure. See the project running on Azure in [here](aspnetrun.com).
+This project is deployed on Azure. See the project running on Azure in [here](https://aspnetrun.azurewebsites.net/).
 
 ## Pull-Request
 
