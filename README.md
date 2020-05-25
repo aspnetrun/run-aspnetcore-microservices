@@ -29,7 +29,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * Dockerfile implementation
 
 #### RabbitMQ messaging library which includes;
-* Base EventBus implementation and add references Microservices
+* Base **EventBus implementation** and add references Microservices
 
 #### Ordering microservice which includes; (over the catalog specs)
 * ASP.NET Core Web API application 
