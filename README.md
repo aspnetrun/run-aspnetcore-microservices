@@ -43,7 +43,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * Dockerfile implementation
 
 #### API Gateway Ocelot microservice which includes;
-* Routing to inside microservices
+* **Routing** to inside microservices
 * Dockerization api-gateway
 
 #### WebUI ShoppingApp microservice which includes;
