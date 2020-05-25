@@ -22,7 +22,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 #### Basket microservice which includes;
 * ASP.NET Core Web API application 
 * REST API principles, CRUD operations 
-* Redis database connection on docker
+* **Redis** database connection on docker
 * Redis connection implementation
 * RabbitMQ trigger event queue when checkout cart
 * Swagger Open API implementation
