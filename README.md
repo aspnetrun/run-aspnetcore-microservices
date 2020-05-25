@@ -24,7 +24,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * REST API principles, CRUD operations 
 * **Redis** database connection on docker
 * Redis connection implementation
-* RabbitMQ trigger event queue when checkout cart
+* **RabbitMQ trigger event queue** when checkout cart
 * Swagger Open API implementation
 * Dockerfile implementation
 
