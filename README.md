@@ -35,7 +35,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * ASP.NET Core Web API application 
 * **Entity Framework Core on SQL Server** docker
 * REST API principles, CRUD operations 
-* Consuming RabbitMQ messages
+* **Consuming RabbitMQ** messages
 * **Clean Architecture** implementation with CQRS Pattern
 * Event Sourcing
 * Implementation of MediatR, Autofac, FluentValidator, AutoMapper
