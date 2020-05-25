@@ -14,7 +14,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 #### Catalog microservice which includes; 
 * ASP.NET Core Web API application 
 * REST API principles, CRUD operations 
-* Mongo DB NoSQL database connection on docker
+* **Mongo DB NoSQL database** connection on docker
 * N-Layer implementation with Repository Pattern
 * Swagger Open API implementation
 * Dockerfile implementation
