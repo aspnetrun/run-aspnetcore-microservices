@@ -48,12 +48,12 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 
 #### WebUI ShoppingApp microservice which includes;
 * Asp.net Core Web Application with Razor template
-* Call Ocelot APIs with HttpClientFactory
+* Call **Ocelot APIs** with **HttpClientFactory**
 * Aspnet core razor tools - View Components, partial Views, Tag Helpers, Model Bindings and Validations, Razor Sections etc.. 
 
 #### Docker Compose establishment with all microservices on docker;
 * Dockerization of microservices
-* Dockerization of database
+* **Dockerization** of database
 * Override Environment variables
 
 ## The Book - Microservices Architecture and Step by Step Implementation on .NET
