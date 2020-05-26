@@ -16,7 +16,7 @@ namespace Ordering.Infrastructure.Data
 
             try
             {
-                // TODO: Only run this if using a real database
+                // INFO: Run this if using a real database. Used to automaticly migrate docker image of sql server db.
                 orderContext.Database.Migrate();
                 //orderContext.Database.EnsureCreated();
 
