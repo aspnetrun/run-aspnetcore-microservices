@@ -24,9 +24,7 @@ namespace Ordering.Application.PipelineBehaviours
                 .Select(x => x.Validate(context))
                 .SelectMany(x => x.Errors)
                 .Where(x => x != null)
-                .ToList();
-
-            // TODO: add context to which command/query is throwing the exception and its origination
+                .ToList();            
 
             if (failures.Any())
             {
