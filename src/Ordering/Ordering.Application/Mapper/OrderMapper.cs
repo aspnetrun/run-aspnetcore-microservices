@@ -3,7 +3,7 @@ using System;
 
 namespace Ordering.Application.Mapper
 {
-    // The best implementation of AutoMapper for class libraries -> https://www.abhith.net/blog/using-automapper-in-a-net-core-class-library/
+    // Implementation of AutoMapper for class libraries -> https://www.abhith.net/blog/using-automapper-in-a-net-core-class-library/
     public static class OrderMapper
     {
         private static readonly Lazy<IMapper> Lazy = new Lazy<IMapper>(() =>
@@ -17,6 +17,7 @@ namespace Ordering.Application.Mapper
             var mapper = config.CreateMapper();
             return mapper;
         });
+
         public static IMapper Mapper => Lazy.Value;
-    }   
+    }
 }
