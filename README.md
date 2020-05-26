@@ -2,7 +2,7 @@
 
 **Check Explanation of this Microservices Repository on Medium -> https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f**
 
-See the big picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
+See the overall picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
 ![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
 
@@ -14,7 +14,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 #### Catalog microservice which includes; 
 * ASP.NET Core Web API application 
 * REST API principles, CRUD operations 
-* Mongo DB NoSQL database connection on docker
+* **Mongo DB NoSQL database** connection on docker
 * N-Layer implementation with Repository Pattern
 * Swagger Open API implementation
 * Dockerfile implementation
@@ -22,38 +22,38 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 #### Basket microservice which includes;
 * ASP.NET Core Web API application 
 * REST API principles, CRUD operations 
-* Redis database connection on docker
+* **Redis Database** connection on docker
 * Redis connection implementation
-* RabbitMQ trigger event queue when checkout cart
+* **RabbitMQ trigger event queue** when checkout cart
 * Swagger Open API implementation
 * Dockerfile implementation
 
 #### RabbitMQ messaging library which includes;
-* Base EventBus implementation and add references Microservices
+* Base **EventBus implementation** and add references Microservices
 
 #### Ordering microservice which includes; (over the catalog specs)
 * ASP.NET Core Web API application 
-* Entity Framework Core on SQL Server docker
+* **Entity Framework Core on SQL Server** docker
 * REST API principles, CRUD operations 
-* Consuming RabbitMQ messages
-* Clean Architecture implementation with CQRS Pattern
+* **Consuming RabbitMQ** messages
+* **Clean Architecture** implementation with CQRS Pattern
 * Event Sourcing
 * Implementation of MediatR, Autofac, FluentValidator, AutoMapper
 * Swagger Open API implementation
 * Dockerfile implementation
 
 #### API Gateway Ocelot microservice which includes;
-* Routing to inside microservices
+* **Routing** to inside microservices
 * Dockerization api-gateway
 
 #### WebUI ShoppingApp microservice which includes;
 * Asp.net Core Web Application with Razor template
-* Call Ocelot APIs with HttpClientFactory
+* Call **Ocelot APIs** with **HttpClientFactory**
 * Aspnet core razor tools - View Components, partial Views, Tag Helpers, Model Bindings and Validations, Razor Sections etc.. 
 
 #### Docker Compose establishment with all microservices on docker;
 * Dockerization of microservices
-* Dockerization of database
+* **Dockerization** of database
 * Override Environment variables
 
 ## The Book - Microservices Architecture and Step by Step Implementation on .NET
@@ -94,8 +94,13 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up –build
 
 ![mainscreen2](https://user-images.githubusercontent.com/1147445/81381837-08226000-9116-11ea-9489-82645b8dbfc4.png)
 
-## Give a Star! :star:
-If you liked the project or if AspnetRun helped you, please **give a star**. And also please **fork** this repository and send us **pull-requests**. If you find any problem please open **issue**.
+## Upcomming Features
+
+* Authentication with IdentityServer4
+* Service Discovery with Eureka
+* Monitoring Health Checks
+* Resilient HTTP Clients with Polly
+* Central Logging with Kibana
 
 # What is AspnetRun ? 
 The best path to **leverage your ASP.NET Core** skills. Onboarding to **Full Stack .Net Core Developer** jobs. Boilerplate for **ASP.NET Core reference application** with **Entity Framework Core**, demonstrating a layered application architecture with DDD best practices. Implements NLayer **Hexagonal architecture** (Core, Application, Infrastructure and Presentation Layers) and **Domain Driven Design** (Entities, Repositories, Domain/Application Services, DTO's...) 
@@ -110,6 +115,9 @@ Here you can find all of the **aspnetrun repositories from easy to difficult**, 
 * **[run-aspnetcore](https://github.com/aspnetrun/run-aspnetcore)** - Building ASP.NET Core Web Application with Entity Framework.Core and apply **Clean Architecture** with DDD best practices.
 * **[run-aspnetcore-cqrs](https://github.com/aspnetrun/run-aspnetcore-cqrs)** - Building Single-Page Web Applications(SPA) using ASP.NET Core & EF.Core, Web API Project and implement **CQRS Design Pattern**.
 * **[run-aspnetcore-microservices](https://github.com/aspnetrun/run-aspnetcore-microservices)** - Building **Microservices** on .Net platforms which used **Asp.Net Web API, Docker, RabbitMQ, Ocelot API Gateway, MongoDB, Redis, SqlServer, Entity Framework Core, CQRS and Clean Architecture** implementation.
+
+## Give a Star! :star:
+If you liked the project or if AspnetRun helped you, please **give a star**. And also please **fork** this repository and send us **pull-requests**. If you find any problem please open **issue**.
 
 ## Disclaimer
 
@@ -128,11 +136,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Next Releases and RoapMap
 
-For information on upcoming features and fixes, take a look at the [product roadmap](https://github.com/aspnetrun/run-core/projects).
+For information on upcoming features and fixes, take a look at the [product roadmap](https://github.com/aspnetrun/run-aspnetcore/projects).
 
 ## Deployment - AspnetRun Online
 
-This project is deployed on Azure. See the project running on Azure in [here](aspnetrun.com).
+This project is deployed on Azure. See the project running on Azure in [here](https://aspnetrun.azurewebsites.net/).
 
 ## Pull-Request
 
