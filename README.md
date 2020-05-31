@@ -22,7 +22,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 #### Basket microservice which includes;
 * ASP.NET Core Web API application 
 * REST API principles, CRUD operations 
-* **Redis Database** connection on docker
+* **Redis** connection as a Database on docker
 * Redis connection implementation
 * **RabbitMQ trigger event queue** when checkout cart
 * Swagger Open API implementation
@@ -96,11 +96,11 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up –build
 
 ## Upcomming Features
 
-* Authentication with IdentityServer4
-* Service Discovery with Eureka
+* Authentication with **IdentityServer4**
+* Service Discovery with **Eureka**
 * Monitoring Health Checks
-* Resilient HTTP Clients with Polly
-* Central Logging with Kibana
+* Resilient HTTP Clients with **Polly**
+* Central Logging with **Kibana**
 
 # What is AspnetRun ? 
 The best path to **leverage your ASP.NET Core** skills. Onboarding to **Full Stack .Net Core Developer** jobs. Boilerplate for **ASP.NET Core reference application** with **Entity Framework Core**, demonstrating a layered application architecture with DDD best practices. Implements NLayer **Hexagonal architecture** (Core, Application, Infrastructure and Presentation Layers) and **Domain Driven Design** (Entities, Repositories, Domain/Application Services, DTO's...) 
@@ -140,7 +140,7 @@ For information on upcoming features and fixes, take a look at the [product road
 
 ## Deployment - AspnetRun Online
 
-This project is deployed on Azure. See the project running on Azure in [here](https://aspnetrun.azurewebsites.net/).
+This organization page is deployed on Azure. See the project running on Azure in [here](https://aspnetrun.azurewebsites.net/).
 
 ## Pull-Request
 
