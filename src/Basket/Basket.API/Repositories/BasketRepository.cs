@@ -30,10 +30,10 @@ namespace Basket.API.Repositories
 
         public async Task<BasketCart> UpdateBasket(BasketCart basket)
         {
-            var created = await _context
+            var updated = await _context
                               .Redis
                               .StringSetAsync(basket.UserName, JsonConvert.SerializeObject(basket));
-            if (!created)
+            if (!updated)
             {                
                 return null;
             }            
