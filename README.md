@@ -3,10 +3,6 @@
 
 **UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?referralCode=FA6BAE225A0B6F0B7BB7**
 
-**Quick DEMO on Youtube -> https://www.youtube.com/watch?v=p6lVqDNUYaY**
-
-**Check Explanation of this Microservices Repository on Medium -> https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f**
-
 See the overall picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
 ![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
@@ -60,6 +56,9 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * Dockerization of microservices
 * **Dockerization** of database
 * Override Environment variables
+
+**Quick DEMO on Youtube -> https://www.youtube.com/watch?v=p6lVqDNUYaY**
+**Check Explanation of this Microservices Repository on Medium -> https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f**
 
 ## The Book - Microservices Architecture and Step by Step Implementation on .NET
 
