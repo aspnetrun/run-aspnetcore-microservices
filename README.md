@@ -61,16 +61,6 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 
 **Check Explanation of this Microservices Repository on Medium -> https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f**
 
-## The Book - Microservices Architecture and Step by Step Implementation on .NET
-
-You can find **Microservices Architecture and Step by Step Implementation on .NET book** which **step by step developing** this repository with extensive explanations and details. This book is the **best path to leverage your .NET skills** in every aspect from beginner to senior level you can benefit to ramp-up faster on **Enterprise Application Development practices** and easy to **Onboarding to Full Stack .Net Core Developer jobs**. 
-
-**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
-
-![aspnetrun_microservices3](https://user-images.githubusercontent.com/1147445/81383140-31dc8680-9118-11ea-992a-3ad8abc62314.png)
-
-**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
-
 ## Run The Project
 You will need the following tools:
 
@@ -98,6 +88,16 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up –d
 5. Launch http://localhost:8003/ in your browser to view the Web UI. You can use Web project in order to **call microservices over API Gateway**. When you **checkout the basket** you can follow **queue record on RabbitMQ dashboard**.
 
 ![mainscreen2](https://user-images.githubusercontent.com/1147445/81381837-08226000-9116-11ea-9489-82645b8dbfc4.png)
+
+## The Book - Microservices Architecture and Step by Step Implementation on .NET
+
+You can find **Microservices Architecture and Step by Step Implementation on .NET book** which **step by step developing** this repository with extensive explanations and details. This book is the **best path to leverage your .NET skills** in every aspect from beginner to senior level you can benefit to ramp-up faster on **Enterprise Application Development practices** and easy to **Onboarding to Full Stack .Net Core Developer jobs**. 
+
+**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
+
+![aspnetrun_microservices3](https://user-images.githubusercontent.com/1147445/81383140-31dc8680-9118-11ea-992a-3ad8abc62314.png)
+
+**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
 
 ## Upcomming Features
 
