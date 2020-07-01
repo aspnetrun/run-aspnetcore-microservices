@@ -75,7 +75,7 @@ Follow these steps to get your development environment set up: (Before Run Start
 ```csharp
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up –d
 ```
-3. Wait for docker compose all microservices. That’s it!
+3. Wait for docker compose all microservices. That’s it! (some microservices need extra time to work so please wait if not worked in first shut)
 
 4. You can **launch microservices** as below urls:
 * **RabbitMQ -> http://localhost:15672/**
