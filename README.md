@@ -93,6 +93,10 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up –d
 
 You can find **Microservices Architecture and Step by Step Implementation on .NET book** which **step by step developing** this repository with extensive explanations and details. This book is the **best path to leverage your .NET skills** in every aspect from beginner to senior level you can benefit to ramp-up faster on **Enterprise Application Development practices** and easy to **Onboarding to Full Stack .Net Core Developer jobs**. 
 
+The book also includes more practical information and I **update it regularly** and send it again with new versions.
+So the idea is once you buy a book, I take this as **supporting me** and **join them in my privilege group** for sharing **next outputs**.
+For example I am planning to add **IdentityServer4 implementation**, firstly I added it into a book and sent it to you.
+
 **[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
 
 ![aspnetrun_microservices3](https://user-images.githubusercontent.com/1147445/81383140-31dc8680-9118-11ea-992a-3ad8abc62314.png)
