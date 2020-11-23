@@ -1,6 +1,7 @@
-**Quick DEMO on Youtube -> https://www.youtube.com/watch?v=p6lVqDNUYaY**
 
-**Check Explanation of this Microservices Repository on Medium -> https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f**
+![Screenshot_6](https://user-images.githubusercontent.com/1147445/85838002-907dc280-b7a1-11ea-8219-f84e3af8ba52.png)
+
+**UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?referralCode=FA6BAE225A0B6F0B7BB7**
 
 See the overall picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
@@ -36,7 +37,7 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * **Entity Framework Core on SQL Server** docker
 * REST API principles, CRUD operations 
 * **Consuming RabbitMQ** messages
-* **Clean Architecture** implementation with CQRS Pattern
+* **Clean Architecture** implementation with CQRS Design Pattern
 * Event Sourcing
 * Implementation of MediatR, Autofac, FluentValidator, AutoMapper
 * Swagger Open API implementation
@@ -56,15 +57,9 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * **Dockerization** of database
 * Override Environment variables
 
-## The Book - Microservices Architecture and Step by Step Implementation on .NET
+**Quick DEMO on Youtube -> https://www.youtube.com/watch?v=p6lVqDNUYaY**
 
-You can find **Microservices Architecture and Step by Step Implementation on .NET book** which **step by step developing** this repository with extensive explanations and details. This book is the **best path to leverage your .NET skills** in every aspect from beginner to senior level you can benefit to ramp-up faster on **Enterprise Application Development practices** and easy to **Onboarding to Full Stack .Net Core Developer jobs**. 
-
-**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
-
-![aspnetrun_microservices3](https://user-images.githubusercontent.com/1147445/81383140-31dc8680-9118-11ea-992a-3ad8abc62314.png)
-
-**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
+**Check Explanation of this Microservices Repository on Medium -> https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f**
 
 ## Run The Project
 You will need the following tools:
@@ -80,7 +75,7 @@ Follow these steps to get your development environment set up: (Before Run Start
 ```csharp
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up –d
 ```
-3. Wait for docker compose all microservices. That’s it!
+3. Wait for docker compose all microservices. That’s it! (some microservices need extra time to work so please wait if not worked in first shut)
 
 4. You can **launch microservices** as below urls:
 * **RabbitMQ -> http://localhost:15672/**
@@ -94,13 +89,27 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up –d
 
 ![mainscreen2](https://user-images.githubusercontent.com/1147445/81381837-08226000-9116-11ea-9489-82645b8dbfc4.png)
 
+## The Book - Microservices Architecture and Step by Step Implementation on .NET
+
+You can find **Microservices Architecture and Step by Step Implementation on .NET book** which **step by step developing** this repository with extensive explanations and details. This book is the **best path to leverage your .NET skills** in every aspect from beginner to senior level you can benefit to ramp-up faster on **Enterprise Application Development practices** and easy to **Onboarding to Full Stack .Net Core Developer jobs**. 
+
+The book also includes more practical information and I **update it regularly** and send it again with new versions.
+So the idea is once you buy a book, I take this as **supporting me** and **join them in my privilege group** for sharing **next outputs**.
+For example I am planning to add **IdentityServer4 implementation**, firstly I added it into a book and sent it to you.
+
+**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
+
+![aspnetrun_microservices3](https://user-images.githubusercontent.com/1147445/81383140-31dc8680-9118-11ea-992a-3ad8abc62314.png)
+
+**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
+
 ## Upcomming Features
 
 * Authentication with **IdentityServer4**
 * Service Discovery with **Eureka**
 * Resilient HTTP Clients with **Polly**
 * Central Logging with **Kibana**
-* Monitoring Health Checks
+* Monitoring Health Checks **AspNetHealthCheck**
 
 # What is AspnetRun ? 
 The best path to **leverage your ASP.NET Core** skills. Onboarding to **Full Stack .Net Core Developer** jobs. Boilerplate for **ASP.NET Core reference application** with **Entity Framework Core**, demonstrating a layered application architecture with DDD best practices. Implements NLayer **Hexagonal architecture** (Core, Application, Infrastructure and Presentation Layers) and **Domain Driven Design** (Entities, Repositories, Domain/Application Services, DTO's...) 
@@ -155,4 +164,4 @@ See also the list of [contributors](https://github.com/aspnetrun/run-core/contri
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
