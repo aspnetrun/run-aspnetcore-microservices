@@ -1,24 +1,42 @@
 ﻿@model CatalogModel
 
-<div class="card">
-    <a asp-page="ProductDetail" asp-route-productId="@Model.Id"><img asp-append-version="true" class="card-img-top" src="~/images/product/@Model.ImageFile" alt=""></a>
-    <div class="card-body">
-        <h4 class="card-title"><a asp-page="ProductDetail" asp-route-productId="@Model.Id" class="color-main">@Model.Name</a></h4>
-        <p class="card-text">@Model.Summary</p>
-        <div class="row">
-            <div class="col">
-                <p class="btn btn-danger btn-block">@Model.Price $</p>
+<div class="item-product">
+
+    <div class="thumbnail-container has-multiimage">
+        <a class="w-100" href="/collections/frontpage/products/ziamond-ralo-stud-farrings" tabindex="0">
+            <img class="w-100 img-fluid product__thumbnail lazyloaded" data-src="~/images/product/@Model.ImageFile"  alt="@Model.Name" src="~/images/product/@Model.ImageFile" >
+            <img class="w-100 img-fluid product__thumbnail-second lazyloaded" data-src="~/images/product/@Model.ImageFile"  alt="@Model.Name" src="~/images/product/@Model.ImageFile">
+
+        </a>
+    </div>
+    <div class="product__info text-center">
+        <div class="product__title">
+            <a asp-page="ProductDetail" asp-route-productId="@Model.Id" tabindex="0">@Model.Name</a>
+        </div>
+
+        <div class="product__review">
+            <div class="rating">
+                <span class="spr-badge" id="spr_badge_5997971079331" data-rating="0.0">
+                    <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star-empty"></i><i class="spr-icon spr-icon-star-empty"></i><i class="spr-icon spr-icon-star-empty"></i></span><span class="spr-badge-caption">No reviews</span>
+                </span>
             </div>
-            <div class="col">
+        </div>
 
-                @*<a asp-page="Cart" asp-route-productId="@Model.Id" class="btn btn-success btn-block">Add to Cart</a>*@
+        <div class="product__price">
+            <!-- snippet/product-price.liquid -->
 
-                <form asp-page-handler="AddToCart" method="post" name="addToCartForm" id="add_cart_form">
-                    <a href="javascript:;" onclick="parentNode.submit();" class="btn btn-success btn-block">Add to Cart</a>
-                    <input type="hidden" asp-for="@Model.Id" name="productId" />
-                </form>
+            <span class="visually-hidden">Regular price</span>
+            <span class="product-price__price"><span class="money" data-currency-usd="$22.00" data-currency="USD">@Model.Price</span></span>
+        </div>
+        <div class="group-buttons">
 
-            </div>
+            <form asp-page-handler="AddToCart" method="post" name="addToCartForm" id="add_cart_form" class="formAddToCart">
+                <input type="hidden" asp-for="@Model.Id" name="productId" />
+                <button class="btn btnAddToCart" type="submit" value="Submit" data-handle="ziamond-ralo-stud-farrings" data-pid="37493471281315" data-toggle="tooltip" data-placement="top" title="" tabindex="0">
+                    <i class="icon-cart-product"></i>
+                    <span>Add to cart</span>
+                </button>
+            </form>
         </div>
     </div>
 </div>

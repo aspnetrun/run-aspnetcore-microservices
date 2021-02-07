@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <partial name="_TopProductPartial" model="Model.ProductList.FirstOrDefault()" />       
+        <partial name="_TopProductPartial" model="Model.ProductList.FirstOrDefault()" />
 
     </div>
 </div>
@@ -45,7 +45,7 @@
                     <i class="fa fa-star"></i> Last products
                 </div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row  grid--view-items row nov-slick-carousel slick-initialized slick-slider">
 
                         @foreach (var product in Model.ProductList.Take(4))
                         {
@@ -69,18 +69,25 @@
                     <i class="fa fa-trophy"></i> Best products
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        
-                            @foreach (var product in Model.ProductList.TakeLast(4))
-                            {
-                                <div class="col-sm">
-                                    <partial name="_ProductItemPartial" model="@product" />
-                                </div>
-                            }
-                        
+                    <div class="row  grid--view-items row nov-slick-carousel slick-initialized slick-slider">
+
+                        @foreach (var product in Model.ProductList.TakeLast(4))
+                        {
+                            <div class="col-sm">
+                                <partial name="_ProductItemPartial" model="@product" />
+                            </div>
+                        }
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+@*@section VerticalMenu{
+
+    <partial name="_CategoryPartial" model="@Model.ProductList.ToList()" />
+
+}*@

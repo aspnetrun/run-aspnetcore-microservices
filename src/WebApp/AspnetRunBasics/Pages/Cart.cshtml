@@ -17,66 +17,277 @@
     </div>
 </div>
 
-<div class="container mb-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col"> </th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Available</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-right">Price</th>
-                            <th> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
 
-                        @foreach (var cartItem in Model.Cart.Items)
-                        {
-                            <tr>
-                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /></td>
-                                <td>@cartItem.ProductName</td>
-                                <td>In stock</td>
-                                <td><input class="form-control" type="text" value="@cartItem.Quantity" /></td>
-                                <td class="text-right">@(cartItem.Price * cartItem.Quantity) $</td>
-                                <td class="text-right">
+<div id="shopify-section-cart-template" class="shopify-section cart-section">
+    <div class="page-width" data-section-id="cart-template" data-section-type="cart-template">
+        <div class="container">
 
-                                    <form asp-page-handler="removetocart" method="post">
-                                        <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>                                        
-                                        <input type="hidden" asp-for="@cartItem.ProductId" name="productId" />
-                                    </form>
-
-                                </td>
-                            </tr>
-                        }
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>@Model.Cart.TotalPrice $</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="section-header">
+                <div class="title-block">Shopping Cart</div>
             </div>
-        </div>
-        <div class="col mb-2">
-            <div class="row">
-                <div class="col-sm-12  col-md-6">
-                    @*<button class="btn btn-lg btn-block btn-danger">Continue Shopping</button>*@
-                    <a asp-page="Product" class="btn btn-lg btn-block btn-success">Continue Shopping</a>
-                </div>
-                <div class="col-sm-12 col-md-6 text-right">
-                    @*<button class="btn btn-lg btn-block btn-danger text-uppercase">CheckOut</button>*@
-                    <a asp-page="CheckOut" class="btn btn-lg btn-block btn-danger text-uppercase">CheckOut</a>
+
+            <div  class="cart">
+                <div class="row data-sticky_parent">
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        <div class="cart__layout_left">
+                            <div class="cart__header d-xs-none">
+                                <div class="row spacing-0">
+                                    <div class="col-md-1 label_remove"></div>
+                                    <div class="col-md-5 label_product">Product</div>
+                                    <div class="col-md-2 label_price">Price</div>
+                                    <div class="col-md-2 label_quantity">Qty</div>
+                                    <div class="col-md-2 label_total">Total</div>
+                                </div>
+                            </div>
+                            <div class="cart__body">
+
+
+                                @foreach (var cartItem in Model.Cart.Items)
+                                {
+                                    <div class="row spacing-0 align-items-center line2 cart-flex cart_item nv-pl-xs-15 nv-pr-xs-15">
+                                        <div class="col-md-1 cart__remove-wrapper text-center mb-xs-20">
+
+                                            <form asp-page-handler="removetocart" method="post">
+                                                <button class="cart__remove clean-btn"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                <input  type="hidden" asp-for="@cartItem.ProductId" name="productId" />
+                                            </form>
+
+                                        </div>
+                                        <div class="col-md-5 cart__image-wrapper d-flex align-items-center mb-xs-20">
+                                            <a href="/collections/all/products/yiamond-palo-stud-garrings?variant=37493484355747">
+                                                <img class="cart__image lazyloaded cartimagesmall" src="~/images/product/@await Model.GetImageFileAsync(cartItem.ProductId)" alt="Yiamond Palo Stud Garrings - ultra / red">
+                                            </a>
+                                            <div class="cart__meta cart-flex-item">
+                                                <div class="content-left">
+                                                    <div class="list-view-item__title">
+                                                        <a href="/products/yiamond-palo-stud-garrings?variant=37493484355747">
+                                                            @cartItem.ProductName
+
+                                                            <span class="d-md-none"><span class="visually-hidden">Quantity</span>(x3)</span>
+
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="cart__meta-text">
+
+                                                        <div class="tl_option mb-5">Size: ultra</div>
+
+                                                        <div class="tl_option mb-5">Color: red</div>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 cart__price-wrapper mb-xs-20">
+                                            <div class="hidden">Price</div>
+                                            <div><span class="money" data-currency-usd="$18.00" data-currency="USD">@cartItem.Price</span></div>
+
+                                        </div>
+
+                                        <div class="col-md-2 cart__update-wrapper mb-xs-20">
+                                            <form asp-page-handler="Update" method="post">
+                                                <div class="cart__qty">
+                                                    <input type="hidden" asp-for="@cartItem.ProductId" name="productId" />
+                                                    <input type="button" class="js-qty__adjust minus js-qty__adjust--minus" value="-">
+                                                    <input onchange="this.form.submit()" class="cart__qty-input" data-price="1800" data-line="2" type="number" name="qty" value="@cartItem.Quantity" step="1" min="1" max="50" pattern="[0-9]*" \>
+                                                    <input type="button" class="js-qty__adjust plus js-qty__adjust--plus" value="+">
+
+                                                </div>
+                                            </form>
+
+
+                                        </div>
+                                        <div class="col-md-2 total">
+                                            <div class="hidden">Total</div>
+
+
+                                            <div class="product-subtotal">
+                                                <span class="money" data-currency-usd="$54.00" data-currency="USD">@(cartItem.Price * cartItem.Quantity)</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                }
+
+
+                            </div>
+                            <div class="button_cart">
+
+                                <a asp-page="CheckOut" name="checkout" class="btn btn--small-wide" >Proceed to checkout</a>
+
+                                <a asp-page="Product" class="btn cart__update cart__continue--large">Continue shopping</a>
+                            </div>
+                        </div>
+                        <div class="cart__layout_related">
+
+                            <div class="product-related">
+                                <h3 class="cart__popup-related-title">You may also like these products</h3>
+                                <div class="product-related-inner row">
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 0 mb-xs-30">
+                                        <div class="popup__cart-product mb-sm-20">
+                                            <img class="sp-post-image lazyloaded" data-src="//cdn.shopify.com/s/files/1/0523/8728/3107/products/40_a1a2e259-dc71-494a-b770-477944b66fce_270x270.jpg?v=1610679729" alt="Kiamond Valo Stud Farrings" src="//cdn.shopify.com/s/files/1/0523/8728/3107/products/40_a1a2e259-dc71-494a-b770-477944b66fce_270x270.jpg?v=1610679729">
+                                            <a class="related_product-title" href="/products/kiamond-valo-stud-farrings">Kiamond Valo Stud Farrings</a>
+                                            <div class="product__price">
+                                                <!-- snippet/product-price.liquid -->
+                                                <span class="visually-hidden">Regular price</span>
+                                                <span class="product-price__price"><span class="money" data-currency-usd="$12.00" data-currency="USD">$12.00</span></span>
+                                            </div>
+
+                                            <input type="hidden" name="id" value="37493505720483">
+                                            <button class="btn btnAddToCart" type="submit" value="Submit" data-handle="kiamond-valo-stud-farrings" data-pid="37493505720483" data-toggle="tooltip" data-placement="top" title="" tabindex="0">
+                                                <span>Add to cart</span>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 1 mb-xs-30">
+                                        <div class="popup__cart-product mb-sm-20">
+                                            <img class="sp-post-image lazyloaded" data-src="//cdn.shopify.com/s/files/1/0523/8728/3107/products/38_2649c0b9-b5ae-4091-a10a-20159dd5968c_270x270.jpg?v=1610679708" alt="Miamond Talo Stud Farrings" src="//cdn.shopify.com/s/files/1/0523/8728/3107/products/38_2649c0b9-b5ae-4091-a10a-20159dd5968c_270x270.jpg?v=1610679708">
+                                            <a class="related_product-title" href="/products/miamond-talo-stud-farrings">Miamond Talo Stud Farrings</a>
+                                            <div class="product__price">
+                                                <!-- snippet/product-price.liquid -->
+
+
+
+
+                                                <span class="visually-hidden">Regular price</span>
+                                                <span class="product-price__price"><span class="money" data-currency-usd="$12.00" data-currency="USD">$12.00</span></span>
+
+
+
+                                            </div>
+
+                                            <form class="formAddToCart" action="/cart/add" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="id" value="37493501362339">
+
+
+                                                <button class="btn btnAddToCart" type="submit" value="Submit" data-handle="miamond-talo-stud-farrings" data-pid="37493501362339" data-toggle="tooltip" data-placement="top" title="" tabindex="0" data-original-title="">
+                                                    <span>Add to cart</span>
+                                                </button>
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 2 mb-xs-30">
+                                        <div class="popup__cart-product mb-sm-20">
+                                            <img class="sp-post-image lazyloaded" data-src="//cdn.shopify.com/s/files/1/0523/8728/3107/products/35_e6a44d15-d2cf-4f22-bfe0-a808d0e98f7f_270x270.jpg?v=1610679674" alt="Liamond Ualo Stud Garrings" src="//cdn.shopify.com/s/files/1/0523/8728/3107/products/35_e6a44d15-d2cf-4f22-bfe0-a808d0e98f7f_270x270.jpg?v=1610679674">
+                                            <a class="related_product-title" href="/products/liamond-ualo-stud-garrings">Liamond Ualo Stud Garrings</a>
+                                            <div class="product__price">
+                                                <!-- snippet/product-price.liquid -->
+
+
+
+                                                <span class="visually-hidden">Regular price</span>
+                                                <span class="product-price__price product-price__sale">
+                                                    <span class="money" data-currency-usd="$5.00" data-currency="USD">$5.00</span>
+
+                                                </span>
+                                                <s class="product-price__price"><span class="money" data-currency-usd="$14.00" data-currency="USD">$14.00</span></s>
+
+
+
+                                            </div>
+
+                                            <form class="formAddToCart" action="/cart/add" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="id" value="37493494612131">
+
+
+                                                <a class="btn btnAddToCart btnChooseVariant" href="javascript:void(0);" data-url="/products/liamond-ualo-stud-garrings?view=json" data-toggle="tooltip" data-placement="top" title="" tabindex="0">
+                                                    <span>Select Options</span>
+                                                </a>
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 3 mb-xs-30">
+                                        <div class="popup__cart-product mb-sm-20">
+                                            <img class="sp-post-image lazyloaded" data-src="//cdn.shopify.com/s/files/1/0523/8728/3107/products/33_33fbd4af-4f0d-4f98-bd52-aa3969e068c0_270x270.jpg?v=1610679657" alt="Miamond Calo Stud Garrings" src="//cdn.shopify.com/s/files/1/0523/8728/3107/products/33_33fbd4af-4f0d-4f98-bd52-aa3969e068c0_270x270.jpg?v=1610679657">
+                                            <a class="related_product-title" href="/products/miamond-calo-stud-garrings">Miamond Calo Stud Garrings</a>
+                                            <div class="product__price">
+                                                <!-- snippet/product-price.liquid -->
+
+
+
+
+                                                <span class="product-price__price"><span class="money" data-currency-usd="$14.00" data-currency="USD">$14.00</span></span>
+
+
+
+                                            </div>
+
+                                            <form class="formAddToCart" action="/cart/add" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="id" value="37493492285603">
+
+
+                                                <a class="btn btnAddToCart btnChooseVariant" href="javascript:void(0);" data-url="/products/miamond-calo-stud-garrings?view=json" data-toggle="tooltip" data-placement="top" title="" tabindex="0">
+                                                    <span>Select Options</span>
+                                                </a>
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 data-sticky_column mt-md-40">
+                        <div class="cart__layout_right">
+                            <div class="cart__heading">
+                                <span>There are 8 items in your cart</span>
+                            </div>
+                            <div class="grid">
+                                <div class="grid__item">
+                                    <div class="cart__total d-flex align-items-center justify-content-between">
+                                        <span class="cart__subtotal-title">Total:</span>
+                                        <span class="cart__subtotal"><span class="money" data-currency-usd="$157.00" data-currency="USD">@Model.Cart.TotalPrice </span></span>
+                                    </div>
+
+                                    <div class="cart__shipping d-flex align-items-xl-center justify-content-between">
+                                        <div class="cart__shipping-title">Shipping :</div>
+                                        <div class="cart__shipping-sub">Shipping &amp; taxes calculated at checkout</div>
+                                    </div>
+
+
+                                    <div id="threshold_bar_popup">
+                                        <div class="threshold_it">
+                                            <div class="ic_threshold_bar">
+                                                <i class="zmdi zmdi-truck"></i>
+                                            </div>
+                                            <div class="threshold_bar">
+                                                <span class="animate" style="width:78%!important">
+                                                    78%
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="threshold_spend">Spend <span class="money" data-currency-usd="$43.00" data-currency="USD">$43.00</span> for free shipping</div>
+                                    </div>
+
+                                    <div class="cart-notice-total">
+                                        Free shipping for any orders above <span><span class="money" data-currency-usd="$200.00" data-currency="USD">$200.00</span></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="grid__item cart-note">
+                                    <div class="cart-note_label">Add a note to your order :</div>
+                                    <textarea rows="12" name="note" id="CartSpecialInstructions" class="cart-note__input" placeholder="Add your note here"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
-</div>
 
+
+</div>

@@ -3,64 +3,335 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AspnetRunBasics</title>
+    <title>@ViewData["Title"]</title>
 
     <!-- CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
-    <link href="~/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css?id=1" rel="stylesheet" type="text/css">
+    <link href="~/css/layout.css" rel="stylesheet" type="text/css">
+    <link href="~/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="~/css/theme.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet" type="text/css" media="all">
+    <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet" type="text/css" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/css/common.css" rel="stylesheet" />
 
 </head>
 <body>
-    <header>
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">AspnetRunBasics</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-                    <ul class="navbar-nav m-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-page="/Index">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Product">Product</a>
-                        </li>                        
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Cart">Cart</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Order">Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Contact">Contact</a>
-                        </li>
-                    </ul>
+    <div id="shopify-section-nov-header" class="shopify-section">
+        <div data-section-id="nov-header" data-section-type="header-section">
+            <header class="site-header sticky-menu" style="height: auto;">
+                <div class="header-mobile d-md-none">
+                    <div class="d-flex align-items-center">
+                        <div class="btn-mobile_vertical_menu"><i class="zmdi zmdi-sort-amount-asc"></i></div>
+                        <div class="mobile_logo">
 
-                    <form class="form-inline my-2 my-lg-0">
-                        <div class="input-group input-group-sm">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-secondary btn-number">
-                                    <i class="fa fa-search"></i>
+                            <a asp-area="" asp-page="/Index" class="site-header__logo-image img-fluid">
+
+                                <img class="js" src="//cdn.shopify.com/s/files/1/0523/8728/3107/files/logo_b76d8fab-9fa8-42e5-a4e2-74e8ee51cd86_120x.png?v=1610684094" alt="">
+                            </a>
+
+                        </div>
+
+                        <div id="mobile_search">
+                            <form action="/search" method="get" class="search-header-inline search" role="search" style="position: relative;">
+                                <input type="hidden" name="type" value="product">
+                                <input class="search-header__input" type="search" name="q" placeholder="Enter your keyword" aria-label="Search your product" autocomplete="off">
+                                <button class="search-header__submit text-center btn--link" type="submit">
+                                    <span class="site-header__search-icon">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </span>
                                 </button>
+                                <ul class="search-results has-scroll" style="position: absolute; left: 0px; top: 40px; display: none;"></ul>
+                            </form>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <div id="show-megamenu" class="item-mobile-top"><i class="zmdi zmdi-view-headline"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-top d-none d-md-block pt-40 pb-40">
+                    <div class="container">
+                        <div class="row d-flex align-items-center position-relative">
+                            <div class="contentsticky_logo col-md-3">
+                                <div class="h2 site-header__logo mb-0" itemscope="" itemtype="http://schema.org/Organization">
+
+                                    <a asp-area="" asp-page="/Index" itemprop="url" class="site-header__logo-image">
+
+                                        <img class="js img-fluid" src="//cdn.shopify.com/s/files/1/0523/8728/3107/files/logo_10d84fcf-afb9-46ea-99ea-a1e0844375f6_200x.png?v=1610684088" alt="Greenbee 3">
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="col-md-9 d-flex align-items-center content_right">
+                                <div class="contentsticky_menu">
+                                    <nav id="AccessibleNav">
+                                        <ul class="site-nav list--inline " id="SiteNav">
+
+                                            <li class="site-nav" aria-controls="SiteNavLabel-home">
+                                                <a asp-area="" asp-page="/Index" class="site-nav__link site-nav__link--main">
+                                                    <span>Home</span>
+                                                </a>
+
+                                            </li>
+
+                                            <li class="site-nav" aria-controls="SiteNavLabel-home">
+                                                <a asp-area="" asp-page="/Product" class="site-nav__link site-nav__link--main">
+                                                    <span>Product</span>
+                                                </a>
+
+                                            </li>
+
+                                            <li class="site-nav" aria-controls="SiteNavLabel-home">
+                                                <a asp-area="" asp-page="/Cart" class="site-nav__link site-nav__link--main">
+                                                    <span>Cart</span>
+                                                </a>
+
+                                            </li>
+
+
+                                            <li class="site-nav" aria-controls="SiteNavLabel-home">
+                                                <a asp-area="" asp-page="/Order" class="site-nav__link site-nav__link--main">
+                                                    <span>Order</span>
+                                                </a>
+
+                                            </li>
+
+                                            <li class="site-nav" aria-controls="SiteNavLabel-home">
+                                                <a asp-area="" asp-page="/Contact" class="site-nav__link site-nav__link--main">
+                                                    <span>Contact</span>
+                                                </a>
+
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+
+                                <div class="site-header_myaccount dropdown nv-mr-10 nv-ml-auto">
+                                    <div class="myaccount-title dropdown-toggle text-center d-flex" data-toggle="dropdown">
+                                        <a class="myaccount" href="https://greenbee-3.myshopify.com/account" rel="nofollow" title="My Account">
+                                            <i class="icon-account"></i>
+                                        </a>
+                                    </div>
+                                    <div class="account-list dropdown-menu dropdown-menu-right" id="_desktop_account_list">
+                                        <div class="nov_sideward_content">
+                                            <div class="account-list-content">
+
+
+                                                <div>
+                                                    <a class="login" href="https://greenbee-3.myshopify.com/account/login" rel="nofollow" title="Login">
+                                                        <i class="zmdi zmdi-key"></i><span>Login</span>
+                                                    </a>
+                                                </div>
+
+                                                <div>
+                                                    <a class="register" href="https://greenbee-3.myshopify.com/account/register" rel="nofollow" title="Register account">
+                                                        <i class="zmdi zmdi-lock"></i><span>Register account</span>
+                                                    </a>
+                                                </div>
+
+
+
+                                                <div>
+                                                    <a class="check-out" href="https://greenbee-3.myshopify.com/checkout" rel="nofollow" title="Check out">
+                                                        <i class="zmdi zmdi-check-circle"></i><span>Check out</span>
+                                                    </a>
+                                                </div>
+                                                <div class="link_wishlist">
+                                                    <a class="wishlist" href="/pages/page-wishlist" rel="nofollow" title="My Wishlist">
+                                                        <i class="zmdi zmdi-favorite"></i>
+                                                        <span>My Wishlist</span>
+                                                    </a>
+                                                </div>
+
+                                                <div class="d-none d-md-block">
+
+                                                    <div id="_desktop_currency_selector" class="currency-selector groups-selector">
+
+                                                        <ul id="currencies" class="list-inline">
+
+                                                            <li class="currency__item list-inline-item">
+                                                                <span data-currency="USD" class="selected">USD</span>
+                                                            </li>
+
+                                                            <li class="currency__item list-inline-item">
+                                                                <span data-currency="EUR">EUR</span>
+                                                            </li>
+
+                                                            <li class="currency__item list-inline-item">
+                                                                <span data-currency="GBP">GBP</span>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="contentsticky_cart">
+                                    <div id="cart_block">
+                                        <div class="header-cart d-flex align-items-center">
+                                            <div class="site-header__cart">
+                                                <span class="site-header__cart-icon"></span>
+                                                <span id="_desktop_cart_count" class="site-header__cart-count">
+                                                    <span id="CartCount">7</span>
+                                                </span>
+                                            </div>
+                                            <div class="nv-ml-20 d-none d-lg-block">
+                                                <span class="title-cart">My Cart</span>
+                                            </div>
+                                        </div>
+                                        <div id="_desktop_cart">
+                                            <div id="cart-info" style="">
+                                                <form action="/cart" method="post" class="cart ajaxcart">
+                                                    <div class="ajaxcart__inner">
+                                                        <div class="ajaxcart__product" data-line="0">
+                                                            <div class="media">
+                                                                <a href="/products/yiamond-palo-stud-garrings?variant=37493484355747"><img class="d-flex product-image" src="https://cdn.shopify.com/s/files/1/0523/8728/3107/products/32_e566c5f1-1aa1-43bf-8b62-8b5bf18c62c9_small.jpg" alt="Yiamond Palo Stud Garrings - ultra / red" title="Yiamond Palo Stud Garrings - ultra / red"></a>
+                                                                <div class="media-body">
+                                                                    <a class="product-name" href="/products/yiamond-palo-stud-garrings?variant=37493484355747">Yiamond Palo Stud Garrings - ultra / red</a><div class="mb-5"></div><span class="product-price">
+                                                                        <span class="money" data-currency-usd="$18.00" data-currency="USD">$18.00</span>
+                                                                    </span><span class="quantity"> x 3</span><a class="remove-from-cart" rel="nofollow" href="#" title="remove from cart" data-line="0" data-product-id="37493484355747">
+                                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div><div class="ajaxcart__product" data-line="1">
+                                                            <div class="media">
+                                                                <a href="/products/ziamond-ralo-stud-farrings?variant=37493471281315">
+                                                                    <img class="d-flex product-image" src="https://cdn.shopify.com/s/files/1/0523/8728/3107/products/20_6512ebbc-8084-4fea-890a-1e13b41465bd_small.jpg" alt="Ziamond Ralo Stud Farrings" title="Ziamond Ralo Stud Farrings">
+                                                                </a><div class="media-body">
+                                                                    <a class="product-name" href="/products/ziamond-ralo-stud-farrings?variant=37493471281315">Ziamond Ralo Stud Farrings</a><div class="mb-5"></div><span class="product-price">
+                                                                        <span class="money" data-currency-usd="$22.00" data-currency="USD">$22.00</span>
+                                                                    </span><span class="quantity"> x 4</span><a class="remove-from-cart" rel="nofollow" href="#" title="remove from cart" data-line="1" data-product-id="37493471281315">
+                                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><div id="threshold_bar_popup_minicart">
+                                                        <div class="cart_threshold">
+                                                            <div class="threshold_spend">Spend <span class="money" data-currency-usd="$58.00" data-currency="USD">$58.00</span> for free shipping</div><div class="threshold_bar">
+                                                                <span class="animate" style="width:71%!important">71%</span>
+                                                            </div>
+                                                        </div>
+                                                    </div><div class="ajaxcart__footer">
+                                                        <div class="subtotal d-flex align-items-center justify-content-between"><label>Total</label><span class="money" data-currency-usd="$142.00" data-currency="USD">$142.00</span></div><div class="btn_submit">
+                                                            <a asp-area="" asp-page="/CheckOut" class="btn btn-success cart__checkout" name="checkout"><span>Check out</span></a>
+                                                            <a asp-area="" asp-page="/Cart" class="btn btn-success"><span>View Cart</span></a>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <a class="btn btn-success btn-sm ml-3" asp-area="" asp-page="/Cart">
-                            <i class="fa fa-shopping-cart"></i> Cart
-                            <span class="badge badge-light">3</span>
-                        </a>
-                    </form>
+                    </div>
+                </div>
+                <div class="container d-none d-md-block">
+                    <div class="header_bottom">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="header-verticalmenu">
+                                    <div class="vertical_dropdown">
+                                        <div class="title_vertical d-flex align-items-center">
+                                            <i class="zmdi zmdi-menu"></i>
+                                            <span class="nv-ml-20 nv-ml-md-10">All Categories</span>
+                                        </div>
+                                    </div>
+                                    @await Component.InvokeAsync("CategoryComponent")
+                                    @*@RenderSection("VerticalMenu", false)*@
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="block_right d-flex">
+                                    <div class="contentsticky_search search_inline">
+                                        <div class="site_search">
+                                            <div class="site-header__search">
+                                                <div id="search_widget" class="site_header__search">
+                                                    <form action="/search" method="get" class="search-header-inline search" role="search" style="position: relative;">
+                                                        <input type="hidden" name="type" value="product">
+                                                        <input class="search-header__input" type="search" name="q" placeholder="Enter your keyword" aria-label="Search your product" autocomplete="off">
+                                                        <button class="search-header__submit text-center btn--link" type="submit">
+                                                            <span class="site-header__search-icon">
+                                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                                            </span>
+                                                        </button>
+                                                        <ul class="search-results has-scroll" style="position: absolute; left: 0px; top: 43px; display: none;"></ul>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="b_address position-relative nv-ml-auto nv-pl-60 nv-pr-80 nv-pl-md-50 nv-pr-md-35 d-flex align-items-center">
+                                        <div class="h_address">
+                                            <div class="b_title">call us now :</div>
+                                            <div class="b_number">084-2525-6868</div>
+                                        </div>
+                                        <div class="b_c_address position-absolute">
+                                            <div class="b_i_a">
+                                                <div class="n_a">seattle :</div>
+                                                <div class="b_number mt-5">084-2525-6868</div>
+                                                <div class="e_a">greenbee@domain.com</div>
+                                                <div class="a_a mt-5">PO Box 1622 Vissaosang Street West</div>
+                                            </div>
+                                            <div class="b_i_a">
+                                                <div class="n_a">chicago :</div>
+                                                <div class="b_number mt-5">084-2525-6868</div>
+                                                <div class="e_a">sonata@domain.com</div>
+                                                <div class="a_a mt-5">PO Box 1652 Vissaosang Street West</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+            <div id="header-sticky" class="d-none d-md-block" style="background-color: #ffffff;">
+                <div class="container">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="contentstickynew_logo col-xl-3 col-lg-2 col-md-2"></div>
+                        <div class="contentstickynew_menu col-xl-6 col-lg-8 col-md-8 text-center"></div>
+                        <div class="contentstickynew_cart col-xl-3 col-lg-2 col-md-2 d-flex justify-content-end"></div>
+                    </div>
                 </div>
             </div>
-        </nav>
 
+        </div>
 
-    </header>
+        <style>
+            .topbar {
+                background-color:;
+            }
+
+            .site-header {
+                background-color: #ffffff;
+            }
+
+            .header_bottom {
+                background-color: #0d7a52;
+            }
+        </style>
+    </div>
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -123,56 +394,89 @@
         </div>
     </footer>
 
+
+    <div class="canvas-menu drawer-left mm-wrapper active">
+        <div class="canvas-header-box d-flex justify-content-center align-items-center">
+            <div class="close-box"><i class="zmdi zmdi-close"></i></div>
+        </div>
+        <nav id="canvas-main-menu" class="mm-menu">
+            <div class="mm-panels">
+                <div class="mm-panel mm-opened" id="SiteNav">
+                    <ul class="site-nav list--inline mm-listview">
+
+                        <li class="site-nav" aria-controls="SiteNavLabel-home">
+                            <a asp-area="" asp-page="/Index" class="site-nav__link site-nav__link--main">
+                                <span>Home</span>
+                            </a>
+
+
+                        </li>
+
+                        <li class="site-nav" aria-controls="SiteNavLabel-product">
+                            <a asp-area="" asp-page="/Product" class="site-nav__link site-nav__link--main">
+                                <span>Product</span>
+                            </a>
+
+                        </li>
+
+                              <li class="site-nav" aria-controls="SiteNavLabel-product">
+                               <a asp-area="" asp-page="/Order" class="site-nav__link site-nav__link--main">
+                                <span>Order</span>
+                            </a>
+
+                        </li>
+
+
+                        <li class="site-nav" aria-controls="SiteNavLabel-pages">
+                            <a asp-area="" asp-page="/Cart" class="site-nav__link site-nav__link--main">
+                                <span>Cart</span>
+                            </a>
+
+
+                        </li>
+
+                        <li class="site-nav" aria-controls="SiteNavLabel-blog">
+                            <a  asp-area="" asp-page="/Contact"class="site-nav__link site-nav__link--main">
+                                <span>Contact</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <div id="stickymenu_bottom_mobile" class="d-flex align-items-center justify-content-center d-md-none text-center">
+        <div class="stickymenu-item"><a asp-area="" asp-page="/Index"><i class="icon-home"></i><span>Home</span></a></div>
+        <div class="stickymenu-item"><a asp-area="" asp-page="/Product"><i class="icon-cart-product"></i><span>Products</span></a></div>
+        <div class="stickymenu-item"><a asp-area="" asp-page="/Cart" class="nov-toggle-page" data-target="#mobile-blockcart"><span id="_mobile_cart_count" class="cart-products-count"><span id="CartCount">7</span></span><i class="icon-shopping-cart"></i><span>Cart</span></a></div>
+        <div class="stickymenu-item"><a href="#" class="nov-toggle-page" data-target="#mobile-pageaccount"><i class="icon-account"></i><span>Setting</span></a></div>
+        <div class="stickymenu-item">
+            <div id="back_top">
+                <div>
+                    <i class="icon-arrow-up"></i>
+                    <div class="on_top">On Top</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas-overlay"></div>
+    <div class="sidebar-overlay"></div>
+
+
     <!-- JS -->
     <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        //Plus & Minus for Quantity product
-        $(document).ready(function () {
-            var quantity = 1;
-
-            $('.quantity-right-plus').click(function (e) {
-                e.preventDefault();
-                var quantity = parseInt($('#quantity').val());
-                $('#quantity').val(quantity + 1);
-            });
-
-            $('.quantity-left-minus').click(function (e) {
-                e.preventDefault();
-                var quantity = parseInt($('#quantity').val());
-                if (quantity > 1) {
-                    $('#quantity').val(quantity - 1);
-                }
-            });
-
-        });
-
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
-
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-        })();
-
-    </script>
+    <script src="~/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/js/shopscript.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
 
 

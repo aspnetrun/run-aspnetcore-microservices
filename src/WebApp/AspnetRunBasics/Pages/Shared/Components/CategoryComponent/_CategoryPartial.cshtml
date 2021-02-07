@@ -1,0 +1,56 @@
+﻿@model ICollection<AspnetRunBasics.Models.CatalogModel>
+
+
+<div id="_desktop_vertical_menu" class="vertical_menu has-showmore" data-count_showmore="9" data-count_showmore_lg="6" data-textshowmore="See More" data-textless="See Less">
+
+    <ul class="site-nav" id="SiteNav">
+
+        @{ var categorys = Model.GroupBy(u => u.Category).ToList();}
+        @foreach (var category in categorys)
+        {
+            <li class="site-nav--has-dropdown hasMegaMenu center">
+                <a asp-page="Product" asp-route-categoryName="@category.Key" title="@category.Key">
+
+                    <div class="icon_nav">
+                        <img class="img-fluid lazyload" data-src="//cdn.shopify.com/s/files/1/0523/8728/3107/files/v-1_50x.png?v=1610684438" alt="image">
+                    </div>
+
+                    <div class="group_title">
+
+                        @category.Key
+
+                        <div class="sub_title_nav">Apple, Orange, Watermelon, Banana Pineapple, Grapes...</div>
+
+                    </div>
+                </a>
+                <span class="d-lg-none show_sub"><i class="zmdi zmdi-plus-square"></i></span>
+                <div class="site-nav__dropdown megaMenu" aria-expanded="false" style="width:500px;" role="main">
+                    <div class="menuGroup row" style="background-image: url(//cdn.shopify.com/s/files/1/0523/8728/3107/files/bg_fruit.png?v=1610684534);background-repeat: no-repeat;background-position: bottom right;">
+
+                        <div class="col-lg-12">
+                            <div class="row spacing-30">
+
+
+                                <div class="col-xs-12 col-lg-6">
+                                    <ul class="novMenuLinks">
+
+                                        @foreach (var product in category)
+                                        {
+
+                                            <li class="">
+                                                <a asp-page="ProductDetail" asp-route-productId="@product.Id" title="">@product.Name</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+        }
+
+    </ul>
+    <div class="show_more hidden">See More</div>
+</div>
