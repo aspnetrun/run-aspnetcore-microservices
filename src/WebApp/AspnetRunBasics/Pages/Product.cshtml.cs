@@ -53,16 +53,18 @@ namespace AspnetRunBasics
             var userName = "swn";
             var basket = await _basketApi.GetBasket(userName);
 
-            basket.Items.Add(new BasketItemModel
+            if (basket.Items.FindAll(i => i.ProductId == productId).Count == 0)
             {
-                ProductId = productId,
-                ProductName = product.Name,
-                Price = product.Price,
-                Quantity = 1,
-                Color = "Black"
-            });
-
-            var basketUpdated = await _basketApi.UpdateBasket(basket);
+                basket.Items.Add(new BasketItemModel
+                {
+                    ProductId = productId,
+                    ProductName = product.Name,
+                    Price = product.Price,
+                    Quantity = 1,
+                    Color = "Black"
+                });
+                var basketUpdated = await _basketApi.UpdateBasket(basket);
+            }
 
             return RedirectToPage("Cart");
         }
