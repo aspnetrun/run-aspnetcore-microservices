@@ -1,0 +1,48 @@
+﻿@model AddCatalogModel
+@*enctype="multipart/form-data" form aracılıgı ile dosya taşınmasını sağlar 38. video*@
+<form asp-action="Add" asp-controller="Home" asp-area="Admin" enctype="multipart/form-data" method="post" class="p-4 w-50 mx-auto shadow-lg">
+
+    <div class="form-group">
+        <label class="col-form-label"> Name</label>
+        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        <input type="text" asp-for="@Model.Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label"> Category</label>
+        <span asp-validation-for="@Model.Category" class="text-danger"></span>
+        <input type="text" asp-for="@Model.Category" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label"> Summary</label>
+        <span asp-validation-for="@Model.Summary" class="text-danger"></span>
+        <input type="text" asp-for="@Model.Summary" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label"> Price </label>
+        <span asp-validation-for="@Model.Price" class="text-danger"></span>
+        <input type="text" asp-for="@Model.Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="col-form-label"> Description </label>
+        <input type="text" asp-for="@Model.Description" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label"> ImageURL </label>
+        <input type="file" asp-for="@Model.ImageURL" class="form-control-file" />
+    </div>
+
+    <div class="form-group">
+        <a type="submit" class="btn btn-primary" asp-action="Index" asp-controller="Home" asp-area="Admin"> Back </a>
+        <button type="submit" class="btn btn-primary"> Save </button>
+    </div>
+
+</form>
+
+@section ValidationClientControl{
+    <script src="~/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

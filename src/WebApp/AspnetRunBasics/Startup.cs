@@ -43,6 +43,8 @@ namespace AspnetRunBasics
             #endregion
 
             services.AddRazorPages();
+            services.AddControllersWithViews();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +70,11 @@ namespace AspnetRunBasics
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                               name: "Admin",
+                               areaName: "Admin",
+                               pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
+                               ); 
                 endpoints.MapRazorPages();
             });
         }

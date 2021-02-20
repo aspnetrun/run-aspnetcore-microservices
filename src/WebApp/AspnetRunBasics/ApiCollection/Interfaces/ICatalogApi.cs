@@ -1,4 +1,5 @@
 ﻿using AspnetRunBasics.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,5 +11,9 @@ namespace AspnetRunBasics.ApiCollection.Interfaces
         Task<IEnumerable<CatalogModel>> GetCatalogByCategory(string category);
         Task<CatalogModel> GetCatalog(string id);
         Task<CatalogModel> CreateCatalog(CatalogModel model);
+        Task<CatalogModel> GetProduct(string id);
+        Task<IActionResult> UpdateCatalog(CatalogModel catalogModel);
+        Task<IActionResult> DeleteCatalog(string id);
+
     }
 }

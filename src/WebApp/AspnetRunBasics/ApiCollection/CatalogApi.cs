@@ -2,6 +2,7 @@
 using AspnetRunBasics.ApiCollection.Interfaces;
 using AspnetRunBasics.Models;
 using AspnetRunBasics.Settings;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -51,12 +52,23 @@ namespace AspnetRunBasics.ApiCollection
                                .GetHttpMessage();
 
             return await SendRequest<IEnumerable<CatalogModel>>(message);
+        }     
+        
+        public async Task<CatalogModel> GetProduct(string id)
+        {
+            var message = new HttpRequestBuilder(_settings.BaseAddress)
+                               .SetPath(_settings.CatalogPath)
+                               .AddToPath(id)
+                               .HttpMethod(HttpMethod.Get)
+                               .GetHttpMessage();
+
+            return await SendRequest<CatalogModel>(message);
         }
 
         public async Task<CatalogModel> CreateCatalog(CatalogModel catalogModel)
         {
             var message = new HttpRequestBuilder(_settings.BaseAddress)
-                                .SetPath(_settings.CatalogPath)                                
+                                .SetPath(_settings.CatalogPath)
                                 .HttpMethod(HttpMethod.Post)
                                 .GetHttpMessage();
 
@@ -65,5 +77,30 @@ namespace AspnetRunBasics.ApiCollection
 
             return await SendRequest<CatalogModel>(message);
         }
+
+        public async Task<IActionResult> UpdateCatalog(CatalogModel catalogModel)
+        {
+            var message = new HttpRequestBuilder(_settings.BaseAddress)
+                                .SetPath(_settings.CatalogPath)
+                                .HttpMethod(HttpMethod.Put)
+                                .GetHttpMessage();
+
+            var json = JsonConvert.SerializeObject(catalogModel);
+            message.Content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            return await SendRequest<IActionResult>(message);
+        }
+
+        public async Task<IActionResult> DeleteCatalog(string id)
+        {
+            var message = new HttpRequestBuilder(_settings.BaseAddress)
+                                .SetPath(_settings.CatalogPath)
+                                .HttpMethod(HttpMethod.Delete)
+                                .AddToPath(id)
+                                .GetHttpMessage();
+
+            return await SendRequest<IActionResult>(message);
+        }
+
     }
 }

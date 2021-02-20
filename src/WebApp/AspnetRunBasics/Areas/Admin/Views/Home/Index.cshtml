@@ -1,0 +1,35 @@
+﻿@model List<CatalogModel>
+
+<a asp-action="Add" asp-controller="Home" asp-area="Admin" class="btn btn-primary  btn-sm my-2">Add </a>
+
+<table class="table table-sm table-bordered table-hover mt-2">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Category</td>
+        <td>Summary</td>
+        <td>Description</td>
+        <td>ImageFile</td>
+        <td>Price</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Category</td>
+            <td>@item.Summary</td>
+            <td>@item.Description</td>
+            <td>@item.ImageFile</td>
+            <td>@item.Price</td>
+
+            <td>
+                <a asp-action="Update" asp-controller="Home" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Update</a>
+                <a asp-action="Delete" asp-controller="Home" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+
+        </tr>
+    }
+</table>
+
