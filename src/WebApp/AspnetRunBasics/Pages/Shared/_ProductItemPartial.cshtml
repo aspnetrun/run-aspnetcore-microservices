@@ -3,7 +3,7 @@
 <div class="item-product">
 
     <div class="thumbnail-container has-multiimage">
-        <a class="w-100" href="/collections/frontpage/products/ziamond-ralo-stud-farrings" tabindex="0">
+        <a class="w-100"  asp-page="ProductDetail" asp-route-productId="@Model.Id" tabindex="0">
             <img class="w-100 img-fluid product__thumbnail lazyloaded" data-src="~/images/product/@Model.ImageFile"  alt="@Model.Name" src="~/images/product/@Model.ImageFile" >
             <img class="w-100 img-fluid product__thumbnail-second lazyloaded" data-src="~/images/product/@Model.ImageFile"  alt="@Model.Name" src="~/images/product/@Model.ImageFile">
 

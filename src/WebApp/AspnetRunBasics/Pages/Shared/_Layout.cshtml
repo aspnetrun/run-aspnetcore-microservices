@@ -184,7 +184,7 @@
                                             <div class="site-header__cart">
                                                 <span class="site-header__cart-icon"></span>
                                                 <span id="_desktop_cart_count" class="site-header__cart-count">
-                                                    <span id="CartCount">7</span>
+                                                    <span id="CartCount">@{}</span>
                                                 </span>
                                             </div>
                                             <div class="nv-ml-20 d-none d-lg-block">
@@ -193,39 +193,19 @@
                                         </div>
                                         <div id="_desktop_cart">
                                             <div id="cart-info" style="">
-                                                <form action="/cart" method="post" class="cart ajaxcart">
+
+                                                <form asp-page-handler="removetocart" method="post" class="cart ajaxcart">
                                                     <div class="ajaxcart__inner">
-                                                        <div class="ajaxcart__product" data-line="0">
-                                                            <div class="media">
-                                                                <a href="/products/yiamond-palo-stud-garrings?variant=37493484355747"><img class="d-flex product-image" src="https://cdn.shopify.com/s/files/1/0523/8728/3107/products/32_e566c5f1-1aa1-43bf-8b62-8b5bf18c62c9_small.jpg" alt="Yiamond Palo Stud Garrings - ultra / red" title="Yiamond Palo Stud Garrings - ultra / red"></a>
-                                                                <div class="media-body">
-                                                                    <a class="product-name" href="/products/yiamond-palo-stud-garrings?variant=37493484355747">Yiamond Palo Stud Garrings - ultra / red</a><div class="mb-5"></div><span class="product-price">
-                                                                        <span class="money" data-currency-usd="$18.00" data-currency="USD">$18.00</span>
-                                                                    </span><span class="quantity"> x 3</span><a class="remove-from-cart" rel="nofollow" href="#" title="remove from cart" data-line="0" data-product-id="37493484355747">
-                                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div><div class="ajaxcart__product" data-line="1">
-                                                            <div class="media">
-                                                                <a href="/products/ziamond-ralo-stud-farrings?variant=37493471281315">
-                                                                    <img class="d-flex product-image" src="https://cdn.shopify.com/s/files/1/0523/8728/3107/products/20_6512ebbc-8084-4fea-890a-1e13b41465bd_small.jpg" alt="Ziamond Ralo Stud Farrings" title="Ziamond Ralo Stud Farrings">
-                                                                </a><div class="media-body">
-                                                                    <a class="product-name" href="/products/ziamond-ralo-stud-farrings?variant=37493471281315">Ziamond Ralo Stud Farrings</a><div class="mb-5"></div><span class="product-price">
-                                                                        <span class="money" data-currency-usd="$22.00" data-currency="USD">$22.00</span>
-                                                                    </span><span class="quantity"> x 4</span><a class="remove-from-cart" rel="nofollow" href="#" title="remove from cart" data-line="1" data-product-id="37493471281315">
-                                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><div id="threshold_bar_popup_minicart">
+                                                        @await Component.InvokeAsync("RemoveToCartComponets")
+                                                    </div>
+                                                    <div id="threshold_bar_popup_minicart">
                                                         <div class="cart_threshold">
                                                             <div class="threshold_spend">Spend <span class="money" data-currency-usd="$58.00" data-currency="USD">$58.00</span> for free shipping</div><div class="threshold_bar">
                                                                 <span class="animate" style="width:71%!important">71%</span>
                                                             </div>
                                                         </div>
-                                                    </div><div class="ajaxcart__footer">
+                                                    </div>
+                                                    <div class="ajaxcart__footer">
                                                         <div class="subtotal d-flex align-items-center justify-content-between"><label>Total</label><span class="money" data-currency-usd="$142.00" data-currency="USD">$142.00</span></div><div class="btn_submit">
                                                             <a asp-area="" asp-page="/CheckOut" class="btn btn-success cart__checkout" name="checkout"><span>Check out</span></a>
                                                             <a asp-area="" asp-page="/Cart" class="btn btn-success"><span>View Cart</span></a>
