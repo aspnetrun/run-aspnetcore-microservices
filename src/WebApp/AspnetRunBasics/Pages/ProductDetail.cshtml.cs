@@ -21,9 +21,6 @@ namespace AspnetRunBasics
         public CatalogModel Product { get; set; }
 
         [BindProperty]
-        public string Color { get; set; }
-
-        [BindProperty]
         public int Quantity { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string productId)
@@ -53,8 +50,7 @@ namespace AspnetRunBasics
                 ProductId = productId,
                 ProductName = product.Name,
                 Price = product.Price,
-                Quantity = Quantity,
-                Color = Color
+                Quantity = Quantity
             });
 
             var basketUpdated = await _basketApi.UpdateBasket(basket);

@@ -1,4 +1,5 @@
-﻿$(document).on('click', '.plus, .minus', function () {
+﻿
+$(document).on('click', '.plus, .minus', function () {
     var $qty = $(this).closest('.cart__qty').find('.cart__qty-input'),
         currentVal = parseFloat($qty.val()),
         max = parseFloat($qty.attr('max')),

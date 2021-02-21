@@ -448,10 +448,29 @@
 
 
     <!-- JS -->
-    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" type="text/javascript"></script>
+    <script src="~/jquery/jquery.js"></script>
+    @*<script src="//code.jquery.com/jquery-3.2.1.slim.min.js" type="text/javascript"></script>*@
     <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
     <script src="~/twitter-bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/shopscript.js"></script>
+    <script>
+
+        async function UpdateCount() {
+            let url = '/basket/getdata';
+            try {
+                let res = await fetch(url);
+                let value = await res.json();
+
+                $('#CartCount')[0].innerHTML= value;
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        UpdateCount();
+
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

@@ -18,97 +18,229 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <!-- Image -->
-        <div class="col-12 col-lg-6">
-            <div class="card bg-light mb-3">
-                <div class="card-body">
-                    <a href="" data-toggle="modal" data-target="#productModal">
-                        <img class="img-fluid" src="~/images/product/@Model.Product.ImageFile.Replace('-','x')" />
-                        <p class="text-center">@Model.Product.Name</p>
-                    </a>
-                </div>
-            </div>
-        </div>
+< class="container">
 
-        <!-- Add to cart -->
-        <div class="col-12 col-lg-6 add_to_cart_block">
-            <div class="card bg-light mb-3">
-                <div class="card-body">
-                    <p class="price">@Model.Product.Price $</p>
-                    <p class="price_discounted">@(Model.Product.Price + 120) $</p>
-                    <form asp-page-handler="AddToCart" method="post" name="addToCartForm" id="add_cart_form">
-                        <div class="form-group">
-                            <label for="colors">Color</label>
-                            <select asp-for="Color" class="custom-select" id="colors">
-                                <option selected>Black</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Red">Red</option>
-                                <option value="Green">Green</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Quantity :</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input asp-for="Quantity" type="text" class="form-control" id="quantity" name="quantity" min="1" max="100" value="1">
-                                <div class="input-group-append">
-                                    <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
+    <div id="shopify-section-nov-product-template" class="shopify-section">
+        <div class="product-template__container tabdesc" itemscope="" itemtype="http://schema.org/Product" id="ProductSection-nov-product-template">
+            <div class="TopContent mb-100 pb-xs-60">
+                <div class="product-single row position-static">
+                    <div class="col-md-6 col-xs-12 position-static">
+                        <div class="product-single__photos block_img_sticky">
+                            <div class="proFeaturedImage">
+                                <div class="block_content d-flex">
+
+                                    <span class="w-100" style="display: inline-block; position: relative; overflow: hidden;">
+                                        <img id="ProductPhotoImg" class="img-fluid image-zoom img-responsive lazyloaded" alt="Ziamond Ralo Stud Farrings"
+                                             src="~/images/product/@Model.Product.ImageFile" style="display: block;">
+                                        <img role="presentation" alt="" src="~/images/product/@Model.Product.ImageFile" class="zoomImg" style="position: absolute; top: -24.8732px;
+                                left: -24.8732px; opacity: 0; width: 600px; height: 600px; border: medium none; max-width: none; max-height: none;">
+                                    </span>
                                 </div>
                             </div>
+
+                            <div id="productThumbs" class="mt-10">
+                                <div class="thumblist" data-pswp-uid="1">
+                                    <div class="owl-carousel owl-theme owl-loaded owl-drag" data-autoplay="false" data-autoplaytimeout="6000" data-items="5" data-margin="10" data-nav="false" data-dots="false" data-loop="false" data-items_tablet="4" data-items_mobile="5">
+                                        <div class="owl-stage-outer">
+                                            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 696px;">
+                                                <div class="owl-item active" style="width: 106px; margin-right: 10px;">
+                                                    <div class="thumbItem active">
+                                                        <a href="javascript:void(0)" data-image="//cdn.shopify.com/s/files/1/0523/8728/3107/products/20_6512ebbc-8084-4fea-890a-1e13b41465bd_900x900.jpg?v=1610679532" data-zoom-image="//cdn.shopify.com/s/files/1/0523/8728/3107/products/20_6512ebbc-8084-4fea-890a-1e13b41465bd_small.jpg?v=1610679532" class="product-single__thumbnail">
+                                                            <img src="~/images/product/@Model.Product.ImageFile" alt="Ziamond Ralo Stud Farrings">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><div class="owl-nav disabled"><div class="owl-prev"><i class="fa fa-long-arrow-left"></i></div><div class="owl-next"><i class="fa fa-long-arrow-right"></i></div></div><div class="owl-dots disabled"></div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                        <a  href="javascript:;" onclick="parentNode.submit();" class="btn btn-success btn-lg btn-block text-uppercase">
-                            <i class="fa fa-shopping-cart"></i> Add To Cart
-                        </a>
-                        <input type="hidden" asp-for="@Model.Product.Id" name="productId" />
-                    </form>
-                    <div class="product_rassurance">
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><i class="fa fa-truck fa-2x"></i><br />Fast delivery</li>
-                            <li class="list-inline-item"><i class="fa fa-credit-card fa-2x"></i><br />Secure payment</li>
-                            <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br />+33 1 22 54 65 60</li>
+
+                    </div>
+
+                    <div class="block_information position-static col-md-6 col-xs-12 mt-xs-30">
+                        <div class="info_content">
+                            <h1 itemprop="name" class="product-single__title">@Model.Product.Name</h1>
+                            <div class="product-single__meta">
+                                <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                    <meta itemprop="priceCurrency" content="USD">
+                                    <link itemprop="availability" href="http://schema.org/InStock">
+                                    <div class="group-reviews has-border d-flex align-items-center mb-25">
+                                        <div class="detail-reviews">
+                                            <span class="spr-badge" id="spr_badge_5997971079331">
+                                                <span class="spr-starrating spr-badge-starrating">
+                                                    <i class="spr-icon spr-icon-star"></i>
+                                                    <i class="spr-icon spr-icon-star"> </i>
+                                                    <i class="spr-icon spr-icon-star"></i>
+                                                    <i class="spr-icon spr-icon-star"></i>
+                                                    <i class="spr-icon spr-icon-star"></i>
+                                                </span>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="available_product d-flex align-items-center">
+                                        <div class="available_name control-label">
+                                            Available:
+                                        </div>
+                                        <span class="product__available in-stock">
+                                            <span>In stock</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="group-single__sku has-border">
+                                        <p itemprop="cat" class="product-single__cat">
+                                            <span class="label control-label">Category:</span>
+
+                                            <a href="/collections/frontpage" title="Home page">@Model.Product.Category</a>
+                                        </p>
+                                        <div class="product-single__shortdes mb-20" itemprop="description">
+                                            @Model.Product.Summary
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="product-single__price product-single__price-nov-product-template d-flex align-items-center">
+
+                                <span class="visually-hidden">Regular price</span>
+                                <span class="product-price__price product-price__price-nov-product-template">
+                                    <span id="ProductPrice-nov-product-template" class="mr-10"><span class="money">@Model.Product.Price</span></span>
+                                    <span class="money product-price__sale-label product-price__sale-label-nov-product-template d-none">Sale</span>
+                                </span>
+                                <s id="ComparePrice-nov-product-template" style="display: none;"></s>
+
+                            </p>
+                            <form asp-page-handler="AddToCart" method="post" name="addToCartForm" id="add_cart_form" class="product-form product-form-nov-product-template">
+                                <div class="selectorVariants">
+                                    <div class="selector-wrapper" style="display: none;"><select class="single-option-selector" data-option="option1" id="productSelect-option-0"><option value="Default Title">Default Title</option></select></div><select name="id" id="productSelect" data-section="nov-product-template" class="enable_swatch hide" style="display: none;">
+
+                                        <option selected="selected" value="37493471281315">
+                                            Default Title
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="group-quantity" style="margin-top: 0px;">
+
+                                    <span class="control-label">Quantity:</span>
+                                    <div class="product-form__item product-form__item--quantity align-items-center mb-30">
+                                        <label for="Quantity" class="quantity-selector"></label>
+                                        <div class="quick_view_qty">
+                                            <input type="button" class="quick_view-qty quick_view-qty-minus" value="-">
+                                            <input asp-for="Quantity" type="number" id="Quantity" name="quantity" value="1" min="1" max="100" step="1" class="quantity-selector product-form__input" pattern="[0-9]*">
+                                            <input type="button" class="quick_view-qty quick_view-qty-plus" value="+" />
+                                        </div>
+                                    </div>
+                                    <div class="product_option_sub">
+                                        <div class="product-form__item product-form__item--submit">
+                                            <button data-handle="ziamond-ralo-stud-farrings" type="submit" name="add" id="AddToCart" class="btnAddToCart btn product-form__cart-submit mb-15 product-form__cart-submit--small">
+                                                <span id="AddToCartText">Add to cart</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="product-form__item product-form__item--checkout">
+                                            <input type="hidden" name="form_type" value="product"><input type="hidden" name="utf8" value="✓">
+                                             <div data-shopify="payment-button" class="shopify-payment-button">
+                                              <a asp-page="CheckOut" name="checkout" class="shopify-payment-button__button w-100">Buy it now</a>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" asp-for="@Model.Product.Id" name="productId" />
+                            </form>
+
+
+                            <div class="productbuttons d-flex align-items-center mt-40 pb-30">
+
+                                <a target="_blank" href="//www.facebook.com/sharer.php?u=https://greenbee-3.myshopify.com/products/ziamond-ralo-stud-farrings" class="btn--share share-facebook" title="Share on Facebook">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    <span class="share-title" aria-hidden="true">Facebook</span>
+                                    <span class="visually-hidden">Share on Facebook</span>
+                                </a>
+                                <a target="_blank" href="//twitter.com/share?text=&amp;url=https://greenbee-3.myshopify.com/products/ziamond-ralo-stud-farrings" class="btn--share share-twitter" title="Tweet on Twitter">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    <span class="share-title" aria-hidden="true">Tweeter</span>
+                                    <span class="visually-hidden">Tweet on Twitter</span>
+                                </a>
+                                <a target="_blank" href="//pinterest.com/pin/create/button/?url=https://greenbee-3.myshopify.com/products/ziamond-ralo-stud-farrings&amp;media=//cdn.shopify.com/s/files/1/0523/8728/3107/products/20_6512ebbc-8084-4fea-890a-1e13b41465bd_1024x1024.jpg?v=1610679532" class="btn--share share-pinterest" title="Pin on Pinterest">
+                                    <i class="fa fa-pinterest" aria-hidden="true"></i>
+                                    <span class="share-title" aria-hidden="true">Pin it</span>
+                                    <span class="visually-hidden">Pin on Pinterest</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="product-single__tabs mt-100 mt-lg-60">
+                    <div class="block_nav d-flex justify-content-center">
+                        <ul class="nav nav-tabs">
+
+                            <li><a class="active" href="#proTabs1" data-toggle="tab">Description</a></li>
+                            <li><a href="#tabCustom-3" data-toggle="tab">Video</a></li>
                         </ul>
                     </div>
-                    <div class="reviews_product p-3 mb-2 ">
-                        3 reviews
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        (4/5)
-                        <a class="pull-right" href="#reviews">View all reviews</a>
-                    </div>
-                    <div class="datasheet p-3 mb-2 bg-info text-white">
-                        <a href="" class="text-white"><i class="fa fa-file-text"></i> Download DataSheet</a>
+
+
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="proTabs1">
+                            <div data-mce-fragment="1">
+                                @Model.Product.Description
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="tabCustom-3">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UqyD2PgOw9Q" id="video" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <!-- Description -->
-        <div class="col-12">
-            <div class="card border-light mb-3">
-                <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-align-justify"></i> Description</div>
-                <div class="card-body">
-                    <p class="card-text">
-                        @Model.Product.Summary                        
-                    </p>
-                    <p class="card-text">
-                        @Model.Product.Description                        
-                    </p>
-                </div>
-            </div>
-        </div>
 
-    </div>
-</div>
+@section Scripts
+{
+    <script>
+        $(document).on('click', '.quick_view-qty-plus, .quick_view-qty-minus', function () {
+            var $qty = $(this).closest('.quick_view_qty').find('input[name="quantity"]'),
+                currentVal = parseFloat($qty.val()),
+                max = parseFloat($qty.attr('max')),
+                min = parseFloat($qty.attr('min')),
+                step = $qty.attr('step');
+
+            if (!currentVal || currentVal === '' || currentVal === 'NaN') currentVal = 0;
+            if (max === '' || max === 'NaN') max = '';
+            if (min === '' || min === 'NaN') min = 0;
+            if (step === 'any' || step === '' || step === undefined || parseFloat(step) === 'NaN') step = 1;
+
+            if ($(this).is('.quick_view-qty-plus')) {
+                if (max && (currentVal >= max)) {
+                    $qty.val(max);
+                } else {
+                    $qty.val((currentVal + parseFloat(step)));
+                }
+            } else {
+                if (min && (currentVal <= min)) {
+                    $qty.val(min);
+                } else if (currentVal > 0) {
+                    $qty.val((currentVal - parseFloat(step)));
+                }
+            }
+        });
+        </script>>
+
+}
+
