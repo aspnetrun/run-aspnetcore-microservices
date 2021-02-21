@@ -21,7 +21,9 @@
             <td>@item.Category</td>
             <td>@item.Summary</td>
             <td>@item.Description</td>
-            <td>@item.ImageFile</td>
+            <td>
+                <img class="w-100 img-fluid product__thumbnail lazyloaded" data-src="~/images/product/@item.ImageFile" src="~/images/product/@item.ImageFile">
+            </td>
             <td>@item.Price</td>
 
             <td>
