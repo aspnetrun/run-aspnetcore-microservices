@@ -3,6 +3,9 @@
 
 **UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=C624710F8B411FE7A4FB**
 
+For those who comes from udemy, the course repository moved here ->
+https://github.com/mehmetozkaya/MicroservicesApp
+
 See the overall picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
 ![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
