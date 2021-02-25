@@ -142,10 +142,8 @@ For example I am planning to add **IdentityServer4 implementation**, firstly I a
 ## Upcomming Features
 
 * Authentication with **IdentityServer4**
-* Service Discovery with **Eureka**
-* Resilient HTTP Clients with **Polly**
-* Central Logging with **Kibana**
-* Monitoring Health Checks **AspNetHealthCheck**
+* Deployment with **AKS**
+* Devops with **Azure Devops**
 
 # What is AspnetRun ? 
 The best path to **leverage your ASP.NET Core** skills. Onboarding to **Full Stack .Net Core Developer** jobs. Boilerplate for **ASP.NET Core reference application** with **Entity Framework Core**, demonstrating a layered application architecture with DDD best practices. Implements NLayer **Hexagonal architecture** (Core, Application, Infrastructure and Presentation Layers) and **Domain Driven Design** (Entities, Repositories, Domain/Application Services, DTO's...) 
