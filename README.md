@@ -79,10 +79,6 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * Containerization of databases
 * Override Environment variables
 
-**Quick DEMO on Youtube -> https://www.youtube.com/watch?v=p6lVqDNUYaY**
-
-**Check Explanation of this Microservices Repository on Medium -> https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f**
-
 ## Run The Project
 You will need the following tools:
 
