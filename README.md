@@ -158,40 +158,9 @@ Here you can find all of the **aspnetrun repositories from easy to difficult**, 
 ## Give a Star! :star:
 If you liked the project or if AspnetRun helped you, please **give a star**. And also please **fork** this repository and send us **pull-requests**. If you find any problem please open **issue**.
 
-## Disclaimer
-
-* This repository is not intended to be a definitive solution.
-* This repository not implemented a lot of 3rd party packages, we are try to avoid the over engineering when building on best practices.
-* Beware to use in production way.
-
-## Contributing
-
-Please read [Contributing.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-We have a lot of **missing features** you can check [here from our project page](https://github.com/aspnetrun/run-aspnetcore-realworld/projects/1) and you can develop them. We are waiting for your pull requests.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/aspnetrun/run-core/tags). 
-
-## Next Releases and RoapMap
-
-For information on upcoming features and fixes, take a look at the [product roadmap](https://github.com/aspnetrun/run-aspnetcore/projects).
-
-## Deployment - AspnetRun Online
-
-This organization page is deployed on Azure. See the project running on Azure in [here](https://aspnetrun.azurewebsites.net/).
-
-## Pull-Request
-
-Please fork this repository, and send me your findings with pull-requests. This is open-source repository so open to contributions.
-Get your item from **missing features** [here from our project page](https://github.com/aspnetrun/run-aspnetcore-realworld/projects/1) and send us your pull requests.
-
 ## Authors
 
 * **Mehmet Ozkaya** - *Initial work* - [mehmetozkaya](https://github.com/mehmetozkaya)
 
 See also the list of [contributors](https://github.com/aspnetrun/run-core/contributors) who participated in this project. Check also [gihtub page of repository.](https://aspnetrun.github.io/run-aspnetcore-angular-realworld/)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
