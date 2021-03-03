@@ -1,7 +1,7 @@
 
 ![Screenshot_6](https://user-images.githubusercontent.com/1147445/85838002-907dc280-b7a1-11ea-8219-f84e3af8ba52.png)
 
-**UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=C624710F8B411FE7A4FB**
+**UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=FA24745CC57592AB612A**
 
 **NOTE :** For those who comes from udemy, I have just updated the repository so udemy course will be updated soon. Since that time the course repository moved here ->
 https://github.com/mehmetozkaya/MicroservicesApp
