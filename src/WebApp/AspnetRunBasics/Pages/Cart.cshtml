@@ -243,48 +243,53 @@
                                 <div class="grid__item">
                                     <div class="cart__total d-flex align-items-center justify-content-between">
                                         <span class="cart__subtotal-title">Total:</span>
-                                        <span class="cart__subtotal"><span class="money" data-currency-usd="$157.00" data-currency="USD">@Model.Cart.TotalPrice </span></span>
+                                        <span class="cart__subtotal"><span class="money" data-currency-usd="$157.00" data-currency="USD">@Model.Cart.TotalPrice  TL</span></span>
                                     </div>
 
                                     <div class="cart__shipping d-flex align-items-xl-center justify-content-between">
                                         <div class="cart__shipping-title">Shipping :</div>
                                         <div class="cart__shipping-sub">Shipping &amp; taxes calculated at checkout</div>
                                     </div>
-
-
-                                    <div id="threshold_bar_popup">
-                                        <div class="threshold_it">
-                                            <div class="ic_threshold_bar">
-                                                <i class="zmdi zmdi-truck"></i>
+                                    @if (Model.Cart.TotalPrice < 200)
+                                    {
+                                        <div id="threshold_bar_popup">
+                                            <div class="threshold_it">
+                                                <div class="ic_threshold_bar">
+                                                    <i class="zmdi zmdi-truck"></i>
+                                                </div>
+                                                <div class="threshold_bar">
+                                                    <span class="animate" style="width:@(((int)((Model.Cart.TotalPrice * 100) / 200)).ToString()+"%") !important">
+                                                        @(((Model.Cart.TotalPrice * 100) / 200).ToString()+"%")
+                                                    </span>
+                                                </div>
                                             </div>
-                                            <div class="threshold_bar">
-                                                <span class="animate" style="width:78%!important">
-                                                    78%
-                                                </span>
+                                            <div class="threshold_spend">Spend <span class="money" data-currency-usd="43.00" data-currency="USD">@(200 - Model.Cart.TotalPrice)</span> for free shipping</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div id="threshold_bar_popup">
+                                            <div class="threshold_it">
+                                                <div class="ic_threshold_bar">
+                                                    <i class="zmdi zmdi-truck"></i>
+                                                </div>
+                                                <div class="threshold_bar">
+                                                    <span class="animate" style="width:100%!important">
+                                                        100%
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="threshold_spend">Spend <span class="money" data-currency-usd="$43.00" data-currency="USD">$43.00</span> for free shipping</div>
-                                    </div>
-
+                                    }
                                     <div class="cart-notice-total">
-                                        Free shipping for any orders above <span><span class="money" data-currency-usd="$200.00" data-currency="USD">$200.00</span></span>
+                                        Free shipping for any orders above <span><span class="money" data-currency-usd="200.00 TL" data-currency="USD">200.00 TL</span></span>
                                     </div>
-
                                 </div>
-
-                                <div class="grid__item cart-note">
-                                    <div class="cart-note_label">Add a note to your order :</div>
-                                    <textarea rows="12" name="note" id="CartSpecialInstructions" class="cart-note__input" placeholder="Add your note here"></textarea>
-                                </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
-
 </div>

@@ -1,21 +1,57 @@
 ﻿@model BasketModel
 
 
+
+
+<div class="ajaxcart__inner">
     @for (var i = 0; i < Model.Items.Count; i++)
     {
         <div class="ajaxcart__product" data-line="@i">
             <div class="media">
                 <a href="/products/yiamond-palo-stud-garrings?variant=37493484355747">
-                <img class="d-flex product-image" src="https://cdn.shopify.com/s/files/1/0523/8728/3107/products/32_e566c5f1-1aa1-43bf-8b62-8b5bf18c62c9_small.jpg" alt="Yiamond Palo Stud Garrings - ultra / red" title="Yiamond Palo Stud Garrings - ultra / red">
+                    <img class="d-flex product-image" src="https://cdn.shopify.com/s/files/1/0523/8728/3107/products/32_e566c5f1-1aa1-43bf-8b62-8b5bf18c62c9_small.jpg" alt="Yiamond Palo Stud Garrings - ultra / red" title="Yiamond Palo Stud Garrings - ultra / red">
                 </a>
                 <div class="media-body">
                     <a class="product-name" href="/products/yiamond-palo-stud-garrings?variant=37493484355747">@Model.Items[i].ProductName</a><div class="mb-5"></div><span class="product-price">
                         <span class="money" data-currency-usd="$18.00" data-currency="USD">@Model.Items[i].Price</span>
-                    </span><span class="quantity"> @Model.Items[i].Quantity</span>
-                    <button class="cart__remove clean-btn remove-from-cart" onclick="UpdateCount()"  title="remove from cart" > <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    </span>
+                    <span class="quantity">  X  @Model.Items[i].Quantity </span>
+                    <button class="cart__remove clean-btn remove-from-cart" onclick="UpdateCount()" title="remove from cart"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
                     <input type="hidden" asp-for="@Model.Items[i].ProductId" name="productId" />
                 </div>
             </div>
         </div>
     }
+</div>
+
+
+@if (Model.TotalPrice < 200)
+{
+    <div id="threshold_bar_popup_minicart">
+        <div class="cart_threshold">
+            <div class="threshold_spend">Spend <span class="money" data-currency-usd="$58.00" data-currency="USD">@(200 - Model.TotalPrice) TL</span> for free shipping</div><div class="threshold_bar">
+                <span class="animate" style="width:@(((int)((Model.TotalPrice * 100) / 200)).ToString()+"%")!important">  @(((Model.TotalPrice * 100) / 200).ToString()+"%")</span>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div id="threshold_bar_popup_minicart">
+        <div class="cart_threshold">
+            <div class="threshold_bar">
+                 <span class="animate" style="width:100%!important">100%</span>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div class="ajaxcart__footer">
+    <div class="subtotal d-flex align-items-center justify-content-between"><label>Total</label><span class="money" data-currency-usd="$142.00" data-currency="USD">@Model.TotalPrice TL</span></div><div class="btn_submit">
+        <a asp-area="" asp-page="/CheckOut" class="btn btn-success cart__checkout" name="checkout"><span>Check out</span></a>
+        <a asp-area="" asp-page="/Cart" class="btn btn-success"><span>View Cart</span></a>
+    </div>
+</div>
 

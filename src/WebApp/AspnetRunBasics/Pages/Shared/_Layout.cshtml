@@ -170,8 +170,6 @@
 
                                                         </ul>
                                                     </div>
-
-
                                                 </div>
 
                                             </div>
@@ -195,22 +193,7 @@
                                             <div id="cart-info" style="">
 
                                                 <form asp-page-handler="removetocart" method="post" class="cart ajaxcart">
-                                                    <div class="ajaxcart__inner">
                                                         @await Component.InvokeAsync("RemoveToCartComponets")
-                                                    </div>
-                                                    <div id="threshold_bar_popup_minicart">
-                                                        <div class="cart_threshold">
-                                                            <div class="threshold_spend">Spend <span class="money" data-currency-usd="$58.00" data-currency="USD">$58.00</span> for free shipping</div><div class="threshold_bar">
-                                                                <span class="animate" style="width:71%!important">71%</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ajaxcart__footer">
-                                                        <div class="subtotal d-flex align-items-center justify-content-between"><label>Total</label><span class="money" data-currency-usd="$142.00" data-currency="USD">$142.00</span></div><div class="btn_submit">
-                                                            <a asp-area="" asp-page="/CheckOut" class="btn btn-success cart__checkout" name="checkout"><span>Check out</span></a>
-                                                            <a asp-area="" asp-page="/Cart" class="btn btn-success"><span>View Cart</span></a>
-                                                        </div>
-                                                    </div>
                                                 </form>
                                             </div>
                                         </div>

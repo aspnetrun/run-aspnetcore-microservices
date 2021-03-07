@@ -11,16 +11,20 @@
             <li class="site-nav--has-dropdown hasMegaMenu center">
                 <a asp-page="Product" asp-route-categoryName="@category.Key" title="@category.Key">
 
-                    <div class="icon_nav">
+                    @*<div class="icon_nav">
                         <img class="img-fluid lazyload" data-src="//cdn.shopify.com/s/files/1/0523/8728/3107/files/v-1_50x.png?v=1610684438" alt="image">
-                    </div>
+                    </div>*@
 
                     <div class="group_title">
 
                         @category.Key
+                        <div class="sub_title_nav">
 
-                        <div class="sub_title_nav">Apple, Orange, Watermelon, Banana Pineapple, Grapes...</div>
-
+                            @foreach (var product in category)
+                            {
+                            <span>@product.Name</span>
+                            }
+                        </div>
                     </div>
                 </a>
                 <span class="d-lg-none show_sub"><i class="zmdi zmdi-plus-square"></i></span>
