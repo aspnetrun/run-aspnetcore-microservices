@@ -10,52 +10,48 @@ namespace AspnetRunBasics
 {
     public class CartModel : PageModel
     {
-        private readonly IBasketApi _basketApi;
-        private readonly ICatalogApi _catalogApi;
+        private readonly IBasketRepository _basketRepository;
 
-        public CartModel(IBasketApi basketApi, ICatalogApi catalogApi)
+        public CartModel(IBasketRepository basketRepository)
         {
-            _basketApi = basketApi ?? throw new ArgumentNullException(nameof(basketApi));
-            _catalogApi = catalogApi ?? throw new ArgumentNullException(nameof(basketApi));
+            _basketRepository = basketRepository ?? throw new ArgumentNullException(nameof(basketRepository));
+
         }
 
-        public BasketModel Cart { get; set; } = new BasketModel();
+        public BasketRepositoryModel Cart { get; set; } = new BasketRepositoryModel();
 
-        public async Task<string> GetImageFileAsync(string id)
-        {
-           return  (await _catalogApi.GetCatalog(id)).ImageFile;
+        //public async Task<string> GetImageFileAsync(string id)
+        //{
+        //   return  (await _catalogApi.GetCatalog(id)).ImageFile;
 
-        }
+        //}
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var userName = "swn";
-            Cart = await _basketApi.GetBasket(userName);
+            Cart = _basketRepository.GetAllBasket();
 
             return Page();
         }
 
         public async Task<IActionResult> OnPostRemoveToCartAsync(string productId)
         {
-            var userName = "swn";
-            var basket = await _basketApi.GetBasket(userName);
+            var basket = _basketRepository.GetAllBasket();
 
             var item = basket.Items.Where(x => x.ProductId == productId).FirstOrDefault();
             basket.Items.Remove(item);
 
-            var basketUpdated = await _basketApi.UpdateBasket(basket);
+            _basketRepository.Update(basket);
 
             return RedirectToPage();
         }
 
         public async Task<IActionResult> OnPostUpdateAsync(string productId, string qty)
         {
-            var userName = "swn";
-            var basket = await _basketApi.GetBasket(userName);
+            var basket = _basketRepository.GetAllBasket();
 
             var item =   basket.Items.Where(x => x.ProductId == productId).FirstOrDefault().Quantity=int.Parse(qty);
 
-            var basketUpdated = await _basketApi.UpdateBasket(basket);
+            _basketRepository.Update(basket);
 
             return RedirectToPage();
         }

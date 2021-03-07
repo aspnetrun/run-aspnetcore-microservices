@@ -61,19 +61,19 @@ namespace Basket.API.Controllers
             // remove the basket 
             // send checkout event to rabbitMq 
 
-            var basket = await _repository.GetBasket(basketCheckout.UserName);
-            if (basket == null)
-            {
-                _logger.LogError("Basket not exist with this user : {EventId}", basketCheckout.UserName);
-                return BadRequest();
-            }
+            //var basket = await _repository.GetBasket(basketCheckout.UserName);
+            //if (basket == null)
+            //{
+            //    _logger.LogError("Basket not exist with this user : {EventId}", basketCheckout.UserName);
+            //    return BadRequest();
+            //}
 
-            var basketRemoved = await _repository.DeleteBasket(basketCheckout.UserName);
-            if (!basketRemoved)
-            {
-                _logger.LogError("Basket can not deleted");
-                return BadRequest();
-            }
+            //var basketRemoved = await _repository.DeleteBasket(basketCheckout.UserName);
+            //if (!basketRemoved)
+            //{
+            //    _logger.LogError("Basket can not deleted");
+            //    return BadRequest();
+            //}
 
             // Once basket is checkout, sends an integration event to
             // ordering.api to convert basket to order and proceeds with
@@ -81,7 +81,7 @@ namespace Basket.API.Controllers
 
             var eventMessage = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
             eventMessage.RequestId = Guid.NewGuid();
-            eventMessage.TotalPrice = basket.TotalPrice;
+            eventMessage.TotalPrice = basketCheckout.TotalPrice;
            
             try
             {

@@ -12,12 +12,12 @@ namespace AspnetRunBasics
     public class ProductModel : PageModel
     {
         private readonly ICatalogApi _catalogApi;
-        private readonly IBasketApi _basketApi;
+        private readonly IBasketRepository _basketRepository;
 
-        public ProductModel(ICatalogApi catalogApi, IBasketApi basketApi)
+        public ProductModel(ICatalogApi catalogApi, IBasketRepository basketRepository)
         {
             _catalogApi = catalogApi ?? throw new ArgumentNullException(nameof(catalogApi));
-            _basketApi = basketApi ?? throw new ArgumentNullException(nameof(basketApi));
+            _basketRepository = basketRepository ?? throw new ArgumentNullException(nameof(basketRepository));
         }
 
         public IEnumerable<string> CategoryList { get; set; } = new List<string>();
@@ -50,21 +50,24 @@ namespace AspnetRunBasics
         {
             var product = await _catalogApi.GetCatalog(productId);
 
-            var userName = "swn";
-            var basket = await _basketApi.GetBasket(userName);
-
-            if (basket.Items.FindAll(i => i.ProductId == productId).Count == 0)
+            var basket = _basketRepository.GetAllBasket();
+            if (basket.Items.Find(i => i.ProductId == productId) == null)
             {
-                basket.Items.Add(new BasketItemModel
+                basket.Items.Add(new BasketItemRepositoryModel
                 {
                     ProductId = productId,
                     ProductName = product.Name,
                     Price = product.Price,
                     Quantity = 1,
-                    Color = "Black"
+                    ImageFile = product.ImageFile
                 });
-                var basketUpdated = await _basketApi.UpdateBasket(basket);
             }
+            else
+            {
+                basket.Items.Find(i => i.ProductId == productId).Quantity++;
+            }
+
+            _basketRepository.Update(basket);
 
             return RedirectToPage("Cart");
         }

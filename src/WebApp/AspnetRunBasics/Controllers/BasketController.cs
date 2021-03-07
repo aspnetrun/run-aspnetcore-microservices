@@ -10,18 +10,18 @@ namespace AspnetRunBasics.Controllers
     public class BasketController : Controller
     {
 
-        private readonly IBasketApi _basketApi;
+        private readonly IBasketRepository _basketRepository;
 
-        public BasketController(IBasketApi basketApi)
+        public BasketController(IBasketRepository basketRepository)
         {
-            _basketApi = basketApi ?? throw new ArgumentNullException(nameof(basketApi));
+            _basketRepository = basketRepository ?? throw new ArgumentNullException(nameof(basketRepository));
         }
 
         [HttpGet]
         public int GetDataAsync()
         {
             var userName = "swn";
-            var count =  _basketApi.GetBasket(userName).Result.Items.Count;
+            var count =  _basketRepository.GetAllBasket().Items.Count;
 
             return count;
         }

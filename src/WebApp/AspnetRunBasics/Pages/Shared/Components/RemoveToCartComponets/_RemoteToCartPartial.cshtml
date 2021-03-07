@@ -1,4 +1,4 @@
-﻿@model BasketModel
+﻿@model BasketRepositoryModel
 
 
 
@@ -9,7 +9,7 @@
         <div class="ajaxcart__product" data-line="@i">
             <div class="media">
                 <a href="/products/yiamond-palo-stud-garrings?variant=37493484355747">
-                    <img class="d-flex product-image" src="https://cdn.shopify.com/s/files/1/0523/8728/3107/products/32_e566c5f1-1aa1-43bf-8b62-8b5bf18c62c9_small.jpg" alt="Yiamond Palo Stud Garrings - ultra / red" title="Yiamond Palo Stud Garrings - ultra / red">
+                    <img class="d-flex product-image" src="~/images/product/@Model.Items[i].ImageFile" alt="Yiamond Palo Stud Garrings - ultra / red" title="Yiamond Palo Stud Garrings - ultra / red">
                 </a>
                 <div class="media-body">
                     <a class="product-name" href="/products/yiamond-palo-stud-garrings?variant=37493484355747">@Model.Items[i].ProductName</a><div class="mb-5"></div><span class="product-price">

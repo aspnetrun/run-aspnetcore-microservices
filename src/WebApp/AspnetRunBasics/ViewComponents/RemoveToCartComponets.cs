@@ -9,15 +9,15 @@ namespace AspnetRunBasics.ViewComponents
 {
     public class RemoveToCartComponets : ViewComponent
     {
-        private readonly IBasketApi _basketApi;
+        private readonly IBasketRepository _basketRepository;
 
-        public RemoveToCartComponets(IBasketApi basketApi, ICatalogApi catalogApi)
+        public RemoveToCartComponets(IBasketRepository basketRepository)
         {
-            _basketApi = basketApi ?? throw new ArgumentNullException(nameof(basketApi));
+            _basketRepository = basketRepository ?? throw new ArgumentNullException(nameof(basketRepository));
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View("_RemoteToCartPartial", await _basketApi.GetBasket("swn"));
+            return View("_RemoteToCartPartial", _basketRepository.GetAllBasket());
         }
     }
 }

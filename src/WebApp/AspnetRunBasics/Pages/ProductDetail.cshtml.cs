@@ -10,12 +10,12 @@ namespace AspnetRunBasics
     public class ProductDetailModel : PageModel
     {
         private readonly ICatalogApi _catalogApi;
-        private readonly IBasketApi _basketApi;
+        private readonly IBasketRepository _basketRepository;
 
-        public ProductDetailModel(ICatalogApi catalogApi, IBasketApi basketApi)
+        public ProductDetailModel(ICatalogApi catalogApi, IBasketRepository basketRepository)
         {
             _catalogApi = catalogApi ?? throw new ArgumentNullException(nameof(catalogApi));
-            _basketApi = basketApi ?? throw new ArgumentNullException(nameof(basketApi));
+            _basketRepository = basketRepository ?? throw new ArgumentNullException(nameof(basketRepository));
         }
 
         public CatalogModel Product { get; set; }
@@ -42,18 +42,24 @@ namespace AspnetRunBasics
         {
             var product = await _catalogApi.GetCatalog(productId);
 
-            var userName = "swn";
-            var basket = await _basketApi.GetBasket(userName);
-
-            basket.Items.Add(new BasketItemModel
+            var basket = _basketRepository.GetAllBasket();
+            if (basket.Items.Find(i => i.ProductId == productId)==null)
             {
-                ProductId = productId,
-                ProductName = product.Name,
-                Price = product.Price,
-                Quantity = Quantity
-            });
+                basket.Items.Add(new BasketItemRepositoryModel
+                {
+                    ProductId = productId,
+                    ProductName = product.Name,
+                    Price = product.Price,
+                    Quantity = Quantity,
+                    ImageFile=product.ImageFile
+                });
+            }
+            else
+            {
+                basket.Items.Find(i => i.ProductId == productId).Quantity = Quantity;
+            }
 
-            var basketUpdated = await _basketApi.UpdateBasket(basket);
+            _basketRepository.Update(basket);
 
             return RedirectToPage("Cart");
         }

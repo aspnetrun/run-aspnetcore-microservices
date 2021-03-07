@@ -30,6 +30,8 @@ namespace AspnetRunBasics
 
             #endregion
 
+            services.AddHttpContextAccessor();
+
             #region Project Dependencies
 
             // add for httpClient factory
@@ -39,8 +41,10 @@ namespace AspnetRunBasics
             services.AddTransient<ICatalogApi, CatalogApi>();
             services.AddTransient<IBasketApi, BasketApi>();
             services.AddTransient<IOrderApi, OrderApi>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
 
             #endregion
+            services.AddSession();
 
             services.AddRazorPages();
             services.AddControllersWithViews();
@@ -63,6 +67,8 @@ namespace AspnetRunBasics
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
