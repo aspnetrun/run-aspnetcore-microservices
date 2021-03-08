@@ -8,7 +8,7 @@ https://github.com/mehmetozkaya/MicroservicesApp
 
 See the overall picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
-![microservices_remastered](https://user-images.githubusercontent.com/1147445/109155464-a1dbfc00-7780-11eb-88eb-ebcab440b45f.png)
+![microservices_remastered](https://user-images.githubusercontent.com/1147445/110296956-fcd4e500-8003-11eb-866e-189f0c9d15e0.png)
 
 There is a couple of microservices which implemented **e-commerce** modules over **Product, Basket, Discount** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (PostgreSQL, Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
