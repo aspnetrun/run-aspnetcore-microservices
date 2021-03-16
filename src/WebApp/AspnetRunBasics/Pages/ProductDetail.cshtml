@@ -85,7 +85,7 @@
                                         </div>
                                         <span class="product__available in-stock">
                                             <span>In stock</span>
-                                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                            <i class="fa fa-check-square-o" aria-hidden="@Model.Product.InStock.ToString()"></i>
                                         </span>
                                     </div>
                                     <div class="group-single__sku has-border">
@@ -198,7 +198,7 @@
 
                         <div class="tab-pane" id="tabCustom-3">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UqyD2PgOw9Q" id="video" allowfullscreen=""></iframe>
+                                <iframe class="embed-responsive-item" src="@Model.Product.UrlVideo" id="video" allowfullscreen=""></iframe>
                             </div>
                         </div>
 
