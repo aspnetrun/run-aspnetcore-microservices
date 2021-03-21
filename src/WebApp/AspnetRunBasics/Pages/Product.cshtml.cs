@@ -81,7 +81,7 @@ namespace AspnetRunBasics
 
             _basketRepository.Update(basket);
 
-            return RedirectToPage();
+            return RedirectToPage("Product");
         }
     }
 }

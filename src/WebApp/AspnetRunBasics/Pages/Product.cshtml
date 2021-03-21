@@ -33,15 +33,6 @@
                     }
                 </ul>
             </div>
-            <div class="card bg-light mb-3">
-                <div class="card-header text-white text-uppercase" style="background-color:#0b6343">Last product</div>
-                <div class="card-body">
-                    <img asp-append-version="true" class="img-fluid" src="~/images/product/@Model.ProductList.LastOrDefault().ImageFile" />
-                    <h5 class="card-title">@Model.ProductList.LastOrDefault().Name</h5>
-                    <p class="card-text">@Model.ProductList.LastOrDefault().Summary</p>
-                    <p class="bloc_left_price">@Model.ProductList.LastOrDefault().Price TL</p>
-                </div>
-            </div>
         </div>
 
         <div class="col">

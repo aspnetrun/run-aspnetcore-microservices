@@ -5,12 +5,12 @@
     {
         <div class="ajaxcart__product" data-line="@i">
             <div class="media">
-                <a href="/products/yiamond-palo-stud-garrings?variant=37493484355747">
-                    <img class="d-flex product-image" src="~/images/product/@Model.Items[i].ImageFile" alt="Yiamond Palo Stud Garrings - ultra / red" title="Yiamond Palo Stud Garrings - ultra / red">
+                <a href="/Product/@Model.Items[i].ProductId">
+                    <img class="d-flex product-image" src="~/images/product/@Model.Items[i].ImageFile">
                 </a>
                 <div class="media-body">
-                    <a class="product-name" href="/products/yiamond-palo-stud-garrings?variant=37493484355747">@Model.Items[i].ProductName</a><div class="mb-5"></div><span class="product-price">
-                        <span class="money" data-currency-usd="$18.00" data-currency="USD">@Model.Items[i].Price</span>
+                    <a class="product-name" href="/Product/@Model.Items[i].ProductId">@Model.Items[i].ProductName</a><div class="mb-5"></div><span class="product-price">
+                        <span class="money" data-currency-usd="$18.00" data-currency="USD">@Model.Items[i].Price TL</span>
                     </span>
                     <span class="quantity">  X  @Model.Items[i].Quantity </span>
                         <button class="cart__remove clean-btn remove-from-cart" onclick="UpdateCount()" title="remove from cart"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>

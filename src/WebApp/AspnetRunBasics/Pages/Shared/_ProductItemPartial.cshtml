@@ -14,25 +14,23 @@
             <a asp-page="ProductDetail" asp-route-productId="@Model.Id" tabindex="0">@Model.Name</a>
         </div>
 
-        <div class="product__review">
+        @*<div class="product__review">
             <div class="rating">
                 <span class="spr-badge" id="spr_badge_5997971079331" data-rating="0.0">
                     <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star"></i><i class="spr-icon spr-icon-star-empty"></i><i class="spr-icon spr-icon-star-empty"></i><i class="spr-icon spr-icon-star-empty"></i></span><span class="spr-badge-caption">No reviews</span>
                 </span>
             </div>
-        </div>
+        </div>*@
 
         <div class="product__price">
             <!-- snippet/product-price.liquid -->
-
             <span class="visually-hidden">Regular price</span>
             <span class="product-price__price"><span class="money" data-currency-usd="$22.00" data-currency="USD">@Model.Price</span></span>
         </div>
         <div class="group-buttons">
-
             <form asp-page-handler="AddToCart" method="post" name="addToCartForm" id="add_cart_form" class="formAddToCart">
                 <input type="hidden" asp-for="@Model.Id" name="productId" />
-                <button class="btn btnAddToCart" type="submit" onclick="UpdateCount()" value="Submit" data-handle="ziamond-ralo-stud-farrings" data-pid="37493471281315" data-toggle="tooltip" data-placement="top" title="" tabindex="0">
+                <button class="btn btnAddToCart" type="submit" onclick="UpdateCount()" value="Submit">
                     <i class="icon-cart-product"></i>
                     <span>Add to cart</span>
                 </button>
