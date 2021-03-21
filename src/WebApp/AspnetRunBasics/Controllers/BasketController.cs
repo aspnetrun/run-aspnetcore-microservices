@@ -20,9 +20,12 @@ namespace AspnetRunBasics.Controllers
         [HttpGet]
         public int GetDataAsync()
         {
-            var userName = "swn";
-            var count =  _basketRepository.GetAllBasket().Items.Count;
-
+            int count = 0;
+            foreach (var item in _basketRepository.GetAllBasket().Items)
+            {
+                count +=  item.Quantity;
+            }
+              
             return count;
         }
 
