@@ -11,5 +11,7 @@ namespace AspnetRunBasics.Models
         public string Description { get; set; }
         public IFormFile ImageURL { get; set; }
         public decimal Price { get; set; }
+        public bool InStock { get; set; }
+        public string UrlVideo { get; set; }
     }
 }
