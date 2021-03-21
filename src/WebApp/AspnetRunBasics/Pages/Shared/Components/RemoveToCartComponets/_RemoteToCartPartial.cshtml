@@ -13,10 +13,8 @@
                         <span class="money" data-currency-usd="$18.00" data-currency="USD">@Model.Items[i].Price</span>
                     </span>
                     <span class="quantity">  X  @Model.Items[i].Quantity </span>
-                    <form asp-page-handler="removetocart" method="post">
                         <button class="cart__remove clean-btn remove-from-cart" onclick="UpdateCount()" title="remove from cart"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
                         <input type="hidden" asp-for="@Model.Items[i].ProductId" name="productId" />
-                     </form>
                 </div>
             </div>
         </div>
