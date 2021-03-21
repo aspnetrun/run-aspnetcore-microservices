@@ -80,7 +80,7 @@ namespace AspnetRunBasics
             }
 
             _basketRepository.Update(basket);
-
+            TempData["BasketInfo"] = product.Name + "Sepete Eklendi";
             return RedirectToPage("Product");
         }
     }
