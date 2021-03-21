@@ -41,6 +41,7 @@ namespace AspnetRunBasics
             else
             {
                 ProductList = productList;
+                SelectedCategory = "Tüm Ürünler";
             }
 
             return Page();

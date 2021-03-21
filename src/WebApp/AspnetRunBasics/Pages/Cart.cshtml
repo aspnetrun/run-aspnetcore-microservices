@@ -26,19 +26,29 @@
                 <div class="title-block">Shopping Cart</div>
             </div>
 
-            <div  class="cart">
+            <div class="cart">
                 <div class="row data-sticky_parent">
                     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
                         <div class="cart__layout_left">
-                            <div class="cart__header d-xs-none">
-                                <div class="row spacing-0">
-                                    <div class="col-md-1 label_remove"></div>
-                                    <div class="col-md-5 label_product">Product</div>
-                                    <div class="col-md-2 label_price">Price</div>
-                                    <div class="col-md-2 label_quantity">Qty</div>
-                                    <div class="col-md-2 label_total">Total</div>
+                            @if (Model.Cart.Items.Count > 0)
+                            {
+                                <div class="generic_menu cart__header d-xs-none">
+                                    <div class="row spacing-0">
+                                        <div class="col-md-1 label_remove"></div>
+                                        <div class="col-md-5 label_product">Product</div>
+                                        <div class="col-md-2 label_price">Price</div>
+                                        <div class="col-md-2 label_quantity">Qty</div>
+                                        <div class="col-md-2 label_total">Total</div>
+                                    </div>
                                 </div>
-                            </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning" role="alert">
+                                    Sepetinize ekli ürün bulunmamaktadır!
+                                </div>
+                            }
+
                             <div class="cart__body">
 
 
@@ -49,7 +59,7 @@
 
                                             <form asp-page-handler="removetocart" method="post">
                                                 <button class="cart__remove clean-btn"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                                <input  type="hidden" asp-for="@cartItem.ProductId" name="productId" />
+                                                <input type="hidden" asp-for="@cartItem.ProductId" name="productId" />
                                             </form>
 
                                         </div>
@@ -113,8 +123,14 @@
                             </div>
                             <div class="button_cart">
 
-                                <a asp-page="CheckOut" name="checkout" class="btn btn--small-wide" >Proceed to checkout</a>
-
+                                @if (Model.Cart.Items.Count > 0)
+                                {
+                                    <a asp-page="CheckOut" name="checkout" class="btn btn--small-wide">Proceed to checkout</a>
+                                }
+                                else
+                                {
+                                    <a asp-page="CheckOut" style="display: none;" name="checkout" class="btn btn--small-wide">Proceed to checkout</a>
+                                }
                                 <a asp-page="Product" class="btn cart__update cart__continue--large">Continue shopping</a>
                             </div>
                         </div>

@@ -20,19 +20,19 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12 col-sm-3">
-            <div class="card bg-light mb-3">
-                <div class="card-header text-white text-uppercase" style="background-color:#0b6343"><i class="fa fa-list"></i> Categories</div>
+        <div class="col-12 col-sm-3 generic_menu">
+            <div class="card bg-light mb-3 list-group">
+                <a asp-page="Product" class="list-group-item list-group-item-action @( Model.SelectedCategory == "Tüm Ürünler"?"active":"" )"><i class="fa fa-list"></i> Tüm Ürünler</a>
                 <ul class="list-group category_block">
 
                     @foreach (var category in Model.CategoryList)
                     {
-                        <li class="list-group-item"><a asp-page="Product" asp-route-categoryName="@category">@category</a></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center @( Model.SelectedCategory == category?"active":"" )">
+                            <a asp-page="Product" asp-route-categoryName="@category">@category</a>
+                        </li>
                     }
-
                 </ul>
             </div>
-
             <div class="card bg-light mb-3">
                 <div class="card-header text-white text-uppercase" style="background-color:#0b6343">Last product</div>
                 <div class="card-body">
@@ -42,20 +42,45 @@
                     <p class="bloc_left_price">@Model.ProductList.LastOrDefault().Price TL</p>
                 </div>
             </div>
-
         </div>
 
         <div class="col">
             <div class="row grid--view-items row nov-slick-carousel slick-initialized slick-slider">
-                
-                    @foreach (var product in Model.ProductList)
-                    {
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <partial name="_ProductItemPartial" model="@product" />
-                        </div>
-                    }
+
+                @foreach (var product in Model.ProductList)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <partial name="_ProductItemPartial" model="@product" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mobil_destop">
+    <div class="row">
+        <div class="col">
+            <div class="productbar">
+                <div class="productbar-container">
+
+                    <h3>Tüm Ürünler</h3>
+                    <div class="productlinks">
+                        @foreach (var category in Model.CategoryList)
+                        {
+                            @if (category == Model.SelectedCategory)
+                            {
+                                <a asp-page="Product" asp-route-categoryName="@category"> <strong>» @category</strong></a>
+                            }
+                            else
+                            {
+                                <a asp-page="Product" asp-route-categoryName="@category">» @category</a>
+                            }
+                        }
+                    </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
 

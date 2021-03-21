@@ -27,8 +27,8 @@ namespace Catalog.API.Data
                     ImageFile = "product-1.png",
                     Price = 950.00M,
                     Category = "Smart Phone",
-                    InStock=true,
-                    UrlVideo = "https://youtu.be/5ZxDK1E9XUA"
+                    InStock=false,
+                    UrlVideo = "https://www.youtube.com/embed/UqyD2PgOw9Q"
                 },
                 new Product()
                 {
@@ -39,7 +39,7 @@ namespace Catalog.API.Data
                     Price = 840.00M,
                     Category = "Smart Phone",
                     InStock=true,
-                    UrlVideo = "https://youtu.be/5ZxDK1E9XUA"
+                    UrlVideo = "https://www.youtube.com/embed/UqyD2PgOw9Q"
                 },
                 new Product()
                 {
@@ -47,8 +47,10 @@ namespace Catalog.API.Data
                     Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
                     ImageFile = "product-3.png",
+                    Price = 470.00M,
+                    Category = "White Appliances",
                     InStock=true,
-                    UrlVideo = "https://youtu.be/5ZxDK1E9XUA"
+                    UrlVideo = "https://www.youtube.com/embed/UqyD2PgOw9Q"
                 },
                 new Product()
                 {
@@ -58,8 +60,8 @@ namespace Catalog.API.Data
                     ImageFile = "product-4.png",
                     Price = 470.00M,
                     Category = "White Appliances",
-                    InStock=true,
-                    UrlVideo = "https://youtu.be/5ZxDK1E9XUA"
+                    InStock=false,
+                    UrlVideo = "https://www.youtube.com/embed/UqyD2PgOw9Q"
                 },
                 new Product()
                 {
@@ -70,7 +72,7 @@ namespace Catalog.API.Data
                     Price = 380.00M,
                     Category = "Smart Phone",
                     InStock=true,
-                    UrlVideo = "https://youtu.be/5ZxDK1E9XUA"
+                    UrlVideo = "https://www.youtube.com/embed/UqyD2PgOw9Q"
                 },
                 new Product()
                 {
@@ -81,7 +83,7 @@ namespace Catalog.API.Data
                     Price = 240.00M,
                     Category = "Home Kitchen",
                     InStock=true,
-                    UrlVideo = "https://youtu.be/5ZxDK1E9XUA"
+                    UrlVideo = "https://www.youtube.com/embed/UqyD2PgOw9Q"
                 }
             };
         }

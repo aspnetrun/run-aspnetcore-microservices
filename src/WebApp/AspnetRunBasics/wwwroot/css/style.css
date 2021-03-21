@@ -73,3 +73,79 @@ footer a {
     width:92px;
     height:92px;
 }
+.menu_color {
+    color: #fff;
+    background-color: #0b6343 !important;
+}
+@media only screen and (max-width: 768px) {
+    .generic_menu {
+        display: none !important;
+    }
+}
+.generic_menu {
+    display: block;
+}
+
+.category_block li:hover {
+    background-color: #0b6343 !important;
+}
+.list-group-item.active {
+    background-color: #0b6343 !important;
+    border-color: #0b6343 !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .mobil_destop {
+        display: block !important;
+    }
+}
+
+.mobil_destop {
+    display: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .productbar {
+        background-color: #FFF;
+        float: left;
+        width: 100%;
+        box-shadow: 0px 0px 8px #ccc;
+        padding: 8px;
+        margin-top: 10px;
+        padding-right: 10px;
+    }
+}
+
+.productbar-container {
+    border: 4px solid #e2dddd;
+    float: left;
+    width: 100%;
+}
+.productbar-container h3 {
+    color: #9a7539;
+    margin-left: 20px;
+    margin-top: 15px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.productlinks {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.productlinks a {
+    float: left;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: #C89B60;
+}
+
+.clear {
+    clear: both;
+}
