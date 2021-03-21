@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AspnetRunBasics.ApiCollection.Interfaces;
 using AspnetRunBasics.Models;
@@ -26,6 +27,17 @@ namespace AspnetRunBasics.Pages
             ProductList = await _catalogApi.GetCatalog();
             return Page();
         }
+        public async Task<IActionResult> OnPostRemoveToCartAsync(string productId)
+        {
+            var basket = _basketRepository.GetAllBasket();
+
+            var item = basket.Items.Where(x => x.ProductId == productId).FirstOrDefault();
+            basket.Items.Remove(item);
+
+            _basketRepository.Update(basket);
+
+            return RedirectToPage();
+        }
 
         public async Task<IActionResult> OnPostAddToCartAsync(string productId)
         {
@@ -50,7 +62,7 @@ namespace AspnetRunBasics.Pages
 
             _basketRepository.Update(basket);
 
-            return RedirectToPage("Cart");
+            return RedirectToPage();
         }
 
     }

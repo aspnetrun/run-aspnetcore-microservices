@@ -46,6 +46,17 @@ namespace AspnetRunBasics
 
             return Page();
         }
+        public async Task<IActionResult> OnPostRemoveToCartAsync(string productId)
+        {
+            var basket = _basketRepository.GetAllBasket();
+
+            var item = basket.Items.Where(x => x.ProductId == productId).FirstOrDefault();
+            basket.Items.Remove(item);
+
+            _basketRepository.Update(basket);
+
+            return RedirectToPage();
+        }
 
         public async Task<IActionResult> OnPostAddToCartAsync(string productId)
         {
@@ -70,7 +81,7 @@ namespace AspnetRunBasics
 
             _basketRepository.Update(basket);
 
-            return RedirectToPage("Cart");
+            return RedirectToPage();
         }
     }
 }
