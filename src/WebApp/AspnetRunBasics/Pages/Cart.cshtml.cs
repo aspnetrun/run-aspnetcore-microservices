@@ -55,8 +55,5 @@ namespace AspnetRunBasics
 
             return RedirectToPage();
         }
-
-
-
     }
 }

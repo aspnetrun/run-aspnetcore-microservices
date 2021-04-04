@@ -11,5 +11,6 @@
         public decimal Price { get; set; }
         public bool InStock { get; set; }
         public string UrlVideo { get; set; }
+        public string Count { get; set; }
     }
 }

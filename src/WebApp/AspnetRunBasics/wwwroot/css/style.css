@@ -15,7 +15,7 @@
     color: #ffffff;
 }
 .category_block li a {
-    color: #343a40;
+    color: #fefeff !important;
 }
 .add_to_cart_block .price {
     color: #c01508;
@@ -93,6 +93,9 @@ footer a {
     background-color: #0b6343 !important;
     border-color: #0b6343 !important;
 }
+.list-group-item {
+    color: #1d3c25!important;
+}
 
 @media only screen and (max-width: 768px) {
     .mobil_destop {
@@ -148,4 +151,13 @@ footer a {
 
 .clear {
     clear: both;
+}
+
+.is-active a {
+    color: #0d7a52;
+}
+.is-active span {
+}
+.site-backcolor {
+    background-color: #0d7a52;
 }

@@ -17,98 +17,72 @@
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         <div class="col">
             @if (TempData["BasketInfo"] != null)
             {
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>@TempData["BasketInfo"].ToString()</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-
-                <!--<div class="modal fade" id="myModal" role="dialog">-->
-                    <!--<div class="modal-dialog">-->
-
-                        <!-- Modal content-->
-                        <!--<div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Modal Header</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Some text in the modal.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>-->
-            </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@TempData["BasketInfo"].ToString()</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             }
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-sm-3 generic_menu">
-            <div class="card bg-light mb-3 list-group">
-                <a asp-page="Product" class="list-group-item list-group-item-action @( Model.SelectedCategory == "Tüm Ürünler"?"active":"" )"><i class="fa fa-list"></i> Tüm Ürünler</a>
-                <ul class="list-group category_block">
 
-                    @foreach (var category in Model.CategoryList)
-                    {
-                        <li class="list-group-item d-flex justify-content-between align-items-center @( Model.SelectedCategory == category?"active":"" )">
-                            <a asp-page="Product" asp-route-categoryName="@category">@category</a>
-                        </li>
-                    }
-                </ul>
-            </div>
-        </div>
+<main class="main-content" id="MainContent">
+    <section class="page-container" id="PageContainer">
+        <div class="page-width">
+            <div class="container">
+                <div class="row">
+                    <div class="sidebar sidebar-collection col-lg-3 col-md-4 flex-xs-unordered">
+                        <div id="shopify-section-nov-sidebar" class="shopify-section">
+                            <div class="close-filter"><i class="zmdi zmdi-close"></i></div>
 
-        <div class="col">
-            <div class="row grid--view-items row nov-slick-carousel slick-initialized slick-slider">
+                            <div class="categories__sidebar sidebar-block sidebar-block__1">
 
-                @foreach (var product in Model.ProductList)
-                {
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <partial name="_ProductItemPartial" model="@product" />
+                                <div class="title-block mb-30">
+                                    Tüm Ürünler
+                                </div>
+
+                                <ul class="list-unstyled">
+
+                                    @foreach (var category in Model.CategoryList)
+                                    {
+                                    <li class="d-flex mb-10 @( Model.SelectedCategory == category?"is-active":"" )">
+                                        <a asp-page="Product" asp-route-categoryName="@category" title="Bread">@category</a>
+                                        <span class="count_all">24</span>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                }
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="container mobil_destop">
-    <div class="row">
-        <div class="col">
-            <div class="productbar">
-                <div class="productbar-container">
+                    <div class="col-lg-9 col-md-12 flex-xs-first">
+                        <div id="shopify-section-collection-template" class="shopify-section">
+                            <div class="row collection-view-items view_3 grid--view-items">
+                                <div class="col">
+                                    <div class="row grid--view-items row nov-slick-carousel slick-initialized slick-slider">
 
-                    <h3>Tüm Ürünler</h3>
-                    <div class="productlinks">
-                        @foreach (var category in Model.CategoryList)
-                        {
-                            @if (category == Model.SelectedCategory)
-                            {
-                                <a asp-page="Product" asp-route-categoryName="@category"> <strong>» @category</strong></a>
-                            }
-                            else
-                            {
-                                <a asp-page="Product" asp-route-categoryName="@category">» @category</a>
-                            }
-                        }
+                                        @foreach (var product in Model.ProductList)
+                                        {
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <partial name="_ProductItemPartial" model="@product" />
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-
+    </section>
+</main>

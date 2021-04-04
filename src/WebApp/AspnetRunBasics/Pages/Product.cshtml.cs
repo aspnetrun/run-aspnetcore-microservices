@@ -55,7 +55,7 @@ namespace AspnetRunBasics
 
             _basketRepository.Update(basket);
 
-            return RedirectToPage();
+            return RedirectToPage("Product", new { categoryName = item.Category });
         }
 
         public async Task<IActionResult> OnPostAddToCartAsync(string productId)
@@ -71,7 +71,9 @@ namespace AspnetRunBasics
                     ProductName = product.Name,
                     Price = product.Price,
                     Quantity = 1,
-                    ImageFile = product.ImageFile
+                    ImageFile = product.ImageFile,
+                    Category = product.Category
+                    
                 });
             }
             else
@@ -80,8 +82,8 @@ namespace AspnetRunBasics
             }
 
             _basketRepository.Update(basket);
-            TempData["BasketInfo"] = product.Name + "Sepete Eklendi";
-            return RedirectToPage("Product");
+            TempData["BasketInfo"] = product.Name + " Sepete Eklendi";
+            return RedirectToPage("Product", new { categoryName = product.Category });
         }
     }
 }
