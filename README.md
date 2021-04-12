@@ -1,16 +1,13 @@
 
-![Screenshot_6](https://user-images.githubusercontent.com/1147445/85838002-907dc280-b7a1-11ea-8219-f84e3af8ba52.png)
+[![Screenshot_6](https://user-images.githubusercontent.com/1147445/85838002-907dc280-b7a1-11ea-8219-f84e3af8ba52.png)](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=APRIL2021)
 
-**UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=C624710F8B411FE7A4FB**
-
-**NOTE :** For those who comes from udemy, I have just updated the repository so udemy course will be updated soon. Since that time the course repository moved here ->
-https://github.com/mehmetozkaya/MicroservicesApp
+**UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=APRIL2021**
 
 See the overall picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
-![aspnetrun-microservices](https://user-images.githubusercontent.com/1147445/79753821-34b93800-831f-11ea-86fc-617654557084.png)
+![microservices_remastered](https://user-images.githubusercontent.com/1147445/110304529-c5b70180-800c-11eb-832b-a2751b5bda76.png)
 
-There is a couple of microservices which implemented **e-commerce** modules over **Product, Basket, Discount** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (PostgreSQL, Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
+There is a couple of microservices which implemented **e-commerce** modules over **Catalog, Basket, Discount** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (PostgreSQL, Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
 ## Whats Including In This Repository
 We have implemented below **features over the run-aspnetcore-microservices repository**.
@@ -94,7 +91,7 @@ Follow these steps to get your development environment set up: (Before Run Start
 * CPU: 2
 3. At the root directory which include **docker-compose.yml** files, run below command:
 ```csharp
-docker-compose -f docker-compose.yml -f docker-compose.override.yml up –d
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 ```
 3. Wait for docker compose all microservices. That’s it! (some microservices need extra time to work so please wait if not worked in first shut)
 
@@ -108,6 +105,7 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up –d
 * **API Gateway -> http://host.docker.internal:8010/Catalog**
 * **Rabbit Management Dashboard -> http://host.docker.internal:15672**   -- guest/guest
 * **Portainer -> http://host.docker.internal:9000**   -- admin/admin1234
+* **pgAdmin PostgreSQL -> http://host.docker.internal:5050**   -- admin@aspnetrun.com/admin1234
 * **Elasticsearch -> http://host.docker.internal:9200**
 * **Kibana -> http://host.docker.internal:5601**
 
@@ -120,43 +118,6 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up –d
 ![mainscreen2](https://user-images.githubusercontent.com/1147445/81381837-08226000-9116-11ea-9489-82645b8dbfc4.png)
 
 >Note: If you are running this application in macOS then use `docker.for.mac.localhost` as DNS name in `.env` file and the above URLs instead of `host.docker.internal`.
-
-## The Book - Microservices Architecture and Step by Step Implementation on .NET
-
-You can find **Microservices Architecture and Step by Step Implementation on .NET book** which **step by step developing** this repository with extensive explanations and details. This book is the **best path to leverage your .NET skills** in every aspect from beginner to senior level you can benefit to ramp-up faster on **Enterprise Application Development practices** and easy to **Onboarding to Full Stack .Net Core Developer jobs**. 
-
-The book also includes more practical information and I **update it regularly** and send it again with new versions.
-So the idea is once you buy a book, I take this as **supporting me** and **join them in my privilege group** for sharing **next outputs**.
-For example I am planning to add **IdentityServer4 implementation**, firstly I added it into a book and sent it to you.
-
-**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
-
-![aspnetrun_microservices3](https://user-images.githubusercontent.com/1147445/81383140-31dc8680-9118-11ea-992a-3ad8abc62314.png)
-
-**[Download Microservices Architecture and Step by Step Implementation on .NET Book](https://aspnetrun.azurewebsites.net/Microservices)**
-
-## Upcomming Features
-
-* Authentication with **IdentityServer4**
-* Deployment with **AKS**
-* Devops with **Azure Devops**
-
-# What is AspnetRun ? 
-The best path to **leverage your ASP.NET Core** skills. Onboarding to **Full Stack .Net Core Developer** jobs. Boilerplate for **ASP.NET Core reference application** with **Entity Framework Core**, demonstrating a layered application architecture with DDD best practices. Implements NLayer **Hexagonal architecture** (Core, Application, Infrastructure and Presentation Layers) and **Domain Driven Design** (Entities, Repositories, Domain/Application Services, DTO's...) 
-and aimed to be a **Clean Architecture**, with applying **SOLID principles** in order to use for a project template. 
-Also implements **best practices** like **loosely-coupled, dependency-inverted** architecture and using **design patterns** such as **Dependency Injection**, logging, validation, exception handling, localization and so on.
-
-You can check full repository documentations and step by step development of **[100+ page e-book PDF](https://aspnetrun.azurewebsites.net)** from here - **https://aspnetrun.azurewebsites.net**. Also detail introduction of book and project structure exists on **[medium aspnetrun page](https://medium.com/aspnetrun)**. You can follow **aspnetrun repositories** for building **step by step** asp.net core **web development skills**.
-
-# AspnetRun Repositories
-Here you can find all of the **aspnetrun repositories from easy to difficult**, Also this list can be track a **learning path** of asp.net core respectively;
-* **[run-aspnetcore-basics](https://github.com/aspnetrun/run-aspnetcore-basics)** - Building fastest ASP.NET Core Default Web Application template. This solution **only one solution one project** for **idea generation** with Asp.Net Core. 
-* **[run-aspnetcore](https://github.com/aspnetrun/run-aspnetcore)** - Building ASP.NET Core Web Application with Entity Framework.Core and apply **Clean Architecture** with DDD best practices.
-* **[run-aspnetcore-cqrs](https://github.com/aspnetrun/run-aspnetcore-cqrs)** - Building Single-Page Web Applications(SPA) using ASP.NET Core & EF.Core, Web API Project and implement **CQRS Design Pattern**.
-* **[run-aspnetcore-microservices](https://github.com/aspnetrun/run-aspnetcore-microservices)** - Building **Microservices** on .Net platforms which used **Asp.Net Web API, Docker, RabbitMQ, Ocelot API Gateway, MongoDB, Redis, SqlServer, Entity Framework Core, CQRS and Clean Architecture** implementation.
-
-## Give a Star! :star:
-If you liked the project or if AspnetRun helped you, please **give a star**. And also please **fork** this repository and send us **pull-requests**. If you find any problem please open **issue**.
 
 ## Authors
 
