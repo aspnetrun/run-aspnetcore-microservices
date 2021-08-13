@@ -1,14 +1,17 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Ordering.Application.Features.Orders.Commands.CheckoutOrder;
-using Ordering.Application.Features.Orders.Commands.UpdateOrder;
-using Ordering.Application.Features.Orders.Commands.DeleteOrder;
-using Ordering.Application.Features.Orders.Queries.GetOrdersList;
+// using Ordering.Application.Features.Orders.Commands.CheckoutOrder;
+// using Ordering.Application.Features.Orders.Commands.UpdateOrder;
+// using Ordering.Application.Features.Orders.Commands.DeleteOrder;
+// using Ordering.Application.Features.Orders.Queries.GetOrdersList;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+
+using Ordering.Application.Contracts.Services;
+using Ordering.API.Entities;
 
 namespace Ordering.API.Controllers
 {
@@ -16,19 +19,19 @@ namespace Ordering.API.Controllers
     [Route("api/v1/[controller]")]
     public class OrderController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        //private readonly IMediator _mediator;
+        private readonly IOrderService _orderService;
 
-        public OrderController(IMediator mediator)
+        public OrderController(IOrderService orderService)
         {
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _orderService = orderService ?? throw new ArgumentNullException(nameof(orderService));
         }
         
         [HttpGet("{userName}", Name = "GetOrder")]
         [ProducesResponseType(typeof(IEnumerable<OrdersVm>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<OrdersVm>>> GetOrdersByUserName(string userName)
         {
-            var query = new GetOrdersListQuery(userName);
-            var orders = await _mediator.Send(query);
+            var orders = _orderService.GetOrdersByUserName(userName);
             return Ok(orders);
         }
 
@@ -37,7 +40,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)
         {
-            var result = await _mediator.Send(command);
+            var result = await _orderService.CreateOrder(command);
             return Ok(result);
         }
 
@@ -45,9 +48,9 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> UpdateOrder([FromBody] UpdateOrderCommand command)
+        public async Task<ActionResult> UpdateOrder([FromBody] CheckoutOrderCommand command)
         {
-            await _mediator.Send(command);
+            await _orderService.UpdateOrder(command);
             return NoContent();
         }
 
@@ -57,8 +60,7 @@ namespace Ordering.API.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> DeleteOrder(int id)
         {
-            var command = new DeleteOrderCommand() { Id = id };
-            await _mediator.Send(command);
+            await _orderService.DeleteOrder(id);
             return NoContent();
         }
     }

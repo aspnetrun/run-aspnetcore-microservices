@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ordering.Domain\OrderingLite.Domain.csproj" />
-    <ProjectReference Include="..\Ordering.Infrastructure\OrderingLite.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Common.Logging\Common.Logging.csproj" />
   </ItemGroup>
 
 </Project>
