@@ -1,8 +1,9 @@
-﻿namespace Ordering.Application.Models
+﻿using MediatR;
+
+namespace Ordering.Application.Models
 {
-    public class OrdersVm
+    public class CheckoutOrderCommand
     {
-        public int Id { get; set; }
         public string UserName { get; set; }
         public decimal TotalPrice { get; set; }
 

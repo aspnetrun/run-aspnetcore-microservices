@@ -1,7 +1,7 @@
 using Ordering.Domain;
 using Ordering.Application.Contracts.Services;
 using Ordering.Application.Contracts.Persistence;
-using Ordering.Application.Model;
+using Ordering.Application.Models;
 using Ordering.Domain.Entities;
 using Ordering.Application.Exceptions;
 using System.Threading.Tasks;
@@ -9,7 +9,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using Ordering.Application.Model;
 using AutoMapper;
 
 namespace Ordering.Application.Services 
@@ -27,7 +26,7 @@ namespace Ordering.Application.Services
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }       
 
-        public async Task<int> CreateOrder(OrdersVm order)
+        public async Task<int> CreateOrder(CheckoutOrderCommand order)
         {  
             var orderEntity = _mapper.Map<Order>(order);
             var newOrder = await _orderRepository.AddAsync(orderEntity);
@@ -45,15 +44,15 @@ namespace Ordering.Application.Services
             return _mapper.Map<List<OrdersVm>>(orderList);
         }
 
-        public async Task<int> UpdateOrder(OrdersVm order)
+        public async Task<int> UpdateOrder(UpdateOrderCommand order)
         {
-             var orderToUpdate = await _orderRepository.GetByIdAsync(order.Id);
+            var orderToUpdate = await _orderRepository.GetByIdAsync(order.Id);
             if (orderToUpdate == null)
             {
                 throw new NotFoundException(nameof(Order), order.Id);
             }
             
-            _mapper.Map(order, orderToUpdate, typeof(OrdersVm), typeof(Order));
+            _mapper.Map(order, orderToUpdate, typeof(UpdateOrderCommand), typeof(Order));
 
             await _orderRepository.UpdateAsync(orderToUpdate);
 

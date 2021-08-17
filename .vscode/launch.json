@@ -1,6 +1,10 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": ".NET Core Launch (Catalog)",
             "type": "coreclr",
@@ -54,24 +58,8 @@
                 "ASPNETCORE_ENVIRONMENT": "Development",
                 "ASPNETCORE_URLS":"http://localhost:6003"
             }
-        },
-        {
-            "name": ".NET Core Launch (Ordering.API)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-ordering-api",
-            "program": "${workspaceFolder}/Services/OrderingLite/Ordering.API/bin/Debug/net5.0/OrderingLite.API.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Services/OrderingLite/Ordering.API",
-            "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS":"http://localhost:6004"
-            }
         }
+
+
     ]
 }

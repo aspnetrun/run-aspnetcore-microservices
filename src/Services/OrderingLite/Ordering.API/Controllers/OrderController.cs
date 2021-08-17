@@ -11,7 +11,7 @@ using System.Net;
 using System.Threading.Tasks;
 
 using Ordering.Application.Contracts.Services;
-using Ordering.API.Entities;
+using Ordering.Application.Models;
 
 namespace Ordering.API.Controllers
 {
@@ -31,7 +31,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<OrdersVm>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<OrdersVm>>> GetOrdersByUserName(string userName)
         {
-            var orders = _orderService.GetOrdersByUserName(userName);
+            var orders = await _orderService.GetOrdersByUserName(userName);
             return Ok(orders);
         }
 
@@ -40,6 +40,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)
         {
+            //var orderEntity = _mapper.Map<Order>(command);
             var result = await _orderService.CreateOrder(command);
             return Ok(result);
         }
@@ -48,7 +49,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> UpdateOrder([FromBody] CheckoutOrderCommand command)
+        public async Task<ActionResult> UpdateOrder([FromBody] UpdateOrderCommand command)
         {
             await _orderService.UpdateOrder(command);
             return NoContent();

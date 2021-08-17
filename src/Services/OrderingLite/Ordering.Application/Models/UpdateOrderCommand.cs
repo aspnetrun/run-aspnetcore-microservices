@@ -1,9 +1,10 @@
 ﻿using MediatR;
 
-namespace Ordering.API.Entities
+namespace Ordering.Application.Models
 {
-    public class CheckoutOrderCommand
+    public class UpdateOrderCommand
     {
+        public int Id { get; set; }
         public string UserName { get; set; }
         public decimal TotalPrice { get; set; }
 
