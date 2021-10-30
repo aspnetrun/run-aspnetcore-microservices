@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace Ordering.Application.Models
+﻿namespace Ordering.Application.Models
 {
-    public class UpdateOrderCommand
+    public class OrderVm
     {
         public int Id { get; set; }
         public string UserName { get; set; }

@@ -8,7 +8,7 @@ namespace Ordering.API.Mapper
 	{
 		public OrderingProfile()
 		{
-			CreateMap<CheckoutOrderCommand, BasketCheckoutEvent>().ReverseMap();
+			CreateMap<CheckoutOrderVm, BasketCheckoutEvent>().ReverseMap();
 		}
 	}
 }

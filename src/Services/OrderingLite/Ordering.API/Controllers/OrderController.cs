@@ -1,10 +1,5 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-// using Ordering.Application.Features.Orders.Commands.CheckoutOrder;
-// using Ordering.Application.Features.Orders.Commands.UpdateOrder;
-// using Ordering.Application.Features.Orders.Commands.DeleteOrder;
-// using Ordering.Application.Features.Orders.Queries.GetOrdersList;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -19,7 +14,6 @@ namespace Ordering.API.Controllers
     [Route("api/v1/[controller]")]
     public class OrderController : ControllerBase
     {
-        //private readonly IMediator _mediator;
         private readonly IOrderService _orderService;
 
         public OrderController(IOrderService orderService)
@@ -28,8 +22,8 @@ namespace Ordering.API.Controllers
         }
         
         [HttpGet("{userName}", Name = "GetOrder")]
-        [ProducesResponseType(typeof(IEnumerable<OrdersVm>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<OrdersVm>>> GetOrdersByUserName(string userName)
+        [ProducesResponseType(typeof(IEnumerable<OrderVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<OrderVm>>> GetOrdersByUserName(string userName)
         {
             var orders = await _orderService.GetOrdersByUserName(userName);
             return Ok(orders);
@@ -38,9 +32,8 @@ namespace Ordering.API.Controllers
         // testing purpose
         [HttpPost(Name = "CheckoutOrder")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)
+        public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderVm command)
         {
-            //var orderEntity = _mapper.Map<Order>(command);
             var result = await _orderService.CreateOrder(command);
             return Ok(result);
         }
@@ -49,7 +42,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> UpdateOrder([FromBody] UpdateOrderCommand command)
+        public async Task<ActionResult> UpdateOrder([FromBody] OrderVm command)
         {
             await _orderService.UpdateOrder(command);
             return NoContent();

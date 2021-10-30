@@ -8,11 +8,11 @@ namespace Ordering.Application.Contracts.Services
 {
     public interface IOrderService
     {
-        Task<IEnumerable<OrdersVm>> GetOrdersByUserName(string userName);
+        Task<IEnumerable<OrderVm>> GetOrdersByUserName(string userName);
         
-        Task<int> CreateOrder(CheckoutOrderCommand order);
+        Task<int> CreateOrder(CheckoutOrderVm order);
 
-        Task<int> UpdateOrder(UpdateOrderCommand order);
+        Task<int> UpdateOrder(OrderVm order);
 
         Task<int> DeleteOrder(int id);
     }

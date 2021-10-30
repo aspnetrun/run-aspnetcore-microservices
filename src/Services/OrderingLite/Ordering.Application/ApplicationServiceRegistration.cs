@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Ordering.Application.Contracts.Services;
 using Ordering.Application.Services;
+using Ordering.Application.Contracts.Infrastructure;
 
 namespace Ordering.Application
 {
@@ -12,7 +13,6 @@ namespace Ordering.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddScoped<IOrderService, OrderService>();
             
