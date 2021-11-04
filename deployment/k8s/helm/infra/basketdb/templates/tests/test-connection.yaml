@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "basketdb.fullname" . }}-test-connection"
+  labels:
+    {{- include "basketdb.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "basketdb.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
