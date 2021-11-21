@@ -41,11 +41,11 @@ namespace Basket.API.Controllers
         public async Task<ActionResult<ShoppingCart>> UpdateBasket([FromBody] ShoppingCart basket)
         {
             //Communicate with Discount.Grpc and calculate lastest prices of products into sc
-            foreach (var item in basket.Items)
-            {
-                var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
-                item.Price -= coupon.Amount;
-            }
+            //foreach (var item in basket.Items)
+            //{
+                //var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
+                //item.Price -= coupon.Amount;
+            //}
 
             return Ok(await _repository.UpdateBasket(basket));
         }
