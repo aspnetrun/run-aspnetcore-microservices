@@ -53,7 +53,11 @@ I followed this [documentation](https://minikube.sigs.k8s.io/docs/handbook/regis
 
 Once you have the addon enabled, you should be able to connect to it. When enabled, the registry addon exposes its **port 5000** on the minikube’s virtual machine.
 
-On your local machine you should now be able to reach the minikube registry by using:
+On your local machine you should now be able to reach the minikube registry by doing "portfoward":
+
+``kubectl port-forward --namespace kube-system service/registry 5000:80``
+
+and run the curl below:
 
 ``curl http://localhost:5000/v2/_catalog``
 
@@ -61,11 +65,53 @@ On your local machine you should now be able to reach the minikube registry by u
 
 ## Install Lens
 
+## Install Helm
+
 ## Application Deployment
+
+Assuming that you already have your container images built, you should now push them to the registry. To do that, you should (example):
+
+``kubectl port-forward --namespace kube-system service/registry 5000:80``
+
+Tag the image:
+
+``docker tag ocelotapigw localhost:5000/ocelotapigw``
+
+Push to the registry:
+
+``docker push localhost:5000/ocelotapigw``
+
+Verify if the images are available on the registry:
+![registry](https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/registry_images.png)
+
+
+After that, you are ready to start the application deployment into the Kubernetes cluster. The next step is to run the script below, that will create the pods, services and other K8S resources needed to run the application.
+
+### Installing the application using helm charts
+
+You will need Powershell installed. If you are using Linux like me, take a look on this [link](https://adamtheautomator.com/powershell-linux/).
+
+Go to the folder /run-aspnetcore-microservices/deployment/k8s/helm and run:
+
+``pwsh``
+
+![pwsh](https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/pwsh.png)
+
+Run the script below:
+
+``./deploy-all.ps1``
+
+![run_deploy](https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/run_deploy.png)
+
+You should see the pods running after some seconds:
+
+![pods_running](https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/pods_running.png)
+
+
 
 ## Using Ingress Controller
 
-
+To be done.
 
 
 
