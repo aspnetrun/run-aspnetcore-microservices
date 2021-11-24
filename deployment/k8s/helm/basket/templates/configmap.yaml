@@ -1,0 +1,16 @@
+{{- $name := include "basket.fullname" . -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "cfg-{{ $name }}"
+  labels:
+    app: {{ template "basket.name" . }}
+    chart: {{ template "basket.chart" .}}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  EventBusSettings__HostAddress: amqp://guest:guest@rabbitmq:5672
+  CacheSettings__ConnectionString: basketdb:6379
+  GrpcSettings__DiscountUrl: http://discount-grpc
+  ElasticConfiguration__Uri: http://elasticsearch:9200

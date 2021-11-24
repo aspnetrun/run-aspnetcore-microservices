@@ -1,0 +1,16 @@
+{{- $name := include "shoppingaggregator.fullname" . -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "cfg-{{ $name }}"
+  labels:
+    app: {{ template "shoppingaggregator.name" . }}
+    chart: {{ template "shoppingaggregator.chart" .}}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  ApiSettings: CatalogUrl=http://catalog.api
+  ApiSettings: BasketUrl=http://basket.api
+  ApiSettings: OrderingUrl=http://ordering.api
+  ElasticConfiguration: Uri=http://elasticsearch:9200

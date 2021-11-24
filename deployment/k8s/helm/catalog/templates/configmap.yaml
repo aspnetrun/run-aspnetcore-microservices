@@ -1,0 +1,14 @@
+{{- $name := include "catalog.fullname" . -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "cfg-{{ $name }}"
+  labels:
+    app: {{ template "catalog.name" . }}
+    chart: {{ template "catalog.chart" .}}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  DatabaseSettings: ConnectionString=mongodb://catalogdb:27017
+  ElasticConfiguration: Uri=http://elasticsearch:9200

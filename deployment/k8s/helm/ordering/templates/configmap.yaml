@@ -1,0 +1,15 @@
+{{- $name := include "ordering.fullname" . -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "cfg-{{ $name }}"
+  labels:
+    app: {{ template "ordering.name" . }}
+    chart: {{ template "ordering.chart" .}}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  ConnectionStrings__OrderingConnectionString: Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678
+  ElasticConfiguration__Uri: http://elasticsearch:9200
+  EventBusSettings__HostAddress: amqp://guest:guest@rabbitmq:5672

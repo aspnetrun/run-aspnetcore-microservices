@@ -1,0 +1,14 @@
+{{- $name := include "aspnetrunbasics.fullname" . -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "cfg-{{ $name }}"
+  labels:
+    app: {{ template "aspnetrunbasics.name" . }}
+    chart: {{ template "aspnetrunbasics.chart" .}}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  ElasticConfiguration: Uri=http://elasticsearch:9200
+  ApiSettings : GatewayAddress=http://ocelotapigw"

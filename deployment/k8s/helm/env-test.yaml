@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envar-demo-2
+  labels:
+    purpose: demonstrate-envars
+spec:
+  containers:
+  - name: envar-demo-container-test
+    image: localhost:5000/aspnetrunbasics
+    env:
+    - name: DEMO_GREETING_2
+      value: "Hello from the environment"
+    - name: DEMO_FAREWELL_2
+      value: "Such a sweet sorrow"

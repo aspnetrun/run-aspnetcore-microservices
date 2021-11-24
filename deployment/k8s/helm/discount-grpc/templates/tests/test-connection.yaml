@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "discount-grpc.fullname" . }}-test-connection"
+  labels:
+    {{- include "discount-grpc.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "discount-grpc.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
