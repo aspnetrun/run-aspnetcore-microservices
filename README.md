@@ -1,12 +1,12 @@
 ## Whats Including In This Repository
 
-This is a complete example of implementation of a microservices-based architecture made available for study. This source code was forked and adapted from the Repository course https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=AUGUST2021.
+This is a complete example of implementation of a microservices-based architecture made available for study. This source code was forked and adapted from the Repository [course]https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=AUGUST2021.
 
-For more details about the application, please see https://github.com/aspnetrun/run-aspnetcore-microservices
+For more details about the application, please see this [link]https://github.com/aspnetrun/run-aspnetcore-microservices
 
 In this version of fork, you will find the following features:
 
-## Deployment: 
+## Deployment 
 
 I created the deployment code using:
 
@@ -14,7 +14,7 @@ I created the deployment code using:
 - Installation of Istio as a service Mesh solution.
 - Using Lens for cluster management.
 
-## Observability: 
+## Observability 
 
 The following tools are availble using this deployment code:
 
@@ -38,6 +38,10 @@ In order to run the application on the local machine, follow the original reposi
 Minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes. Follow the installation documentation below:
 
 https://minikube.sigs.k8s.io/docs/start/
+
+After the installation is finished with success, you should be able to see the Minikube pods running like this:
+
+https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/minikube_1.png
 
 ## Create local Registry
 
