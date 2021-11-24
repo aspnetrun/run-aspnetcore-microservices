@@ -30,7 +30,7 @@ The following tools are availble using this deployment code:
 
 # Run the application using Docker
 
-In order to run the application on the local machine, follow the original repository documentation.
+In order to run the application on the local machine, follow the [original repository documentation](https://github.com/aspnetrun/run-aspnetcore-microservices).
 
 # Run the application using Local Kubernetes
 ## Create your local Kubernetes Cluster
@@ -44,6 +44,18 @@ After the installation is finished with success, you should be able to see the M
 ![minikube](https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/minikube_1.png)
 
 ## Create local Registry
+
+A container registry is a repository, or collection of repositories, used to store container images for Kubernetes, DevOps, and container-based application development.
+
+I decided to create my own local container registry, but you can use whatever you want to host your container images. 
+
+I followed this [documentation](https://minikube.sigs.k8s.io/docs/handbook/registry/) to create my Registry using Minikube.
+
+Once you have the addon enabled, you should be able to connect to it. When enabled, the registry addon exposes its **port 5000** on the minikube’s virtual machine.
+
+On your local machine you should now be able to reach the minikube registry by using:
+
+``curl http://localhost:5000/v2/_catalog``
 
 ## Install Istio
 
