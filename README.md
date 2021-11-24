@@ -10,23 +10,23 @@ In this version of fork, you will find the following features:
 
 I created the deployment code using:
 
-- Deployment to a local Kubernetes instance (Minikube), using Helm charts.
-- Installation of Istio as a service Mesh solution.
-- Using Lens for cluster management.
+- Deployment to a local Kubernetes instance (**Minikube**), using **Helm charts**.
+- Installation of **Istio** as a service Mesh solution.
+- Using **Lens** for cluster management.
 
 ## Observability 
 
 The following tools are availble using this deployment code:
 
-- Kiali : observability console for Istio with service mesh configuration and validation capabilities. It helps you understand the structure and health of your service mesh by monitoring traffic flow to infer the topology and report errors.
-- Jaeger : open source software for tracing transactions between distributed services. It's used for monitoring and troubleshooting complex microservices environments.
-- Prometheus and Grafana: Prometheus is free and an open-source event monitoring tool for containers or microservices. Grafana is a multi-platform visualization software available since 2014.
-- Elasticsearch and Kibana: Kibana is a data visualization and exploration tool used for log and time-series analytics and application monitoring. It uses Elasticsearch as search engine.
-- Healthchecks implemented in each microservices using AspNet Core health vhecks features.
+- **Kiali** : observability console for Istio with service mesh configuration and validation capabilities. It helps you understand the structure and health of your service mesh by monitoring traffic flow to infer the topology and report errors.
+- **Jaeger** : open source software for tracing transactions between distributed services. It's used for monitoring and troubleshooting complex microservices environments.
+- **Prometheus** and **Grafana**: Prometheus is free and an open-source event monitoring tool for containers or microservices. Grafana is a multi-platform visualization software available since 2014.
+- **Elasticsearch** and **Kibana**: Kibana is a data visualization and exploration tool used for log and time-series analytics and application monitoring. It uses Elasticsearch as search engine.
+- **Healthchecks** implemented in each microservices using **AspNet Core health checks features**.
 
 ## Scaling (To be done)
-- HPA
-- Keda
+- **HPA**
+- **Keda**
 
 # Run the application using Docker
 
