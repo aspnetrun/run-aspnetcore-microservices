@@ -1,8 +1,8 @@
 ## Whats Including In This Repository
 
-This is a complete example of implementation of a microservices-based architecture made available for study. This source code was forked and adapted from the Repository [course]https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=AUGUST2021.
+This is a complete example of implementation of a microservices-based architecture made available for study. This source code was forked and adapted from the Repository [course](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=AUGUST2021).
 
-For more details about the application, please see this [link]https://github.com/aspnetrun/run-aspnetcore-microservices
+For more details about the application, please see this [link](https://github.com/aspnetrun/)run-aspnetcore-microservices
 
 In this version of fork, you will find the following features:
 
@@ -37,7 +37,7 @@ In order to run the application on the local machine, follow the original reposi
 
 Minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes. Follow the installation documentation below:
 
-https://minikube.sigs.k8s.io/docs/start/
+[Minikube offical documentaion](https://minikube.sigs.k8s.io/docs/start/)
 
 After the installation is finished with success, you should be able to see the Minikube pods running like this:
 
