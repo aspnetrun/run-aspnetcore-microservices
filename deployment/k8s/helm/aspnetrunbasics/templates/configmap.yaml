@@ -10,5 +10,5 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  ElasticConfiguration: Uri=http://elasticsearch:9200
-  ApiSettings : GatewayAddress=http://ocelotapigw"
+  ElasticConfiguration__Uri: http://elasticsearch:9200
+  ApiSettings__GatewayAddress: http://ocelotapigw  

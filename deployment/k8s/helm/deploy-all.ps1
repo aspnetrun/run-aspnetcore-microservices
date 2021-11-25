@@ -29,7 +29,7 @@ function Install-Chart  {
 
 Write-Host "Begin installation using Helm" -ForegroundColor Green
 
-$ingressValuesFile="ingress_values_dockerk8s.yaml"
+#$ingressValuesFile="ingress_values_dockerk8s.yaml"
 $dns="my-minikube"
 
 if ($clean) {    
@@ -53,22 +53,26 @@ $gateways = ("ocelotapigw", "shoppingaggregator")
 foreach ($infra in $infras) {
     Write-Host "Installing infrastructure: $infra" -ForegroundColor Green
     Write-Host "$infra"
-    helm install "$infra" --values app.yaml --values inf.yaml --values $ingressValuesFile --set app.name=$appName --set inf.k8s.dns=$dns --set "ingress.hosts={$dns}" $infra     
+    #helm install "$infra" --values app.yaml --values inf.yaml --values $ingressValuesFile --set app.name=$appName --set inf.k8s.dns=$dns --set "ingress.hosts={$dns}" $infra     
+    helm install "$infra" --values app.yaml --values inf.yaml --set app.name=$appName --set inf.k8s.dns=$dns --set "ingress.hosts={$dns}" $infra     
 }
 
 foreach ($api in $apis) {
     Write-Host "Installing: $api" -ForegroundColor Green
-    Install-Chart $api "--values app.yaml --values inf.yaml --values $ingressValuesFile --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
+    # Install-Chart $api "--values app.yaml --values inf.yaml --values $ingressValuesFile --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
+    Install-Chart $api "--values app.yaml --values inf.yaml --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
 }
 
 foreach ($chart in $charts) {
     Write-Host "Installing: $chart" -ForegroundColor Green
-    Install-Chart $chart "--values app.yaml --values inf.yaml --values $ingressValuesFile --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
+    # Install-Chart $chart "--values app.yaml --values inf.yaml --values $ingressValuesFile --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
+    Install-Chart $chart "--values app.yaml --values inf.yaml --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
 }
 
 foreach ($chart in $gateways) {
     Write-Host "Installing Api Gateway Chart: $chart" -ForegroundColor Green
-    Install-Chart $chart "--values app.yaml --values inf.yaml --values $ingressValuesFile --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
+    # Install-Chart $chart "--values app.yaml --values inf.yaml --values $ingressValuesFile --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
+    Install-Chart $chart "--values app.yaml --values inf.yaml --set app.name=$appName --set inf.k8s.dns=$dns --set ingress.hosts=``{$dns``} --set inf.tls.enabled=false --set inf.mesh.enabled=false --set inf.k8s.local=$useLocalk8s"
 }
 
 Write-Host "helm charts installed." -ForegroundColor Green

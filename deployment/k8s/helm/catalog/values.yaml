@@ -82,7 +82,17 @@ tolerations: []
 affinity: {}
 
 env:
-  - name: DatabaseSettings__ConnectionString
-    value: mongodb://catalogdb:27017
-  - name: ElasticConfiguration__Uri
-    value: http://elasticsearch:9200        
+  values:
+  - name: ASPNETCORE_ENVIRONMENT
+    value: Development
+  urls:
+  # configmap declares variables which value is taken from the config map defined in template configmap.yaml (name is name of var and key the key in configmap).
+  configmap:
+    - name: DatabaseSettings__ConnectionString
+      key: DatabaseSettings__ConnectionString
+    - name: DatabaseSettings__DatabaseName
+      key: DatabaseSettings__DatabaseName
+    - name: DatabaseSettings__CollectionName
+      key: DatabaseSettings__CollectionName
+    - name: ElasticConfiguration__Uri
+      key: ElasticConfiguration__Uri

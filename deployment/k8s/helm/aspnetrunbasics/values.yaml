@@ -42,7 +42,7 @@ service:
   port: 8089
 
 ingress:
-  enabled: true
+  enabled: false
   className: ""
   annotations: {}
   tls: []
@@ -56,7 +56,13 @@ tolerations: []
 affinity: {}
 
 env:
-  - name: ApiSettings__GatewayAddress
-    value: http://ocelotapigw
-  - name: ElasticConfiguration__Uri
-    value: http://elasticsearch:9200
+  values:
+  - name: ASPNETCORE_ENVIRONMENT
+    value: Development
+  urls:
+  # configmap declares variables which value is taken from the config map defined in template configmap.yaml (name is name of var and key the key in configmap).
+  configmap:
+    - name: ApiSettings__GatewayAddress
+      key: ApiSettings__GatewayAddress
+    - name: ElasticConfiguration__Uri
+      key: ElasticConfiguration__Uri    

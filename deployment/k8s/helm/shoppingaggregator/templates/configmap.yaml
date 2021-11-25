@@ -10,7 +10,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  ApiSettings: CatalogUrl=http://catalog.api
-  ApiSettings: BasketUrl=http://basket.api
-  ApiSettings: OrderingUrl=http://ordering.api
-  ElasticConfiguration: Uri=http://elasticsearch:9200
+  ApiSettings__CatalogUrl: http://catalog
+  ApiSettings__BasketUrl: http://basket
+  ApiSettings__OrderingUrl: http://ordering
+  ElasticConfiguration__Uri: http://elasticsearch:9200

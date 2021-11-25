@@ -1,3 +1,6 @@
+{{- $name := include "aspnetrunbasics.fullname" . -}}
+{{- $cfgname := printf "%s-%s" "cfg" $name -}}
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,13 +37,24 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          env:
+          {{- if .Values.env.values -}}
+          {{- range .Values.env.values }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+          {{- end -}}
+          {{- end -}}
+          {{- if .Values.env.configmap -}}
+          {{- range .Values.env.configmap }}
+            - name: {{ .name }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ $cfgname }}
+                  key: {{ .key }}
+          {{- end -}}
+          {{- end }}                 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          env:
-              {{- range .Values.env }}
-              - name: {{ .name }}
-                value: {{ .value }}
-              {{- end }}                         
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

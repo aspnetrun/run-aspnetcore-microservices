@@ -80,3 +80,15 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+env:
+  values:
+  - name: ASPNETCORE_ENVIRONMENT
+    value: Development
+  urls:
+  # configmap declares variables which value is taken from the config map defined in template configmap.yaml (name is name of var and key the key in configmap).
+  configmap:
+    - name: DatabaseSettings__ConnectionString
+      key: DatabaseSettings__ConnectionString
+    - name: ElasticConfiguration__Uri
+      key: ElasticConfiguration__Uri
