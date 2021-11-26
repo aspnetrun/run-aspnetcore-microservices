@@ -1,4 +1,4 @@
-## Whats Including In This Repository
+# Whats Including In This Repository
 
 This is a complete example of implementation of a microservices-based architecture available for studying. This source code was forked and adapted from the repository [course](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=AUGUST2021).
 
@@ -6,6 +6,7 @@ For more details about the application, please see this [link](https://github.co
 
 In this version of fork, you will find the following features:
 
+# Features
 ## Deployment 
 
 I created the deployment code using:
@@ -124,15 +125,15 @@ At this point, the application should be available. You can access using one of 
 
 ### Option (1): node port
 
-Throught the node port **8089** configured on the file on deployment/k8s/helm/aspnetrunbasics/values.yaml.
+Throught the node port **8089** configured on the file **deployment/k8s/helm/aspnetrunbasics/values.yaml**.
 
-You can do a port forward to this **[Node IP:8089]** 
+You can do a port forward to web application service exposed on this 8089 port: 
 
-``kubectl port-forward --namespace default service/aspnetrun-aspnetrunbasics 9090:8089``
+``kubectl port-forward --namespace default service/aspnetrun-aspnetrunbasics [YOUR_LOCAL_PORT]:8089``
 
 ### Option (2): using Lens
 
-If you are using Lens, got to PODS, click on the aspnetrunbasics POD and click on Ports link:
+If you are using Lens, go to PODS, click on the **aspnetrunbasics** POD and click on **Ports** link:
 
 ![run_deploy](https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/lens_aspnet.png)
 
@@ -150,7 +151,7 @@ To identify the web application service port, you can you use:
 
 ``kubectl get svc | grep aspnetrunbasics``
 
-In my case, my cluster IP is 31293:
+In my case, my service port is 31293:
 
 ![run_deploy](https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/service_port.png)
 
@@ -160,7 +161,7 @@ And, using the browser:
 
 ## Accessing the application Web Status
 
-You can follow the same options (1 and 2) explained above, but accessing the webstatus POD. The option (3) is not available, because this POD is not available outside the cluster.
+You can follow the same options (1 and 2) explained above, but accessing the **webstatus** POD. The option (3) is not available, because this POD is not available outside the cluster.
 
 ![run_deploy](https://github.com/felipecembranelli/run-aspnetcore-microservices/blob/PR_K8S/doc/webstatus.png)
 
