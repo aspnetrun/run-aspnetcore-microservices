@@ -13,7 +13,7 @@ image:
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "aspnetrunbasics"
 
 serviceAccount:
   # Specifies whether a service account should be created

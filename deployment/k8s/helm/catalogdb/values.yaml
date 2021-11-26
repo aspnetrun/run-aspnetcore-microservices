@@ -5,14 +5,14 @@
 replicaCount: 1
 
 image:
-  repository: localhost:5000/mongo_local
+  repository: mongo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "catalogdb"
 
 serviceAccount:
   # Specifies whether a service account should be created
