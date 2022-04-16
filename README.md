@@ -6,7 +6,7 @@ See the overall picture of **implementations on microservices with .net tools** 
 
 There is a couple of microservices which implemented **e-commerce** modules over **Catalog, Basket, Discount** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (PostgreSQL, Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
-And here is continuos course of ![Microservices Observability with Distributed Logging, Health Monitoring, Resilient and Fault Tolerance with using Polly](https://www.udemy.com/course/microservices-observability-resilience-monitoring-on-net/?referralCode=D162C050483C75452136)
+And here continuation of the main course -> [Microservices Observability with Distributed Logging, Health Monitoring, Resilient and Fault Tolerance with using Polly](https://medium.com/aspnetrun/microservices-observability-resilience-monitoring-on-net-a5dfbdbb0fbd)
 
 ### Check Explanation of this Repository on Medium
 * [Microservices Architecture on .NET with applying CQRS, Clean Architecture and Event-Driven Communication](https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f)
