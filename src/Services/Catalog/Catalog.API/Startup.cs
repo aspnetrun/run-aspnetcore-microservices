@@ -62,6 +62,7 @@ namespace Catalog.API
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
             });
+            CatalogContextSeed.PrepPopulation(app);
         }
     }
 }

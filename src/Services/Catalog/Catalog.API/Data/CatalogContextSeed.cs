@@ -7,12 +7,20 @@ namespace Catalog.API.Data
 {
     public class CatalogContextSeed
     {
-        public static void SeedData(IMongoCollection<Product> productCollection)
+        public static void PrepPopulation(IApplicationBuilder app)
         {
-            bool existProduct = productCollection.Find(p => true).Any();
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                SeedData(serviceScope.ServiceProvider.GetService<CatalogContext>());
+            }
+        }
+
+        public static void SeedData(ICatalogContext catalogContext)
+        {
+            bool existProduct = catalogContext.Products.Find(p => true).Any();
             if (!existProduct)
             {
-                productCollection.InsertManyAsync(GetPreconfiguredProducts());
+                catalogContext.Products.InsertManyAsync(GetPreconfiguredProducts());
             }
         }
 
