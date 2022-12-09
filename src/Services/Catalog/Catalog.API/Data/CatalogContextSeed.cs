@@ -11,7 +11,7 @@ namespace Catalog.API.Data
         {
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
-                SeedData(serviceScope.ServiceProvider.GetService<CatalogContext>());
+                SeedData(serviceScope.ServiceProvider.GetService<ICatalogContext>());
             }
         }
 
