@@ -95,3 +95,4 @@ namespace Catalog.API.Controllers
         }
     }
 }
+
