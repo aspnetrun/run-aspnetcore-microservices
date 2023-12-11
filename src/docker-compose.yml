@@ -71,10 +71,10 @@ services:
       dockerfile: WebApps/AspnetRunBasics/Dockerfile
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
+    image: elasticsearch:7.9.2
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.9.2
+    image: kibana:7.9.2
 
   webstatus:
     image: ${DOCKER_REGISTRY-}webstatus
