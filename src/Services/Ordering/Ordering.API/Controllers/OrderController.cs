@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Ordering.Application.Features.Orders.Notifications.CheckoutOrder;
 
 namespace Ordering.API.Controllers
 {
@@ -38,6 +39,7 @@ namespace Ordering.API.Controllers
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)
         {
             var result = await _mediator.Send(command);
+            await _mediator.Publish(new CheckoutOrderAddedNotification(result));
             return Ok(result);
         }
 
