@@ -4,28 +4,27 @@ See the overall picture of **implementations on microservices with .net tools** 
 
 ![microservices](https://github.com/aspnetrun/run-aspnetcore-microservices/assets/1147445/efe5e688-67f2-4ddd-af37-d9d3658aede4)
 
-There is a couple of microservices which implemented **e-commerce** modules over **Catalog, Basket, Discount** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (PostgreSQL, Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
-
-And here continuation of the main course -> [Microservices Observability with Distributed Logging, Health Monitoring, Resilient and Fault Tolerance with using Polly](https://www.udemy.com/course/microservices-observability-resilience-monitoring-on-net/?referralCode=D162C050483C75452136)
+There is a couple of microservices which implemented **e-commerce** modules over **Catalog, Basket, Discount** and **Ordering** microservices with **NoSQL (DocumentDb, Redis)** and **Relational databases (PostgreSQL, Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Yarp API Gateway**.
 
 ### Check Explanation of this Repository on Medium
-* [Microservices Architecture on .NET with applying CQRS, Clean Architecture and Event-Driven Communication](https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f)
-* [Microservices Observability, Resilience, Monitoring on .Net](https://medium.com/aspnetrun/microservices-observability-resilience-monitoring-on-net-a5dfbdbb0fbd)
+* [.NET 8 Microservices: DDD, CQRS, Vertical/Clean Architecture and Event-Driven Communication](https://medium.com/@mehmetozkaya/net-8-microservices-ddd-cqrs-vertical-clean-architecture-2dd7ebaaf4bd)
 
 ## Whats Including In This Repository
 We have implemented below **features over the run-aspnetcore-microservices repository**.
 
 #### Catalog microservice which includes; 
-* ASP.NET Core Web API application 
-* REST API principles, CRUD operations
-* **MongoDB database** connection and containerization
-* Repository Pattern Implementation
-* Swagger Open API implementation	
+* ASP.NET Core Minimal APIs and latest features of .NET8 and C# 12
+* **Vertical Slice Architecture** implementation with Feature folders and single .cs file includes different classes in one file
+* CQRS implementation using MediatR library
+* CQRS Validation Pipeline Behaviors with MediatR and FluentValidation
+* Use Marten library for .NET Transactional Document DB on PostgreSQL
+* Use Carter for Minimal API endpoint definition
+* Cross-cutting concerns Logging, Global Exception Handling and Health Checks
 
 #### Basket microservice which includes;
-* ASP.NET Web API application
-* REST API principles, CRUD operations
-* **Redis database** connection and containerization
+* ASP.NET 8 Web API application, Following REST API principles, CRUD
+* Using **Redis** as a **Distributed Cache** over basketdb
+* Implements Proxy, Decorator and Cache-aside patterns
 * Consume Discount **Grpc Service** for inter-service sync communication to calculate product final price
 * Publish BasketCheckout Queue with using **MassTransit and RabbitMQ**
   
@@ -33,8 +32,8 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 * ASP.NET **Grpc Server** application
 * Build a Highly Performant **inter-service gRPC Communication** with Basket Microservice
 * Exposing Grpc Services with creating **Protobuf messages**
-* Using **Dapper for micro-orm implementation** to simplify data access and ensure high performance
-* **PostgreSQL database** connection and containerization
+* Entity Framework Core ORM — SQLite Data Provider and Migrations to simplify data access and ensure high performance
+* **SQLite database** connection and containerization
 
 #### Microservices Communication
 * Sync inter-service **gRPC Communication**
@@ -46,33 +45,19 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 
 #### Ordering Microservice
 * Implementing **DDD, CQRS, and Clean Architecture** with using Best Practices
-* Developing **CQRS with using MediatR, FluentValidation and AutoMapper packages**
+* Developing **CQRS with using MediatR, FluentValidation and Mapster packages**
 * Consuming **RabbitMQ** BasketCheckout event queue with using **MassTransit-RabbitMQ** Configuration
 * **SqlServer database** connection and containerization
 * Using **Entity Framework Core ORM** and auto migrate to SqlServer when application startup
 	
-#### API Gateway Ocelot Microservice
-* Implement **API Gateways with Ocelot**
-* Sample microservices/containers to reroute through the API Gateways
-* Run multiple different **API Gateway/BFF** container types	
-* The Gateway aggregation pattern in Shopping.Aggregator
+#### Yarp API Gateway Microservice
+* Develop API Gateways with **Yarp Reverse Proxy** applying Gateway Routing Pattern
+* Yarp Reverse Proxy Configuration; Route, Cluster, Path, Transform, Destinations
+* **Rate Limiting** with FixedWindowLimiter on Yarp Reverse Proxy Configuration
 
 #### WebUI ShoppingApp Microservice
 * ASP.NET Core Web Application with Bootstrap 4 and Razor template
-* Call **Ocelot APIs with HttpClientFactory** and **Polly**
-
-#### Microservices Cross-Cutting Implementations
-* Implementing **Centralized Distributed Logging with Elastic Stack (ELK); Elasticsearch, Logstash, Kibana and SeriLog** for Microservices
-* Use the **HealthChecks** feature in back-end ASP.NET microservices
-* Using **Watchdog** in separate service that can watch health and load across services, and report health about the microservices by querying with the HealthChecks
-
-#### Microservices Resilience Implementations
-* Making Microservices more **resilient Use IHttpClientFactory** to implement resilient HTTP requests
-* Implement **Retry and Circuit Breaker patterns** with exponential backoff with IHttpClientFactory and **Polly policies**
-
-#### Ancillary Containers
-* Use **Portainer** for Container lightweight management UI which allows you to easily manage your different Docker environments
-* **pgAdmin PostgreSQL Tools** feature rich Open Source administration and development platform for PostgreSQL
+* Call **Yarp APIs with Refit HttpClientFactory**
 
 #### Docker Compose establishment with all microservices on docker;
 * Containerization of microservices
@@ -82,8 +67,8 @@ We have implemented below **features over the run-aspnetcore-microservices repos
 ## Run The Project
 You will need the following tools:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* [.Net Core 5 or later](https://dotnet.microsoft.com/download/dotnet-core/5)
+* [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+* [.Net Core 8 or later](https://dotnet.microsoft.com/download/dotnet-core/8)
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
 ### Installing
@@ -92,38 +77,17 @@ Follow these steps to get your development environment set up: (Before Run Start
 2. Once Docker for Windows is installed, go to the **Settings > Advanced option**, from the Docker icon in the system tray, to configure the minimum amount of memory and CPU like so:
 * **Memory: 4 GB**
 * CPU: 2
-3. At the root directory which include **docker-compose.yml** files, run below command:
+3. At the root directory of solution, select **docker-compose** and **Set a startup project**. **Run docker-compose without debugging on visual studio**.
+  Or you can go to root directory which include **docker-compose.yml** files, run below command:
 ```csharp
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 ```
 
->Note: If you get connection timeout error Docker for Mac please [Turn Off Docker's "Experimental Features".](https://github.com/aspnetrun/run-aspnetcore-microservices/issues/33)
-
 4. Wait for docker compose all microservices. That’s it! (some microservices need extra time to work so please wait if not worked in first shut)
 
-5. You can **launch microservices** as below urls:
-
-* **Catalog API -> http://host.docker.internal:8000/swagger/index.html**
-* **Basket API -> http://host.docker.internal:8001/swagger/index.html**
-* **Discount API -> http://host.docker.internal:8002/swagger/index.html**
-* **Ordering API -> http://host.docker.internal:8004/swagger/index.html**
-* **Shopping.Aggregator -> http://host.docker.internal:8005/swagger/index.html**
-* **API Gateway -> http://host.docker.internal:8010/Catalog**
-* **Rabbit Management Dashboard -> http://host.docker.internal:15672**   -- guest/guest
-* **Portainer -> http://host.docker.internal:9000**   -- admin/admin1234
-* **pgAdmin PostgreSQL -> http://host.docker.internal:5050**   -- admin@aspnetrun.com/admin1234
-* **Elasticsearch -> http://host.docker.internal:9200**
-* **Kibana -> http://host.docker.internal:5601**
-
-* **Web Status -> http://host.docker.internal:8007**
-* **Web UI -> http://host.docker.internal:8006**
-
-5. Launch http://host.docker.internal:8007 in your browser to view the Web Status. Make sure that every microservices are healthy.
-6. Launch http://host.docker.internal:8006 in your browser to view the Web UI. You can use Web project in order to **call microservices over API Gateway**. When you **checkout the basket** you can follow **queue record on RabbitMQ dashboard**.
+5. Launch **Shopping Web UI -> https://localhost:6065** in your browser to view index page. You can use Web project in order to **call microservices over Yarp API Gateway**. When you **checkout the basket** you can follow **queue record on RabbitMQ dashboard**.
 
 ![mainscreen2](https://user-images.githubusercontent.com/1147445/81381837-08226000-9116-11ea-9489-82645b8dbfc4.png)
-
->Note: If you are running this application in macOS then use `docker.for.mac.localhost` as DNS name in `.env` file and the above URLs instead of `host.docker.internal`.
 
 ## Authors
 
