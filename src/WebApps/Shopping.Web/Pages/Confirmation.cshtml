@@ -1,0 +1,18 @@
+﻿@page
+@model Shopping.Web.Pages.ConfirmationModel
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<div class="container contact-container">
+    <h1 class="mt-4 mb-3">
+        Confirmation
+    </h1>
+    <hr />
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <h3>@Model.Message</h3>
+    }
+    <br />
+    <p>If you have any further questions, you can contact us 501-222-2222.</p>
+</div>

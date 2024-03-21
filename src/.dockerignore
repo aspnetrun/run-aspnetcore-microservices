@@ -23,3 +23,8 @@
 **/values.dev.yaml
 LICENSE
 README.md
+!**/.gitignore
+!.git/HEAD
+!.git/config
+!.git/packed-refs
+!.git/refs/heads/**

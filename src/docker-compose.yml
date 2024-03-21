@@ -2,25 +2,19 @@ version: '3.4'
 
 services:
   catalogdb:
-    image: mongo
-
-  basketdb:
-    image: redis:alpine
-
-  discountdb:
     image: postgres
 
+  basketdb:
+    image: postgres
+
+  distributedcache:
+    image: redis
+
   orderdb:
-    image: mcr.microsoft.com/mssql/server:2017-latest
+    image: mcr.microsoft.com/mssql/server
 
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-
-  pgadmin:
-    image: dpage/pgadmin4  
-
-  portainer:
-    image: portainer/portainer-ce
+  messagebroker:
+    image: rabbitmq:management
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
@@ -34,12 +28,6 @@ services:
       context: .
       dockerfile: Services/Basket/Basket.API/Dockerfile
 
-  discount.api:
-    image: ${DOCKER_REGISTRY-}discountapi
-    build:
-      context: .
-      dockerfile: Services/Discount/Discount.API/Dockerfile
-
   discount.grpc:
     image: ${DOCKER_REGISTRY-}discountgrpc
     build:
@@ -52,39 +40,24 @@ services:
       context: .
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
-  ocelotapigw:
-    image: ${DOCKER_REGISTRY-}ocelotapigw
+  yarpapigateway:
+    image: ${DOCKER_REGISTRY-}yarpapigateway
     build:
       context: .
-      dockerfile: ApiGateways/OcelotApiGw/Dockerfile  
+      dockerfile: ApiGateways/YarpApiGateway/Dockerfile
 
-  shopping.aggregator:
-    image: ${DOCKER_REGISTRY-}shoppingaggregator
+  shopping.web:
+    image: ${DOCKER_REGISTRY-}shoppingweb
     build:
       context: .
-      dockerfile: ApiGateways/Shopping.Aggregator/Dockerfile
-
-  aspnetrunbasics:
-    image: ${DOCKER_REGISTRY-}aspnetrunbasics
-    build:
-      context: .
-      dockerfile: WebApps/AspnetRunBasics/Dockerfile
-
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.9.2
-
-  webstatus:
-    image: ${DOCKER_REGISTRY-}webstatus
-    build:
-      context: .
-      dockerfile: WebApps/WebStatus/Dockerfile
+      dockerfile: WebApps/Shopping.Web/Dockerfile
 
 volumes:
-  mongo_data:
-  portainer_data:
-  postgres_data:
-  pgadmin_data:
-  elasticsearch-data:
+  postgres_catalog:
+  postgres_basket:
+
+
+
+
+
+

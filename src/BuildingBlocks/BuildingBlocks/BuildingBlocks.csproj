@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>    
+    <PackageReference Include="FluentValidation" Version="11.9.0" />    
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />    
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />    
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.FeatureManagement.AspNetCore" Version="3.2.0" />
+  </ItemGroup>
+
+</Project>

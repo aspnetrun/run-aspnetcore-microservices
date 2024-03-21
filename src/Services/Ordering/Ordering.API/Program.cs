@@ -1,36 +1,24 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
-using Ordering.API.Extensions;
-using Ordering.Infrastructure.Persistence;
-using Serilog;
-using Common.Logging;
+using Ordering.API;
+using Ordering.Application;
+using Ordering.Infrastructure;
+using Ordering.Infrastructure.Data.Extensions;
 
-namespace Ordering.API
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services
+    .AddApplicationServices(builder.Configuration)
+    .AddInfrastructureServices(builder.Configuration)
+    .AddApiServices(builder.Configuration);
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+app.UseApiServices();
+
+if (app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args)
-                .Build()
-                .MigrateDatabase<OrderContext>((context, services) =>
-                    {
-                        var logger = services.GetService<ILogger<OrderContextSeed>>();
-                        OrderContextSeed
-                            .SeedAsync(context, logger)
-                            .Wait();
-                    })
-                .Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog(SeriLogger.Configure)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
+    await app.InitialiseDatabaseAsync();
 }
+
+app.Run();
