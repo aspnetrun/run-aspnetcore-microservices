@@ -23,13 +23,7 @@ public class CustomExceptionHandler
                 exception.GetType().Name,
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError
             ),
-            ValidationException =>
-            (
-                exception.Message,
-                exception.GetType().Name,
-                context.Response.StatusCode = StatusCodes.Status400BadRequest
-            ),
-            BadRequestException =>
+            ValidationException or BadRequestException =>
             (
                 exception.Message,
                 exception.GetType().Name,
