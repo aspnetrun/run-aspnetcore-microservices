@@ -14,6 +14,7 @@ public class BasketRepository(IDocumentSession session)
     {
         session.Store(basket);
         await session.SaveChangesAsync(cancellationToken);
+
         return basket;
     }
 
@@ -21,6 +22,7 @@ public class BasketRepository(IDocumentSession session)
     {
         session.Delete<ShoppingCart>(userName);
         await session.SaveChangesAsync(cancellationToken);
+
         return true;
     }
 }
