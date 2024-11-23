@@ -130,7 +130,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label asp-for="Order.ZipCode" for="zip">Zip</label>
-                        <input asp-for="Order.ZipCode" type="text" class="form-control" id="zip" placeholder="" required>
+                        <input asp-for="Order.ZipCode" type="text" class="form-control" id="zip" placeholder="" maxlength="5" required>
                         <div class="invalid-feedback">
                             Zip code required.
                         </div>
