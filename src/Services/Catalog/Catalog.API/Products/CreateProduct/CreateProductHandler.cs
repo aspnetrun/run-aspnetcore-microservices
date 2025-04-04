@@ -24,16 +24,7 @@ internal class CreateProductCommandHandler
         //create Product entity from command object
         //save to database
         //return CreateProductResult result               
-
-        var product = new Product
-        {
-            Name = command.Name,
-            Category = command.Category,
-            Description = command.Description,
-            ImageFile = command.ImageFile,
-            Price = command.Price
-        };
-        
+        var product = command.Adapt<Product>(); 
         //save to database
         session.Store(product);
         await session.SaveChangesAsync(cancellationToken);
