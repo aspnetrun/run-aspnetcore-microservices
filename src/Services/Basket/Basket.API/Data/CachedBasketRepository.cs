@@ -15,6 +15,7 @@ public class CachedBasketRepository
 
         var basket = await repository.GetBasket(userName, cancellationToken);
         await cache.SetStringAsync(userName, JsonSerializer.Serialize(basket), cancellationToken);
+
         return basket;
     }
 
