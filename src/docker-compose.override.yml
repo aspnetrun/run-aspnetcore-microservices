@@ -21,7 +21,7 @@ services:
       - POSTGRES_DB=BasketDb
     restart: always
     ports:
-        - "5433:5432"
+        - "5434:5432"
     volumes:
       - postgres_basket:/var/lib/postgresql/data/ 
 
@@ -29,7 +29,7 @@ services:
     container_name: distributedcache
     restart: always
     ports:
-      - "6379:6379"
+      - "6380:6379"
 
   orderdb:
     container_name: orderdb
@@ -38,7 +38,8 @@ services:
       - SA_PASSWORD=SwN12345678
     restart: always
     ports:
-      - "1433:1433"
+      - "1434:1433"
+    platform: linux/amd64
 
   messagebroker:
     container_name: messagebroker
@@ -48,32 +49,28 @@ services:
       - RABBITMQ_DEFAULT_PASS=guest
     restart: always
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "5673:5672"
+      - "15673:15672"
 
   catalog.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__Database=Server=catalogdb;Port=5432;Database=CatalogDb;User Id=postgres;Password=postgres;Include Error Detail=true
     depends_on:
       - catalogdb
     ports:
       - "6000:8080"
-      - "6060:8081"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
   basket.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__Database=Server=basketdb;Port=5432;Database=BasketDb;User Id=postgres;Password=postgres;Include Error Detail=true
       - ConnectionStrings__Redis=distributedcache:6379
-      - GrpcSettings__DiscountUrl=https://discount.grpc:8081
+      - GrpcSettings__DiscountUrl=http://discount.grpc:8080
       - MessageBroker__Host=amqp://ecommerce-mq:5672
       - MessageBroker__UserName=guest
       - MessageBroker__Password=guest
@@ -84,29 +81,21 @@ services:
       - messagebroker
     ports:
       - "6001:8080"
-      - "6061:8081"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
   discount.grpc:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__Database=Data Source=discountdb
     ports:
       - "6002:8080"
-      - "6062:8081"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
   ordering.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__Database=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678;Encrypt=False;TrustServerCertificate=True
       - MessageBroker__Host=amqp://ecommerce-mq:5672
       - MessageBroker__UserName=guest
@@ -117,38 +106,30 @@ services:
       - messagebroker
     ports:
       - "6003:8080"
-      - "6063:8081"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
   yarpapigateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_URLS=http://+:8080
     depends_on:
       - catalog.api
       - basket.api
       - ordering.api
     ports:
       - "6004:8080"
-      - "6064:8081"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
   shopping.web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_URLS=http://+:8080
       - ApiSettings__GatewayAddress=http://yarpapigateway:8080
     depends_on:
       - yarpapigateway
     ports:
       - "6005:8080"
-      - "6065:8081"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+volumes:
+  postgres_catalog:
+  postgres_basket:
