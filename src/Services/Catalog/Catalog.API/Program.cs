@@ -1,7 +1,11 @@
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using BuildingBlocks.OpenTelemetry;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add OpenTelemetry services
+builder.Services.AddOpenTelemetryServices(builder.Configuration, "catalog-api", "1.0.0");
 
 // Add services to the container.
 var assembly = typeof(Program).Assembly;
@@ -34,6 +38,8 @@ var app = builder.Build();
 app.MapCarter();
 
 app.UseExceptionHandler(options => { });
+
+
 
 app.UseHealthChecks("/health",
     new HealthCheckOptions

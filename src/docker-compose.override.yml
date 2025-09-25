@@ -11,7 +11,13 @@ services:
     ports:
         - "5432:5432"
     volumes:
-      - postgres_catalog:/var/lib/postgresql/data/ 
+      - postgres_catalog:/var/lib/postgresql/data/
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 
       
   basketdb:
     container_name: basketdb
@@ -23,13 +29,25 @@ services:
     ports:
         - "5434:5432"
     volumes:
-      - postgres_basket:/var/lib/postgresql/data/ 
+      - postgres_basket:/var/lib/postgresql/data/
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 
 
   distributedcache:
     container_name: distributedcache
     restart: always
     ports:
       - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   orderdb:
     container_name: orderdb
@@ -40,6 +58,12 @@ services:
     ports:
       - "1434:1433"
     platform: linux/amd64
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SwN12345678 -Q 'SELECT 1' || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   messagebroker:
     container_name: messagebroker
@@ -51,6 +75,12 @@ services:
     ports:
       - "5673:5672"
       - "15673:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   catalog.api:
     environment:
@@ -58,8 +88,12 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__Database=Server=catalogdb;Port=5432;Database=CatalogDb;User Id=postgres;Password=postgres;Include Error Detail=true
+      - OpenTelemetry__Endpoint=http://otel-collector:4317
     depends_on:
-      - catalogdb
+      catalogdb:
+        condition: service_healthy
+      otel-collector:
+        condition: service_healthy
     ports:
       - "6000:8080"
 
@@ -74,11 +108,18 @@ services:
       - MessageBroker__Host=amqp://ecommerce-mq:5672
       - MessageBroker__UserName=guest
       - MessageBroker__Password=guest
+      - OpenTelemetry__Endpoint=http://otel-collector:4317
     depends_on:
-      - basketdb
-      - distributedcache
-      - discount.grpc
-      - messagebroker
+      basketdb:
+        condition: service_healthy
+      distributedcache:
+        condition: service_healthy
+      discount.grpc:
+        condition: service_started
+      messagebroker:
+        condition: service_healthy
+      otel-collector:
+        condition: service_healthy
     ports:
       - "6001:8080"
 
@@ -88,6 +129,10 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__Database=Data Source=discountdb
+      - OpenTelemetry__Endpoint=http://otel-collector:4317
+    depends_on:
+      otel-collector:
+        condition: service_healthy
     ports:
       - "6002:8080"
 
@@ -101,9 +146,14 @@ services:
       - MessageBroker__UserName=guest
       - MessageBroker__Password=guest
       - FeatureManagement__OrderFullfilment=false
+      - OpenTelemetry__Endpoint=http://otel-collector:4317
     depends_on:
-      - orderdb
-      - messagebroker
+      orderdb:
+        condition: service_healthy
+      messagebroker:
+        condition: service_healthy
+      otel-collector:
+        condition: service_healthy
     ports:
       - "6003:8080"
 
@@ -112,10 +162,16 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_URLS=http://+:8080
+      - OpenTelemetry__Endpoint=http://otel-collector:4317
     depends_on:
-      - catalog.api
-      - basket.api
-      - ordering.api
+      catalog.api:
+        condition: service_started
+      basket.api:
+        condition: service_started
+      ordering.api:
+        condition: service_started
+      otel-collector:
+        condition: service_healthy
     ports:
       - "6004:8080"
 
@@ -125,8 +181,12 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_URLS=http://+:8080
       - ApiSettings__GatewayAddress=http://yarpapigateway:8080
+      - OpenTelemetry__Endpoint=http://otel-collector:4317
     depends_on:
-      - yarpapigateway
+      yarpapigateway:
+        condition: service_started
+      otel-collector:
+        condition: service_healthy
     ports:
       - "6005:8080"
 

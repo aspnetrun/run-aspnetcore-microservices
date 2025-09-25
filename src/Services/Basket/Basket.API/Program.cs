@@ -2,8 +2,12 @@ using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using BuildingBlocks.Messaging.MassTransit;
+using BuildingBlocks.OpenTelemetry;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add OpenTelemetry services
+builder.Services.AddOpenTelemetryServices(builder.Configuration, "basket-api", "1.0.0");
 
 // Add services to the container.
 
@@ -64,6 +68,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.MapCarter();
 app.UseExceptionHandler(options => { });
+
+
+
 app.UseHealthChecks("/health",
     new HealthCheckOptions
     {

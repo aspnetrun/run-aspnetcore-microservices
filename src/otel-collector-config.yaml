@@ -1,0 +1,49 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+    send_timestamps: true
+    resource_to_telemetry_conversion:
+      enabled: true
+  jaeger:
+    endpoint: jaeger:14250
+    tls:
+      insecure: true
+
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+  resource:
+    attributes:
+      - key: environment
+        value: "development"
+        action: upsert
+      - key: deployment.region
+        value: "local"
+        action: upsert
+
+connectors:
+  spanmetrics:
+    namespace: span.metrics
+    histogram:
+      explicit:
+        buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms, 500ms, 1s, 2s, 5s]
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch, resource]
+      exporters: [spanmetrics, jaeger]
+    metrics:
+      receivers: [otlp, spanmetrics]
+      processors: [batch, resource]
+      exporters: [prometheus]

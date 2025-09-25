@@ -1,0 +1,40 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'otel-collector'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['otel-collector:8889']
+    metrics_path: /metrics
+
+  - job_name: 'catalog-api'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['catalog.api:8080']
+    metrics_path: /metrics
+
+  - job_name: 'basket-api'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['basket.api:8080']
+    metrics_path: /metrics
+
+  - job_name: 'ordering-api'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['ordering.api:8080']
+    metrics_path: /metrics
+
+  - job_name: 'yarp-gateway'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['yarpapigateway:8080']
+    metrics_path: /metrics
+
+  - job_name: 'shopping-web'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['shopping.web:8080']
+    metrics_path: /metrics

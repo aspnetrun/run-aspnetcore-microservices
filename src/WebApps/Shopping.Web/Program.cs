@@ -1,4 +1,9 @@
+using BuildingBlocks.OpenTelemetry;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add OpenTelemetry services
+builder.Services.AddOpenTelemetryServices(builder.Configuration, "shopping-web", "1.0.0");
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -35,6 +40,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+
 
 app.MapRazorPages();
 

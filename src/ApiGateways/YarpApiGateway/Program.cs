@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.RateLimiting;
+using BuildingBlocks.OpenTelemetry;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add OpenTelemetry services
+builder.Services.AddOpenTelemetryServices(builder.Configuration, "yarp-gateway", "1.0.0");
 
 // Add services to the container.
 builder.Services.AddReverseProxy()
@@ -19,6 +23,8 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseRateLimiter();
+
+
 
 app.MapReverseProxy();
 
