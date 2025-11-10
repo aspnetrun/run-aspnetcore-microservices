@@ -22,6 +22,7 @@ public class DiscountService
         logger.LogInformation("Discount is retrieved for ProductName : {productName}, Amount : {amount}", coupon.ProductName, coupon.Amount);
 
         var couponModel = coupon.Adapt<CouponModel>();
+
         return couponModel;
     }
 
@@ -37,6 +38,7 @@ public class DiscountService
         logger.LogInformation("Discount is successfully created. ProductName : {ProductName}", coupon.ProductName);
 
         var couponModel = coupon.Adapt<CouponModel>();
+
         return couponModel;
     }
 
@@ -53,6 +55,7 @@ public class DiscountService
         logger.LogInformation("Discount is successfully updated. ProductName : {ProductName}", coupon.ProductName);
 
         var couponModel = coupon.Adapt<CouponModel>();
+
         return couponModel;
     }
 
