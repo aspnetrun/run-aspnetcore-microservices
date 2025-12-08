@@ -22,17 +22,24 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
 
         foreach (var entry in context.ChangeTracker.Entries<IEntity>())
         {
-            if (entry.State == EntityState.Added)
-            {
-                entry.Entity.CreatedBy = "mehmet";
-                entry.Entity.CreatedAt = DateTime.UtcNow;
-            }
+            HandleEntryCreation(entry);
+            HandleEntryModification(entry);
+        }
+    }
+    private void HandleEntryCreation(EntityEntry<IEntity> entry)
+    {
+        if (entry.State != EntityState.Added) return;
 
-            if (entry.State == EntityState.Added || entry.State == EntityState.Modified || entry.HasChangedOwnedEntities())
-            {
-                entry.Entity.LastModifiedBy = "mehmet";
-                entry.Entity.LastModified = DateTime.UtcNow;
-            }
+        entry.Entity.CreatedBy = "mehmet";
+        entry.Entity.CreatedAt = DateTime.UtcNow;
+    }
+    private void HandleEntryModification(EntityEntry<IEntity> entry)
+    {
+        if (entry is { State: EntityState.Added | EntityState.Modified }
+               || entry.HasChangedOwnedEntities())
+        {
+            entry.Entity.LastModifiedBy = "mehmet";
+            entry.Entity.LastModified = DateTime.UtcNow;
         }
     }
 }
