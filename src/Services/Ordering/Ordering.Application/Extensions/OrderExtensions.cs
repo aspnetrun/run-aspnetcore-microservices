@@ -1,9 +1,8 @@
 ﻿namespace Ordering.Application.Extensions;
 public static class OrderExtensions
 {
-    public static IEnumerable<OrderDto> ToOrderDtoList(this IEnumerable<Order> orders)
-    {
-        return orders.Select(order => new OrderDto(
+    public static IEnumerable<OrderDto> ToOrderDtoList(this IEnumerable<Order> orders)=>  
+        orders.Select(order => new OrderDto(
             Id: order.Id.Value,
             CustomerId: order.CustomerId.Value,
             OrderName: order.OrderName.Value,
@@ -13,16 +12,11 @@ public static class OrderExtensions
             Status: order.Status,
             OrderItems: order.OrderItems.Select(oi => new OrderItemDto(oi.OrderId.Value, oi.ProductId.Value, oi.Quantity, oi.Price)).ToList()
         ));
-    }
 
-    public static OrderDto ToOrderDto(this Order order)
-    {
-        return DtoFromOrder(order);
-    }
+    public static OrderDto ToOrderDto(this Order order) => DtoFromOrder(order);
 
-    private static OrderDto DtoFromOrder(Order order)
-    {
-        return new OrderDto(
+    private static OrderDto DtoFromOrder(Order order)=>
+         new OrderDto(
                     Id: order.Id.Value,
                     CustomerId: order.CustomerId.Value,
                     OrderName: order.OrderName.Value,
@@ -32,5 +26,5 @@ public static class OrderExtensions
                     Status: order.Status,
                     OrderItems: order.OrderItems.Select(oi => new OrderItemDto(oi.OrderId.Value, oi.ProductId.Value, oi.Quantity, oi.Price)).ToList()
                 );
-    }
+    
 }

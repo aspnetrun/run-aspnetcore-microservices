@@ -34,6 +34,7 @@ public class CreateOrderHandler(IApplicationDbContext dbContext)
         {
             newOrder.Add(ProductId.Of(orderItemDto.ProductId), orderItemDto.Quantity, orderItemDto.Price);
         }
+
         return newOrder;
     }
 }
